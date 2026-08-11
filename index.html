@@ -295,17 +295,33 @@
         /* Hero Section */
         .hero {
             height: calc(100vh - 115px);
+            min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 1rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('0A5B6611-9ECA-4766-A67B-35DC50F492F1.png');
-            background-size: 110% 110%;
-            background-position: center;
-            color: #ffffff;
             position: relative;
+            background: url('0A5B6611-9ECA-4766-A67B-35DC50F492F1.png') no-repeat center center;
+            background-size: cover;
+            color: #ffffff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -314,15 +330,13 @@
             margin-bottom: 1rem;
             letter-spacing: -1px;
             color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero p {
             font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #f1f5f9;
+            color: #cbd5e1;
             max-width: 600px;
             margin-bottom: 2rem;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
 
         .hero .btn-primary {
@@ -333,7 +347,6 @@
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.2s ease, background-color 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .hero .btn-primary:hover {
@@ -341,35 +354,40 @@
             background-color: #f1f5f9;
         }
 
-        /* Infinite Moving Ticker Bar */
-        .infinite-ticker {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            overflow: hidden;
+        /* Infinite Scrolling Feature Ticker Bar */
+        .ticker-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            padding: 0.9rem 0;
+            background: rgba(45, 55, 45, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            z-index: 5;
+            padding: 0.85rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            white-space: nowrap;
-            box-sizing: border-box;
         }
 
         .ticker-track {
-            display: inline-block;
-            animation: scrollTicker 25s linear infinite;
+            display: flex;
+            width: max-content;
+            animation: tickerScroll 25s linear infinite;
         }
 
         .ticker-item {
-            display: inline-block;
             color: #ffffff;
             font-size: 0.85rem;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            white-space: nowrap;
             padding: 0 3rem;
+            display: flex;
+            align-items: center;
         }
 
-        @keyframes scrollTicker {
+        @keyframes tickerScroll {
             0% {
                 transform: translateX(0);
             }
@@ -989,26 +1007,26 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Stay Hydrated in Style.</h1>
         <p>Engineered for ultimate thermal performance. Keeps your drinks ice-cold for 24 hours or piping hot for 12.</p>
         <a href="#shop" class="btn-primary">Shop Collection</a>
-    </section>
 
-    <!-- Infinite Moving Ticker Bar -->
-    <div class="infinite-ticker">
-        <div class="ticker-track">
-            <span class="ticker-item">UP TO THREE DAYS COLD</span>
-            <span class="ticker-item">MAX WATERPROOF</span>
-            <span class="ticker-item">RECYCLABLE BODY</span>
-            <span class="ticker-item">100% DURABILITY</span>
-            <span class="ticker-item">UP TO THREE DAYS COLD</span>
-            <span class="ticker-item">MAX WATERPROOF</span>
-            <span class="ticker-item">RECYCLABLE BODY</span>
-            <span class="ticker-item">100% DURABILITY</span>
+        <!-- Infinite Ticker Bar -->
+        <div class="ticker-bar">
+            <div class="ticker-track">
+                <div class="ticker-item">UP TO THREE DAYS COLD</div>
+                <div class="ticker-item">MAX WATERPROOF</div>
+                <div class="ticker-item">RECYCLABLE BODY</div>
+                <div class="ticker-item">100% DURABILITY</div>
+                <!-- Duplicate set for seamless infinite loop -->
+                <div class="ticker-item">UP TO THREE DAYS COLD</div>
+                <div class="ticker-item">MAX WATERPROOF</div>
+                <div class="ticker-item">RECYCLABLE BODY</div>
+                <div class="ticker-item">100% DURABILITY</div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Product Collections Section -->
     <section class="products" id="shop">
