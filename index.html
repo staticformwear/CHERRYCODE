@@ -30,7 +30,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 100px;
+            padding-top: 110px;
         }
 
         /* Announcement Bar */
@@ -56,21 +56,20 @@
             top: 36px;
             left: 0;
             width: 100%;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
-            gap: 1rem;
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            flex: 1;
         }
 
         .hamburger {
@@ -92,14 +91,15 @@
         }
 
         .logo-container {
-            justify-self: center;
+            flex: 1;
             display: flex;
+            justify-content: center;
             align-items: center;
             text-decoration: none;
         }
 
         .logo-img {
-            height: 28px;
+            height: 48px;
             width: auto;
             display: block;
         }
@@ -108,7 +108,8 @@
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            justify-self: end;
+            flex: 1;
+            justify-content: flex-end;
         }
 
         .search-icon-btn {
@@ -513,7 +514,7 @@
                 padding: 0.8rem 1rem;
             }
             .logo-img {
-                height: 22px;
+                height: 36px;
             }
             .popup-modal {
                 max-width: 90%;
