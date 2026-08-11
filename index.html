@@ -30,7 +30,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 100px; /* Accounts for fixed announcement bar + header */
+            padding-top: 100px;
         }
 
         /* Announcement Bar */
@@ -44,8 +44,8 @@
             text-align: center;
             padding: 0.6rem 1rem;
             font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
             z-index: 1100;
             text-transform: uppercase;
         }
@@ -53,7 +53,7 @@
         /* Header & Navigation */
         header {
             position: fixed;
-            top: 36px; /* Height of the announcement bar */
+            top: 36px;
             left: 0;
             width: 100%;
             display: grid;
@@ -94,48 +94,14 @@
         .logo-container {
             justify-self: center;
             display: flex;
-            flex-direction: column;
             align-items: center;
             text-decoration: none;
         }
 
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--text-color);
-            text-transform: uppercase;
-            line-height: 1.1;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-
-        /* Custom graphic matching image_2.png for the 'A' water drop */
-        .logo-drop-container {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            top: -2px;
-        }
-
-        .logo-drop {
-            width: 5px;
-            height: 7px;
-            background-color: var(--text-color);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            margin-bottom: -1px;
-        }
-
-        .logo-sub {
-            font-size: 0.5rem;
-            font-weight: 700;
-            letter-spacing: 5px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-top: 1px;
-            margin-left: 5px;
+        .logo-img {
+            height: 28px;
+            width: auto;
+            display: block;
         }
 
         .header-right {
@@ -546,8 +512,8 @@
             header {
                 padding: 0.8rem 1rem;
             }
-            .logo-main {
-                font-size: 1.2rem;
+            .logo-img {
+                height: 22px;
             }
             .popup-modal {
                 max-width: 90%;
@@ -571,14 +537,7 @@
         </div>
 
         <a href="#" class="logo-container">
-            <div class="logo-main">
-                FOUNT
-                <span class="logo-drop-container">
-                    <span class="logo-drop"></span>
-                    <span>N</span>
-                </span>
-            </div>
-            <div class="logo-sub">BOTTLES</div>
+            <img src="IMG_0268.png" alt="Fountain Bottles Logo" class="logo-img">
         </a>
 
         <div class="header-right">
