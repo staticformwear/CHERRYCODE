@@ -705,6 +705,19 @@
                     <a href="lunchsack.html">Lunch Sack</a>
                 </div>
             </div>
+
+            <!-- Accessories Menu -->
+            <div class="nav-item-group">
+                <button class="nav-dropdown-toggle" id="accessoriesDropdownToggle">
+                    <span>Accessories</span>
+                    <span class="toggle-icon" id="accessoriesToggleIcon">+</span>
+                </button>
+                <div class="nav-submenu" id="accessoriesSubmenu">
+                    <a href="bottlebags.html">Bottle Bags</a>
+                    <a href="extraparts.html">Extra Parts</a>
+                    <a href="giftcards.html">Gift Cards</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -818,6 +831,10 @@
         const foodwareSubmenu = document.getElementById('foodwareSubmenu');
         const foodwareToggleIcon = document.getElementById('foodwareToggleIcon');
 
+        const accessoriesDropdownToggle = document.getElementById('accessoriesDropdownToggle');
+        const accessoriesSubmenu = document.getElementById('accessoriesSubmenu');
+        const accessoriesToggleIcon = document.getElementById('accessoriesToggleIcon');
+
         function openNav() {
             navDrawer.classList.add('active');
             navOverlay.classList.add('active');
@@ -847,6 +864,15 @@
                 foodwareToggleIcon.textContent = '-';
             } else {
                 foodwareToggleIcon.textContent = '+';
+            }
+        });
+
+        accessoriesDropdownToggle.addEventListener('click', () => {
+            accessoriesSubmenu.classList.toggle('active');
+            if (accessoriesSubmenu.classList.contains('active')) {
+                accessoriesToggleIcon.textContent = '-';
+            } else {
+                accessoriesToggleIcon.textContent = '+';
             }
         });
 
