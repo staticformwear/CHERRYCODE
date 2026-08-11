@@ -30,7 +30,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 115px;
+            padding-top: 85px;
         }
 
         /* Announcement Bar */
@@ -42,8 +42,8 @@
             background-color: #000000;
             color: #ffffff;
             text-align: center;
-            padding: 0.6rem 1rem;
-            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 1.2px;
             z-index: 1100;
@@ -53,13 +53,13 @@
         /* Header & Navigation */
         header {
             position: fixed;
-            top: 36px;
+            top: 28px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0.5rem 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -79,13 +79,13 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             padding: 4px;
         }
 
         .hamburger span {
             display: block;
-            width: 24px;
+            width: 20px;
             height: 2px;
             background-color: var(--text-color);
             transition: transform 0.3s ease;
@@ -102,8 +102,8 @@
         }
 
         .search-icon-btn svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             fill: none;
             stroke: currentColor;
             stroke-width: 2.2;
@@ -121,10 +121,10 @@
         }
 
         .logo-img {
-            height: 96px;
+            height: 60px;
             width: auto;
             display: block;
-            transform: scale(2.5);
+            transform: scale(2.2);
             transform-origin: center;
         }
 
@@ -149,8 +149,8 @@
         }
 
         .login-icon-btn svg, .cart-icon-btn svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             fill: none;
             stroke: currentColor;
             stroke-width: 2.2;
@@ -164,8 +164,8 @@
             right: -6px;
             background-color: var(--text-color);
             color: var(--bg-color);
-            font-size: 0.65rem;
-            padding: 0.1rem 0.35rem;
+            font-size: 0.6rem;
+            padding: 0.05rem 0.3rem;
             border-radius: 50%;
             font-weight: 600;
         }
@@ -294,7 +294,7 @@
 
         /* Hero Section */
         .hero {
-            height: calc(100vh - 115px);
+            height: calc(100vh - 85px);
             min-height: 600px;
             display: flex;
             flex-direction: column;
@@ -914,10 +914,10 @@
 
         @media (max-width: 768px) {
             header {
-                padding: 0.8rem 1rem;
+                padding: 0.5rem 1rem;
             }
             .logo-img {
-                height: 72px;
+                height: 48px;
             }
             .popup-modal {
                 max-width: 90%;
