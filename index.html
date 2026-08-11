@@ -30,29 +30,47 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 100px; /* Accounts for fixed announcement bar + header */
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 1100;
+            text-transform: uppercase;
         }
 
         /* Header & Navigation */
         header {
             position: fixed;
-            top: 0;
+            top: 36px; /* Height of the announcement bar */
             left: 0;
             width: 100%;
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .hamburger {
@@ -73,63 +91,78 @@
             transition: transform 0.3s ease;
         }
 
-        .logo {
+        .logo-container {
+            justify-self: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-main {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 2px;
             color: var(--text-color);
             text-transform: uppercase;
-            justify-self: center;
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* Custom graphic matching image_2.png for the 'A' water drop */
+        .logo-drop-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            top: -2px;
+        }
+
+        .logo-drop {
+            width: 5px;
+            height: 7px;
+            background-color: var(--text-color);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin-bottom: -1px;
+        }
+
+        .logo-sub {
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 1px;
+            margin-left: 5px;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.25rem;
             justify-self: end;
         }
 
-        .search-container {
-            position: relative;
+        .search-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 1rem 0.5rem 2.2rem;
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            background-color: var(--card-bg);
             color: var(--text-color);
-            font-size: 0.9rem;
-            outline: none;
-            width: 180px;
-            transition: width 0.3s ease, border-color 0.3s ease;
+            padding: 4px;
         }
 
-        .search-bar:focus {
-            width: 240px;
-            border-color: var(--text-muted);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 0.8rem;
-            width: 14px;
-            height: 14px;
-            border: 2px solid var(--text-muted);
-            border-radius: 50%;
-        }
-
-        .search-icon::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: -5px;
-            width: 6px;
-            height: 2px;
-            background-color: var(--text-muted);
-            transform: rotate(45deg);
+        .search-icon-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .cart-icon-btn {
@@ -140,6 +173,7 @@
             display: flex;
             align-items: center;
             color: var(--text-color);
+            padding: 4px;
         }
 
         .cart-icon-btn svg {
@@ -154,12 +188,12 @@
 
         .cart-count {
             position: absolute;
-            top: -6px;
-            right: -8px;
+            top: -4px;
+            right: -6px;
             background-color: var(--text-color);
             color: var(--bg-color);
-            font-size: 0.7rem;
-            padding: 0.1rem 0.4rem;
+            font-size: 0.65rem;
+            padding: 0.1rem 0.35rem;
             border-radius: 50%;
             font-weight: 600;
         }
@@ -175,7 +209,6 @@
             padding: 0 1rem;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), radial-gradient(circle at center, #1e293b 0%, #0f1015 70%);
             color: #ffffff;
-            margin-top: 60px;
         }
 
         .hero h1 {
@@ -511,14 +544,10 @@
 
         @media (max-width: 768px) {
             header {
-                grid-template-columns: auto 1fr auto;
-                padding: 1rem;
+                padding: 0.8rem 1rem;
             }
-            .search-bar {
-                width: 120px;
-            }
-            .search-bar:focus {
-                width: 150px;
+            .logo-main {
+                font-size: 1.2rem;
             }
             .popup-modal {
                 max-width: 90%;
@@ -528,6 +557,11 @@
 </head>
 <body>
 
+    <!-- Black Announcement Bar -->
+    <div class="announcement-bar">
+        GET 20% OFF FIRST ORDER
+    </div>
+
     <header>
         <div class="header-left">
             <button class="hamburger" aria-label="Menu">
@@ -536,17 +570,25 @@
             </button>
         </div>
 
-        <div class="logo">Fountain</div>
+        <a href="#" class="logo-container">
+            <div class="logo-main">
+                FOUNT
+                <span class="logo-drop-container">
+                    <span class="logo-drop"></span>
+                    <span>N</span>
+                </span>
+            </div>
+            <div class="logo-sub">BOTTLES</div>
+        </a>
 
         <div class="header-right">
+            <button class="search-icon-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
             <button class="cart-icon-btn" aria-label="Cart">
                 <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
                 <span class="cart-count">0</span>
             </button>
-            <div class="search-container">
-                <div class="search-icon"></div>
-                <input type="text" class="search-bar" placeholder="Search bottles...">
-            </div>
         </div>
     </header>
 
@@ -630,7 +672,7 @@
                 <p class="popup-desc">Join our growing community of hydration enthusiasts and unlock elite savings on your first premium bottle.</p>
                 
                 <form class="popup-form" onsubmit="event.preventDefault(); alert('Code FOUNTAIN10 applied!');">
-                    <input type="text" class="popup-input" placeholder="First Name" required>
+                    <input type="text" class="popup-input" placeholder="Forename" required>
                     <input type="text" class="popup-input" placeholder="Surname" required>
                     <input type="email" class="popup-input" placeholder="Email Address" required>
                     <button type="submit" class="popup-btn">GET 20% OFF CODE</button>
