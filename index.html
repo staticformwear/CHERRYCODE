@@ -69,6 +69,7 @@
         .header-left {
             display: flex;
             align-items: center;
+            gap: 1rem;
             flex: 1;
         }
 
@@ -88,6 +89,26 @@
             height: 2px;
             background-color: var(--text-color);
             transition: transform 0.3s ease;
+        }
+
+        .search-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            padding: 4px;
+        }
+
+        .search-icon-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .logo-container {
@@ -112,27 +133,7 @@
             justify-content: flex-end;
         }
 
-        .search-icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            color: var(--text-color);
-            padding: 4px;
-        }
-
-        .search-icon-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .cart-icon-btn {
+        .login-icon-btn, .cart-icon-btn {
             background: none;
             border: none;
             cursor: pointer;
@@ -141,14 +142,15 @@
             align-items: center;
             color: var(--text-color);
             padding: 4px;
+            text-decoration: none;
         }
 
-        .cart-icon-btn svg {
+        .login-icon-btn svg, .cart-icon-btn svg {
             width: 22px;
             height: 22px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2;
+            stroke-width: 2.2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -652,10 +654,14 @@
     </div>
 
     <header>
+        <!-- Left: Hamburger and Search Symbol beside each other -->
         <div class="header-left">
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
                 <span></span>
                 <span></span>
+            </button>
+            <button class="search-icon-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
         </div>
 
@@ -663,10 +669,11 @@
             <img src="IMG_0268.png" alt="Fountain Bottles Logo" class="logo-img">
         </a>
 
+        <!-- Right: Login user icon and Cart icon -->
         <div class="header-right">
-            <button class="search-icon-btn" aria-label="Search">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
+            <a href="login.html" class="login-icon-btn" aria-label="Login">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </a>
             <button class="cart-icon-btn" aria-label="Cart">
                 <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
                 <span class="cart-count">0</span>
