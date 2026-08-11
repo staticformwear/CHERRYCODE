@@ -36,14 +36,39 @@
             top: 0;
             left: 0;
             width: 100%;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 1.2rem 5%;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            gap: 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: transform 0.3s ease;
         }
 
         .logo {
@@ -52,41 +77,92 @@
             letter-spacing: 2px;
             color: var(--text-color);
             text-transform: uppercase;
+            justify-self: center;
         }
 
-        nav ul {
+        .header-right {
             display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--text-color);
-        }
-
-        .nav-actions {
-            display: flex;
+            align-items: center;
             gap: 1.5rem;
+            justify-self: end;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
             align-items: center;
         }
 
-        .btn-cart {
+        .search-bar {
+            padding: 0.5rem 1rem 0.5rem 2.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            outline: none;
+            width: 180px;
+            transition: width 0.3s ease, border-color 0.3s ease;
+        }
+
+        .search-bar:focus {
+            width: 240px;
+            border-color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+        }
+
+        .search-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 6px;
+            height: 2px;
+            background-color: var(--text-muted);
+            transform: rotate(45deg);
+        }
+
+        .cart-icon-btn {
             background: none;
             border: none;
-            color: var(--text-color);
-            font-size: 1rem;
             cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .cart-icon-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            font-size: 0.7rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 50%;
             font-weight: 600;
         }
 
-        /* Hero Section (Dark background with image treatment -> White text) */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -130,7 +206,7 @@
             background-color: #f1f5f9;
         }
 
-        /* Products Showcase Section (White background -> Black text) */
+        /* Products Showcase Section */
         .products {
             padding: 6rem 5%;
             max-width: 1400px;
@@ -258,8 +334,15 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            header {
+                grid-template-columns: auto 1fr auto;
+                padding: 1rem;
+            }
+            .search-bar {
+                width: 120px;
+            }
+            .search-bar:focus {
+                width: 150px;
             }
         }
     </style>
@@ -267,16 +350,24 @@
 <body>
 
     <header>
+        <div class="header-left">
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
         <div class="logo">Fountain</div>
-        <nav>
-            <ul>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#features">Technology</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-        <div class="nav-actions">
-            <button class="btn-cart">Cart (0)</button>
+
+        <div class="header-right">
+            <button class="cart-icon-btn" aria-label="Cart">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+                <span class="cart-count">0</span>
+            </button>
+            <div class="search-container">
+                <div class="search-icon"></div>
+                <input type="text" class="search-bar" placeholder="Search bottles...">
+            </div>
         </div>
     </header>
 
