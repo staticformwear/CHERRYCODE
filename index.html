@@ -337,7 +337,7 @@
 
         /* Products Showcase Section */
         .products {
-            padding: 6rem 5%;
+            padding: 6rem 5% 3rem 5%;
             max-width: 1400px;
             margin: 0 auto;
             background-color: var(--bg-color);
@@ -423,11 +423,91 @@
             color: var(--bg-color);
         }
 
+        /* Reviews Slider Section (Placed right underneath Product Collections) */
+        .reviews-section {
+            background-color: #f1f5f9;
+            padding: 5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .reviews-container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review-slide {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .review-slide.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+
+        .review-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .review-author {
+            font-size: 1rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+        }
+
+        .review-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 2.5rem;
+            justify-content: center;
+        }
+
+        .review-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #000000;
+            background: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 0;
+        }
+
+        .review-dot.active {
+            background: #000000;
+        }
+
         /* Features Section */
         .features {
             background: #f8fafc;
             padding: 5rem 5%;
-            border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -458,7 +538,6 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
             background-color: var(--bg-color);
         }
 
@@ -737,6 +816,7 @@
         <a href="#shop" class="btn-primary">Shop Collection</a>
     </section>
 
+    <!-- Product Collections Section -->
     <section class="products" id="shop">
         <h2 class="section-title">The Collection</h2>
         <div class="product-grid">
@@ -774,6 +854,51 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- New Automated Reviews Slider Section (Placed right underneath Product Collections) -->
+    <section class="reviews-section">
+        <div class="reviews-container" id="reviewsContainer">
+            <!-- Review 1 -->
+            <div class="review-slide active">
+                <div class="review-title">Brilliant Product!!</div>
+                <div class="review-text">Super fast delivery and absolutely love the sage green colour. Keeps my water cold all day long!</div>
+                <div class="review-author">Jacob R.</div>
+            </div>
+            <!-- Review 2 -->
+            <div class="review-slide">
+                <div class="review-title">Excellent product and service!!</div>
+                <div class="review-text">Speedy delivery and delighted with the two bottles I purchased.</div>
+                <div class="review-author">Vanessa W.</div>
+            </div>
+            <!-- Review 3 -->
+            <div class="review-slide">
+                <div class="review-title">Love it!!!</div>
+                <div class="review-text">Fab colour, love it. Can't wait to get another one!</div>
+                <div class="review-author">Megan M.</div>
+            </div>
+            <!-- Review 4 -->
+            <div class="review-slide">
+                <div class="review-title">Great Product</div>
+                <div class="review-text">Works exactly as expected, keeps drinks cold all day! Would recommend.</div>
+                <div class="review-author">Mitchell F.</div>
+            </div>
+            <!-- Review 5 -->
+            <div class="review-slide">
+                <div class="review-title">Amazing Quality!</div>
+                <div class="review-text">Quick shipping and the obsidian black finish looks sleek. Worth every penny.</div>
+                <div class="review-author">David F.</div>
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="review-dots" id="reviewDots">
+            <button class="review-dot active" data-index="0" aria-label="Review 1"></button>
+            <button class="review-dot" data-index="1" aria-label="Review 2"></button>
+            <button class="review-dot" data-index="2" aria-label="Review 3"></button>
+            <button class="review-dot" data-index="3" aria-label="Review 4"></button>
+            <button class="review-dot" data-index="4" aria-label="Review 5"></button>
         </div>
     </section>
 
@@ -885,6 +1010,41 @@
                 accessoriesToggleIcon.textContent = '+';
             }
         });
+
+        // Reviews Auto-Slider Functionality (Changes every 5 seconds)
+        const slides = document.querySelectorAll('.review-slide');
+        const dots = document.querySelectorAll('.review-dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Start 5-second automatic rotation
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Allow manual dot selection
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                clearInterval(slideInterval);
+                startSlider(); // Reset timer on manual click
+            });
+        });
+
+        startSlider();
 
         // Trigger popup 7 seconds after the page loads
         window.addEventListener('load', () => {
