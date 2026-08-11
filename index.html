@@ -294,15 +294,18 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: calc(100vh - 115px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 1rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), radial-gradient(circle at center, #1e293b 0%, #0f1015 70%);
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('0A5B6611-9ECA-4766-A67B-35DC50F492F1.png');
+            background-size: 110% 110%;
+            background-position: center;
             color: #ffffff;
+            position: relative;
         }
 
         .hero h1 {
@@ -311,13 +314,15 @@
             margin-bottom: 1rem;
             letter-spacing: -1px;
             color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero p {
             font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #cbd5e1;
+            color: #f1f5f9;
             max-width: 600px;
             margin-bottom: 2rem;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
 
         .hero .btn-primary {
@@ -328,11 +333,49 @@
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .hero .btn-primary:hover {
             transform: scale(1.05);
             background-color: #f1f5f9;
+        }
+
+        /* Infinite Moving Ticker Bar */
+        .infinite-ticker {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+            width: 100%;
+            padding: 0.9rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            animation: scrollTicker 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0 3rem;
+        }
+
+        @keyframes scrollTicker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* Products Showcase Section */
@@ -571,7 +614,7 @@
         .founder-main-title {
             text-align: center;
             font-size: 2.2rem;
-            font-weight: 800; /* Bolder than upload 3 standard headings, but not heavy black */
+            font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 3rem;
             color: var(--text-color);
@@ -946,11 +989,26 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Stay Hydrated in Style.</h1>
         <p>Engineered for ultimate thermal performance. Keeps your drinks ice-cold for 24 hours or piping hot for 12.</p>
         <a href="#shop" class="btn-primary">Shop Collection</a>
     </section>
+
+    <!-- Infinite Moving Ticker Bar -->
+    <div class="infinite-ticker">
+        <div class="ticker-track">
+            <span class="ticker-item">UP TO THREE DAYS COLD</span>
+            <span class="ticker-item">MAX WATERPROOF</span>
+            <span class="ticker-item">RECYCLABLE BODY</span>
+            <span class="ticker-item">100% DURABILITY</span>
+            <span class="ticker-item">UP TO THREE DAYS COLD</span>
+            <span class="ticker-item">MAX WATERPROOF</span>
+            <span class="ticker-item">RECYCLABLE BODY</span>
+            <span class="ticker-item">100% DURABILITY</span>
+        </div>
+    </div>
 
     <!-- Product Collections Section -->
     <section class="products" id="shop">
