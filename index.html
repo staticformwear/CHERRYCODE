@@ -659,7 +659,7 @@
             </button>
         </div>
 
-        <a href="#" class="logo-container">
+        <a href="index.html" class="logo-container">
             <img src="IMG_0268.png" alt="Fountain Bottles Logo" class="logo-img">
         </a>
 
@@ -682,14 +682,27 @@
             <button class="nav-close-btn" id="navCloseBtn" aria-label="Close Menu">&times;</button>
         </div>
         <div class="nav-drawer-body">
+            <!-- Shop FOUNTAIN Menu -->
             <div class="nav-item-group">
                 <button class="nav-dropdown-toggle" id="shopDropdownToggle">
-                    <span>Shop</span>
+                    <span>Shop FOUNTAIN</span>
                     <span class="toggle-icon" id="shopToggleIcon">+</span>
                 </button>
                 <div class="nav-submenu" id="shopSubmenu">
                     <a href="originalbottles.html">Original Bottles</a>
                     <a href="kidbottles.html">Kid Bottles</a>
+                </div>
+            </div>
+
+            <!-- Foodware Menu -->
+            <div class="nav-item-group">
+                <button class="nav-dropdown-toggle" id="foodwareDropdownToggle">
+                    <span>Foodware</span>
+                    <span class="toggle-icon" id="foodwareToggleIcon">+</span>
+                </button>
+                <div class="nav-submenu" id="foodwareSubmenu">
+                    <a href="foodflask.html">Food Flask</a>
+                    <a href="lunchsack.html">Lunch Sack</a>
                 </div>
             </div>
         </div>
@@ -801,6 +814,10 @@
         const shopSubmenu = document.getElementById('shopSubmenu');
         const shopToggleIcon = document.getElementById('shopToggleIcon');
 
+        const foodwareDropdownToggle = document.getElementById('foodwareDropdownToggle');
+        const foodwareSubmenu = document.getElementById('foodwareSubmenu');
+        const foodwareToggleIcon = document.getElementById('foodwareToggleIcon');
+
         function openNav() {
             navDrawer.classList.add('active');
             navOverlay.classList.add('active');
@@ -821,6 +838,15 @@
                 shopToggleIcon.textContent = '-';
             } else {
                 shopToggleIcon.textContent = '+';
+            }
+        });
+
+        foodwareDropdownToggle.addEventListener('click', () => {
+            foodwareSubmenu.classList.toggle('active');
+            if (foodwareSubmenu.classList.contains('active')) {
+                foodwareToggleIcon.textContent = '-';
+            } else {
+                foodwareToggleIcon.textContent = '+';
             }
         });
 
