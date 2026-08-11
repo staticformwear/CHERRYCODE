@@ -726,13 +726,269 @@
             font-size: 0.95rem;
         }
 
-        /* Footer */
-        footer {
-            padding: 3rem 5%;
-            text-align: center;
-            color: var(--text-muted);
+        /* Footer (Chilly's Style Redesign for Fountain) */
+        .chilly-footer {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 4rem 5% 2rem 5%;
+            font-family: 'Inter', sans-serif;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-top-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .footer-newsletter-col h2 {
+            font-size: clamp(1.4rem, 2vw, 1.85rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #000000;
+        }
+
+        .footer-signup-box {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            max-width: 500px;
+            overflow: hidden;
+        }
+
+        .footer-signup-input {
+            flex: 1;
+            border: none;
+            padding: 0.9rem 1.1rem;
+            font-size: 0.95rem;
+            outline: none;
+            color: #000000;
+            background: transparent;
+        }
+
+        .footer-signup-input::placeholder {
+            color: #71717a;
+        }
+
+        .footer-signup-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.75rem;
+            font-weight: 700;
             font-size: 0.9rem;
-            background-color: var(--bg-color);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: background 0.2s ease;
+        }
+
+        .footer-signup-btn:hover {
+            background-color: #27272a;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+            color: #000000;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: #52525b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #000000;
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        /* Location Selector Custom Dropdown */
+        .location-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .location-selector-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.65rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            min-width: 220px;
+            transition: border-color 0.2s ease;
+        }
+
+        .location-selector-btn:hover {
+            border-color: #000000;
+        }
+
+        .location-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .location-label svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: transform 0.2s ease;
+        }
+
+        .location-dropdown-wrapper.active .location-label svg {
+            transform: rotate(180deg);
+        }
+
+        .location-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 2px;
+        }
+
+        .country-dropdown-menu {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 0;
+            width: 260px;
+            max-height: 280px;
+            overflow-y: auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 100;
+            padding: 0.5rem 0;
+        }
+
+        .country-dropdown-menu.active {
+            display: block;
+        }
+
+        .country-option {
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #000000;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            text-align: left;
+            background: none;
+            border: none;
+            width: 100%;
+            display: block;
+        }
+
+        .country-option:hover {
+            background-color: #f4f4f5;
+        }
+
+        .country-option.selected {
+            font-weight: 700;
+            background-color: #f4f4f5;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-legal-links a {
+            color: #52525b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal-links a:hover {
+            color: #000000;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .footer-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-bottom-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .location-selector-btn {
+                width: 100%;
+            }
+            .country-dropdown-menu {
+                width: 100%;
+            }
+            .footer-legal-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
         }
 
         /* Popup Overlay & Modal Styles */
@@ -1160,8 +1416,109 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Fountain Bottles. All rights reserved.</p>
+    <!-- Redesigned Chilly's Style Footer -->
+    <footer class="chilly-footer">
+        <div class="footer-top-grid">
+            <div class="footer-newsletter-col">
+                <h2>SIGN UP FOR FOUNTAIN NEWS, LAUNCHES AND SPECIAL OFFERS</h2>
+                <form class="footer-signup-box" onsubmit="event.preventDefault(); alert('Successfully signed up!');">
+                    <input type="email" class="footer-signup-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="footer-signup-btn">SIGN UP</button>
+                </form>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="shipping.html">Shipping</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="wholesale.html">Wholesale</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Customer Support</h3>
+                    <ul>
+                        <li><a href="hydrationclub.html">Join the Hydration Club</a></li>
+                        <li><a href="supporthub.html">Support Hub</a></li>
+                        <li><a href="returnitem.html">Return Item</a></li>
+                        <li><a href="trackorder.html">Track Order</a></li>
+                        <li><a href="studentdiscount.html">Student Discount</a></li>
+                        <li><a href="archive.html">The Archive</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="instagram.html">Instagram</a></li>
+                        <li><a href="facebook.html">Facebook</a></li>
+                        <li><a href="youtube.html">YouTube</a></li>
+                        <li><a href="tiktok.html">TikTok</a></li>
+                        <li><a href="x.html">X</a></li>
+                        <li><a href="pinterest.html">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom-row">
+            <div class="location-dropdown-wrapper" id="locationDropdownWrapper">
+                <button type="button" class="location-selector-btn" id="locationSelectorBtn">
+                    <span class="location-label">
+                        Location
+                        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                    <span class="location-value" id="currentLocationText">United Kingdom</span>
+                </button>
+                <div class="country-dropdown-menu" id="countryDropdownMenu">
+                    <button type="button" class="country-option" data-country="Australia">Australia</button>
+                    <button type="button" class="country-option" data-country="Austria">Austria</button>
+                    <button type="button" class="country-option" data-country="Bahrain">Bahrain</button>
+                    <button type="button" class="country-option" data-country="Belgium">Belgium</button>
+                    <button type="button" class="country-option" data-country="Czechia">Czechia</button>
+                    <button type="button" class="country-option" data-country="Denmark">Denmark</button>
+                    <button type="button" class="country-option" data-country="Finland">Finland</button>
+                    <button type="button" class="country-option" data-country="France">France</button>
+                    <button type="button" class="country-option" data-country="Germany">Germany</button>
+                    <button type="button" class="country-option" data-country="Greece">Greece</button>
+                    <button type="button" class="country-option" data-country="Guernsey">Guernsey</button>
+                    <button type="button" class="country-option" data-country="Hong Kong SAR">Hong Kong SAR</button>
+                    <button type="button" class="country-option" data-country="Ireland">Ireland</button>
+                    <button type="button" class="country-option" data-country="Italy">Italy</button>
+                    <button type="button" class="country-option" data-country="Jersey">Jersey</button>
+                    <button type="button" class="country-option" data-country="Luxembourg">Luxembourg</button>
+                    <button type="button" class="country-option" data-country="Malaysia">Malaysia</button>
+                    <button type="button" class="country-option" data-country="Netherlands">Netherlands</button>
+                    <button type="button" class="country-option" data-country="Norway">Norway</button>
+                    <button type="button" class="country-option" data-country="Philippines">Philippines</button>
+                    <button type="button" class="country-option" data-country="Poland">Poland</button>
+                    <button type="button" class="country-option" data-country="Portugal">Portugal</button>
+                    <button type="button" class="country-option" data-country="Qatar">Qatar</button>
+                    <button type="button" class="country-option" data-country="Saudi Arabia">Saudi Arabia</button>
+                    <button type="button" class="country-option" data-country="Singapore">Singapore</button>
+                    <button type="button" class="country-option" data-country="Spain">Spain</button>
+                    <button type="button" class="country-option" data-country="Sweden">Sweden</button>
+                    <button type="button" class="country-option" data-country="Switzerland">Switzerland</button>
+                    <button type="button" class="country-option" data-country="United Arab Emirates">United Arab Emirates</button>
+                </div>
+            </div>
+
+            <div class="footer-legal-links">
+                <a href="shipping&returnspolicy.html">Shipping & Returns Policy</a>
+                <a href="terms&conditions.html">Terms & Conditions</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="cookiepolicy.html">Cookie Policy</a>
+                <a href="cookiepreferences.html">Cookie Preferences</a>
+                <a href="modernslavery.html">Modern Slavery</a>
+            </div>
+        </div>
     </footer>
 
     <div class="popup-overlay" id="promoPopup">
@@ -1299,6 +1656,63 @@
         });
 
         startSlider();
+
+        // Footer Location Dropdown & IP-based detection fallback logic
+        const locationDropdownWrapper = document.getElementById('locationDropdownWrapper');
+        const locationSelectorBtn = document.getElementById('locationSelectorBtn');
+        const countryDropdownMenu = document.getElementById('countryDropdownMenu');
+        const currentLocationText = document.getElementById('currentLocationText');
+        const countryOptions = document.querySelectorAll('.country-option');
+
+        // Set default or try simple user timezone/locale check, fallback to United Kingdom
+        function detectUserLocation() {
+            try {
+                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (timezone && timezone.includes('Australia')) {
+                    return 'Australia';
+                }
+            } catch (e) {
+                // Fallback if Intl fails
+            }
+            return 'United Kingdom';
+        }
+
+        const initialCountry = detectUserLocation();
+        currentLocationText.textContent = initialCountry;
+
+        countryOptions.forEach(opt => {
+            if (opt.getAttribute('data-country') === initialCountry) {
+                opt.classList.add('selected');
+            }
+        });
+
+        locationSelectorBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            locationDropdownWrapper.classList.toggle('active');
+            countryDropdownMenu.classList.toggle('active');
+        });
+
+        countryOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const selectedCountry = option.getAttribute('data-country');
+                currentLocationText.textContent = selectedCountry;
+                
+                countryOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+
+                locationDropdownWrapper.classList.remove('active');
+                countryDropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', () => {
+            if (locationDropdownWrapper.classList.contains('active')) {
+                locationDropdownWrapper.classList.remove('active');
+                countryDropdownMenu.classList.remove('active');
+            }
+        });
 
         // Trigger popup 7 seconds after the page loads
         window.addEventListener('load', () => {
