@@ -31,6 +31,12 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Tiny weansy increase to all bolded text site-wide */
+        b, strong, [style*="font-weight: 600"], [style*="font-weight:600"], [style*="font-weight: 700"], [style*="font-weight:700"], [style*="font-weight: 800"], [style*="font-weight:800"],
+        .product-title, .product-price, .hero h1, .review-title, .review-author, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn {
+            font-weight: calc(larger + 35) !important;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -896,13 +902,13 @@
 
         .footer-newsletter-col h2 {
             font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-            font-weight: 600; /* Adjusted to be just a tiny bit bolder than previous 550 */
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: -0.3px;
             line-height: 1.35;
             margin-bottom: 1.5rem;
             color: #000000;
-            max-width: 480px; /* Matched box width from SIGN UP TO AND */
+            max-width: 480px;
         }
 
         .footer-signup-box {
@@ -910,10 +916,10 @@
             align-items: center;
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 0px; /* 100% rectangular */
-            max-width: 480px; /* Matched box width from SIGN UP TO AND */
+            border-radius: 0px;
+            max-width: 480px;
             overflow: hidden;
-            height: 60px; /* Made taller to create more white gapness from the SIGN UP text/box to the border */
+            height: 60px;
         }
 
         .footer-signup-input {
@@ -925,7 +931,7 @@
             color: #000000;
             background: transparent;
             height: 100%;
-            border-radius: 0px; /* 100% rectangular */
+            border-radius: 0px;
         }
 
         .footer-signup-input::placeholder {
@@ -944,11 +950,32 @@
             transition: background 0.2s ease;
             height: 38px;
             margin-right: 6px;
-            border-radius: 0px; /* 100% rectangular */
+            border-radius: 0px;
         }
 
         .footer-signup-btn:hover {
             background-color: #27272a;
+        }
+
+        /* Success Message Box matching email box dimensions and borders */
+        .footer-success-msg {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0px;
+            max-width: 480px;
+            height: 60px;
+            margin-top: 0px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #000000;
+            text-transform: uppercase;
+        }
+        .footer-success-msg.active {
+            display: flex;
         }
 
         .footer-links-grid {
@@ -959,7 +986,7 @@
 
         .footer-col h3 {
             font-size: 0.95rem;
-            font-weight: 600; /* Adjusted to match header boldness (tiny bit bolder) */
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 1.25rem;
@@ -977,7 +1004,7 @@
             color: #52525b;
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 400; /* Returned outside text back to original standard boldness */
+            font-weight: 400;
             transition: color 0.2s ease;
         }
 
@@ -1107,7 +1134,7 @@
             color: #52525b;
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 400; /* Returned outside text back to original standard boldness */
+            font-weight: 400;
             transition: color 0.2s ease;
         }
 
@@ -1795,10 +1822,17 @@
         <div class="footer-top-grid">
             <div class="footer-newsletter-col">
                 <h2>SIGN UP FOR FOUNTAIN NEWS, LAUNCHES<br>AND SPECIAL OFFERS</h2>
-                <form class="footer-signup-box" onsubmit="event.preventDefault(); alert('Successfully signed up!');">
-                    <input type="email" class="footer-signup-input" placeholder="Enter your email address" required>
+                
+                <!-- Email Signup Form -->
+                <form class="footer-signup-box" id="footerSignupForm">
+                    <input type="email" class="footer-signup-input" id="footerEmailInput" placeholder="Enter your email address" required>
                     <button type="submit" class="footer-signup-btn">SIGN UP</button>
                 </form>
+
+                <!-- Thank You Box matching email box width/height/borders -->
+                <div class="footer-success-msg" id="footerSuccessMsg">
+                    THANK YOU FOR SIGNING UP!
+                </div>
             </div>
 
             <div class="footer-links-grid">
@@ -1934,6 +1968,16 @@
     <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
 
     <script>
+        // Footer Email Signup Submission Handler
+        const footerSignupForm = document.getElementById('footerSignupForm');
+        const footerSuccessMsg = document.getElementById('footerSuccessMsg');
+
+        footerSignupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            footerSignupForm.style.display = 'none';
+            footerSuccessMsg.classList.add('active');
+        });
+
         // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
         const announcementBar = document.getElementById('announcementBar');
         const announcementCloseBtn = document.getElementById('announcementCloseBtn');
