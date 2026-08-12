@@ -1175,7 +1175,44 @@
             }
         }
 
-        /* Popup Overlay & Modal Styles */
+        /* Floating Discount Code Trigger Button (Bottom Left) */
+        .discount-trigger-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .discount-trigger-btn:hover {
+            background-color: #27272a;
+            transform: scale(1.03);
+        }
+
+        .discount-trigger-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        /* Popup Overlay & Split Modal Styles */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1201,13 +1238,14 @@
         .popup-modal {
             background: #ffffff;
             width: 100%;
-            max-width: 460px;
-            border-radius: 16px;
+            max-width: 850px;
+            border-radius: 0px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: scale(0.95);
             transition: transform 0.3s ease;
+            display: flex;
         }
 
         .popup-overlay.active .popup-modal {
@@ -1216,68 +1254,80 @@
 
         .popup-close {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0, 0, 0, 0.4);
-            color: #ffffff;
+            top: 15px;
+            right: 15px;
+            background: none;
+            color: #000000;
             border: none;
             width: 32px;
             height: 32px;
-            border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
-            transition: background 0.2s ease;
+            line-height: 1;
+            transition: opacity 0.2s ease;
         }
 
         .popup-close:hover {
-            background: rgba(0, 0, 0, 0.7);
+            opacity: 0.6;
         }
 
-        .popup-image-placeholder {
-            width: 100%;
-            height: 200px;
+        /* Left Side Image Section */
+        .popup-image-side {
+            flex: 1;
             background: #cbd5e1;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #475569;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            min-height: 480px;
         }
 
-        .popup-content {
-            padding: 2rem 2.2rem 2.2rem 2.2rem;
-            text-align: center;
+        /* Right Side Content Section */
+        .popup-content-side {
+            flex: 1;
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #ffffff;
+            position: relative;
         }
 
-        .popup-subtitle {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.4rem;
+        .popup-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-logo-img {
+            height: 22px;
+            width: auto;
+            display: block;
         }
 
         .popup-title {
-            font-size: 1.85rem;
+            font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: var(--text-color);
+            color: #000000;
             margin-bottom: 0.75rem;
+            text-align: center;
             line-height: 1.2;
         }
 
         .popup-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: #52525b;
             margin-bottom: 1.5rem;
+            text-align: center;
             line-height: 1.5;
             font-weight: 400;
         }
@@ -1286,67 +1336,78 @@
             display: flex;
             flex-direction: column;
             gap: 0.85rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .popup-input {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.85rem 1rem;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+            border-radius: 0px;
+            background-color: #ffffff;
+            color: #000000;
             font-size: 0.95rem;
             outline: none;
             transition: border-color 0.2s ease;
         }
 
+        .popup-input::placeholder {
+            color: #71717a;
+        }
+
         .popup-input:focus {
-            border-color: var(--text-color);
+            border-color: #000000;
         }
 
         .popup-btn {
             width: 100%;
             padding: 0.9rem;
-            background-color: var(--red-color);
+            background-color: #000000;
             color: #ffffff;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 0px;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             letter-spacing: 0.5px;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            transition: background-color 0.2s ease;
+            text-transform: uppercase;
         }
 
         .popup-btn:hover {
-            background-color: var(--red-hover);
-        }
-
-        .popup-btn:active {
-            transform: scale(0.98);
+            background-color: #27272a;
         }
 
         .popup-terms {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
+            font-size: 0.7rem;
+            color: #71717a;
+            margin-bottom: 1.5rem;
             line-height: 1.4;
+            text-align: left;
+        }
+
+        .popup-terms a {
+            color: #71717a;
+            text-decoration: underline;
         }
 
         .popup-dismiss {
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: #000000;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 700;
             text-decoration: underline;
+            text-underline-offset: 4px;
             cursor: pointer;
-            transition: color 0.2s ease;
+            transition: opacity 0.2s ease;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
         }
 
         .popup-dismiss:hover {
-            color: var(--text-color);
+            opacity: 0.6;
         }
 
         @media (max-width: 768px) {
@@ -1357,12 +1418,25 @@
                 height: 48px;
             }
             .popup-modal {
+                flex-direction: column;
                 max-width: 90%;
+            }
+            .popup-image-side {
+                min-height: 200px;
+            }
+            .popup-content-side {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Floating Discount Code Trigger Button -->
+    <button class="discount-trigger-btn" id="discountTriggerBtn">
+        DISCOUNT CODE
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
 
     <div class="announcement-bar" id="announcementBar">
         15% OFF FIRST ORDER DISCOUNT
@@ -1936,29 +2010,30 @@
         </div>
     </footer>
 
+    <!-- Updated Promo Popup matching Cole Buxton split layout & requested texts/buttons -->
     <div class="popup-overlay" id="promoPopup">
         <div class="popup-modal">
             <button class="popup-close" id="closePopup" aria-label="Close">&times;</button>
-            <div class="popup-image-placeholder">
-                [ Image Placeholder ]
+            <div class="popup-image-side">
+                [ ADD IMAGE HERE ]
             </div>
-            <div class="popup-content">
-                <div class="popup-subtitle">Exclusive Welcome Offer</div>
-                <h2 class="popup-title">GET 20% OFF FIRST ORDER USING FOUNTAIN10</h2>
-                <p class="popup-desc">Join our growing community of hydration enthusiasts and unlock elite savings on your first premium bottle.</p>
+            <div class="popup-content-side">
+                <div class="popup-logo-container">
+                    <img src="IMG_0326.png" alt="Fountain Logo" class="popup-logo-img">
+                </div>
+                <h2 class="popup-title">GET 15% OFF FIRST ORDER USING FOUNTAIN10</h2>
+                <p class="popup-desc">Gain access to join our community of hydration enthusiasts unlocking elite savings on your first premium bottle.</p>
                 
                 <form class="popup-form" onsubmit="event.preventDefault(); alert('Code FOUNTAIN10 applied!');">
-                    <input type="text" class="popup-input" placeholder="Forename" required>
-                    <input type="text" class="popup-input" placeholder="Surname" required>
                     <input type="email" class="popup-input" placeholder="Email Address" required>
-                    <button type="submit" class="popup-btn">GET 20% OFF CODE</button>
+                    <button type="submit" class="popup-btn">GET 15% OFF</button>
                 </form>
 
                 <div class="popup-terms">
-                    I agree to receive marketing updates and promotional emails. You can unsubscribe at any time. View our Terms of Service and Privacy Policy.
+                    By submitting your email address, you agree to receive marketing emails and promotional offers. You can unsubscribe at any time. View our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a> for more information on the processing of your data and your privacy rights.
                 </div>
 
-                <button class="popup-dismiss" id="noThanks">NO THANKS</button>
+                <button class="popup-dismiss" id="noThanks"><u><b>NO, THANKS</b></u></button>
             </div>
         </div>
     </div>
@@ -2214,22 +2289,25 @@
             }
         });
 
-        // Trigger Popup
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('promoPopup').classList.add('active');
-            }, 7000);
+        // Popup Management (Removed 7-second auto popup, added bottom-left DISCOUNT CODE trigger)
+        const promoPopup = document.getElementById('promoPopup');
+        const discountTriggerBtn = document.getElementById('discountTriggerBtn');
+        const closePopupBtn = document.getElementById('closePopup');
+        const noThanksBtn = document.getElementById('noThanks');
+
+        discountTriggerBtn.addEventListener('click', () => {
+            promoPopup.classList.add('active');
         });
 
         const closePopup = () => {
-            document.getElementById('promoPopup').classList.remove('active');
+            promoPopup.classList.remove('active');
         };
 
-        document.getElementById('closePopup').addEventListener('click', closePopup);
-        document.getElementById('noThanks').addEventListener('click', closePopup);
+        closePopupBtn.addEventListener('click', closePopup);
+        noThanksBtn.addEventListener('click', closePopup);
 
-        document.getElementById('promoPopup').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('promoPopup')) {
+        promoPopup.addEventListener('click', (e) => {
+            if (e.target === promoPopup) {
                 closePopup();
             }
         });
