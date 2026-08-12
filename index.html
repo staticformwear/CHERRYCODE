@@ -1213,7 +1213,7 @@
             fill: none;
         }
 
-        /* Popup Overlay & Modal Styles (Taller height matching Cole Buxton, exact 50/50 split width matching Upload 3) */
+        /* Popup Overlay & Modal Styles (Taller height matching Cole Buxton, exact 50/50 split width) */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1273,7 +1273,8 @@
         }
 
         .popup-left-half {
-            flex: 1;
+            flex: 0 0 50%;
+            width: 50%;
             height: 100%;
             background: #e2e8f0;
             display: flex;
@@ -1295,31 +1296,32 @@
         }
 
         .popup-right-half {
-            flex: 1;
+            flex: 0 0 50%;
+            width: 50%;
             height: 100%;
-            padding: 3rem 3rem 2.5rem 3rem;
+            padding: 2rem 2.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             position: relative;
             overflow-y: auto;
         }
 
         .popup-logo-container {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
+            width: 100%;
         }
 
         .popup-logo-img {
             height: 24px;
             width: auto;
             display: block;
-            transform: scale(10);
-            transform-origin: left center;
-            margin-left: 65px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            transform: scale(5); /* Fountain logo 0.5 times bigger than previous scale 10 -> 5 */
+            transform-origin: center center;
         }
 
         .popup-title {
@@ -1330,6 +1332,10 @@
             margin-bottom: 0.5rem;
             line-height: 1.1;
             text-transform: uppercase;
+            transform: scale(1.5);
+            transform-origin: center center;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .popup-subtitle-code {
@@ -1339,6 +1345,9 @@
             margin-bottom: 1rem;
             letter-spacing: 0.3px;
             text-transform: uppercase;
+            transform: scale(1.05); /* Tiny tiny tiny weansy little tiny bit bigger */
+            transform-origin: center center;
+            margin-top: 0.5rem;
         }
 
         .popup-desc {
@@ -1348,6 +1357,8 @@
             line-height: 1.4;
             font-weight: 400;
             letter-spacing: 0.2px;
+            transform: scale(1.05); /* Tiny tiny tiny weansy little tiny bit bigger */
+            transform-origin: center center;
         }
 
         .popup-form {
@@ -1355,6 +1366,7 @@
             flex-direction: column;
             gap: 0.75rem;
             margin-bottom: 0.75rem;
+            width: 100%;
         }
 
         .popup-input {
@@ -1410,6 +1422,7 @@
 
         .popup-dismiss-container {
             text-align: center;
+            width: 100%;
         }
 
         .popup-dismiss {
@@ -1445,10 +1458,12 @@
             .popup-left-half {
                 height: 220px;
                 flex: none;
+                width: 100%;
             }
             .popup-right-half {
                 padding: 1.5rem;
                 flex: none;
+                width: 100%;
             }
         }
     </style>
@@ -2033,7 +2048,7 @@
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
 
-    <!-- Popup Modal updated to match Cole Buxton exact height, true 50/50 split width, larger bold title, unbolded code/desc moved up, and buttons underneath -->
+    <!-- Popup Modal updated with exact 50/50 split, centered elements, and requested scale modifications -->
     <div class="popup-overlay" id="promoPopup">
         <div class="popup-modal">
             <button class="popup-close" id="closePopup" aria-label="Close">&times;</button>
@@ -2044,7 +2059,7 @@
                 <div class="popup-logo-container">
                     <img src="IMG_0326.png" alt="Fountain Logo" class="popup-logo-img">
                 </div>
-                <h2 class="popup-title">GET 15% OFF FIRST ORDER</h2>
+                <h2 class="popup-title">GET 15% OFF<br>FIRST ORDER</h2>
                 <div class="popup-subtitle-code">BY USING CODE FOUNTAIN10</div>
                 <p class="popup-desc">GAIN ACCESS TO JOIN OUR COMMUNITY OF HYDRATION ENTHUSIASTS UNLOCKING ELITE SAVINGS ON YOUR FIRST PREMIUM BOTTLE</p>
                 
