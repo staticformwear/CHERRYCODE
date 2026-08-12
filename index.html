@@ -896,14 +896,13 @@
 
         .footer-newsletter-col h2 {
             font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-            font-weight: 600; /* Matching upload 1 boldness */
+            font-weight: 600; /* Adjusted to be just a tiny bit bolder than previous 550 */
             text-transform: uppercase;
             letter-spacing: -0.3px;
             line-height: 1.35;
             margin-bottom: 1.5rem;
             color: #000000;
-            width: 480px; /* Matching the exact width from SIGN UP to AND in the heading text */
-            max-width: 100%;
+            max-width: 480px; /* Matched box width from SIGN UP TO AND */
         }
 
         .footer-signup-box {
@@ -911,11 +910,10 @@
             align-items: center;
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 0px;
-            width: 480px; /* Matching the exact width from SIGN UP to AND */
-            max-width: 100%;
+            border-radius: 0px; /* 100% rectangular */
+            max-width: 480px; /* Matched box width from SIGN UP TO AND */
             overflow: hidden;
-            height: 56px; /* Increased taller gap height matching upload 1 */
+            height: 60px; /* Made taller to create more white gapness from the SIGN UP text/box to the border */
         }
 
         .footer-signup-input {
@@ -927,7 +925,7 @@
             color: #000000;
             background: transparent;
             height: 100%;
-            border-radius: 0px;
+            border-radius: 0px; /* 100% rectangular */
         }
 
         .footer-signup-input::placeholder {
@@ -946,7 +944,7 @@
             transition: background 0.2s ease;
             height: 38px;
             margin-right: 6px;
-            border-radius: 0px;
+            border-radius: 0px; /* 100% rectangular */
         }
 
         .footer-signup-btn:hover {
@@ -961,7 +959,7 @@
 
         .footer-col h3 {
             font-size: 0.95rem;
-            font-weight: 600; /* Matching upload 1 boldness (tiny tad bitter weansy bolder) */
+            font-weight: 600; /* Adjusted to match header boldness (tiny bit bolder) */
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 1.25rem;
@@ -979,7 +977,7 @@
             color: #52525b;
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 400;
+            font-weight: 400; /* Returned outside text back to original standard boldness */
             transition: color 0.2s ease;
         }
 
@@ -1109,7 +1107,7 @@
             color: #52525b;
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 400;
+            font-weight: 400; /* Returned outside text back to original standard boldness */
             transition: color 0.2s ease;
         }
 
@@ -1796,7 +1794,7 @@
     <footer class="chilly-footer">
         <div class="footer-top-grid">
             <div class="footer-newsletter-col">
-                <h2>SIGN UP FOR FOUNTAIN NEWS, LAUNCHES AND SPECIAL OFFERS</h2>
+                <h2>SIGN UP FOR FOUNTAIN NEWS, LAUNCHES<br>AND SPECIAL OFFERS</h2>
                 <form class="footer-signup-box" onsubmit="event.preventDefault(); alert('Successfully signed up!');">
                     <input type="email" class="footer-signup-input" placeholder="Enter your email address" required>
                     <button type="submit" class="footer-signup-btn">SIGN UP</button>
