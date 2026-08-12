@@ -54,12 +54,11 @@
             letter-spacing: 1.2px;
             z-index: 1100;
             text-transform: uppercase;
-            transition: transform 0.3s ease, visibility 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .announcement-bar.hidden {
             transform: translateY(-100%);
-            visibility: hidden;
         }
 
         .announcement-close {
@@ -1309,7 +1308,7 @@
                 <div class="product-info">
                     <div>
                         <div class="product-title">Fountain Classic Obsidian</div>
-                        <div class="product-price">Â£32.00</div>
+                        <div class="product-price">£32.00</div>
                     </div>
                     <button class="btn-secondary">Add to Cart</button>
                 </div>
@@ -1320,7 +1319,7 @@
                 <div class="product-info">
                     <div>
                         <div class="product-title">Fountain Alpine White</div>
-                        <div class="product-price">Â£32.00</div>
+                        <div class="product-price">£32.00</div>
                     </div>
                     <button class="btn-secondary">Add to Cart</button>
                 </div>
@@ -1331,7 +1330,7 @@
                 <div class="product-info">
                     <div>
                         <div class="product-title">Fountain Sage Green</div>
-                        <div class="product-price">Â£35.00</div>
+                        <div class="product-price">£35.00</div>
                     </div>
                     <button class="btn-secondary">Add to Cart</button>
                 </div>
@@ -1380,7 +1379,7 @@
 
     <section class="founder-section" id="founder">
         <div class="founder-intro-tag">MEET THE FOUNDER:</div>
-        <h2 class="founder-intro-heading">A GRADUATEâ€™S MISSION TO BUILD THE BOTTLE THAT LASTS.</h2>
+        <h2 class="founder-intro-heading">A GRADUATE’S MISSION TO BUILD THE BOTTLE THAT LASTS.</h2>
         <p class="founder-intro-desc">Fountain Bottles was started by Michael, a graduate inspired to change the way we think about everyday bottles and create one built to last.</p>
         
         <button class="founder-story-link" id="readStoryBtn">READ OUR FOUNDER STORY</button>
@@ -1391,13 +1390,13 @@
             <div class="founder-content-flex">
                 <div class="founder-story-text">
                     <p>As a recent graduate, Michael noticed something frustrating about the bottles we use every day.</p>
-                    <p>Too many simply werenâ€™t built to last.</p>
+                    <p>Too many simply weren’t built to last.</p>
                     <p>Fountain Bottles was created to change that.</p>
                     
                     <h3>The Problem:</h3>
-                    <p>We use our bottles every single day â€” at university, at work, at the gym, travelling and everywhere in between.</p>
+                    <p>We use our bottles every single day — at university, at work, at the gym, travelling and everywhere in between.</p>
                     <p>Yet so many eventually leak, break, lose their finish, or simply get replaced.</p>
-                    <p>And when something is part of your everyday life, replacing it shouldnâ€™t be the expectation.</p>
+                    <p>And when something is part of your everyday life, replacing it shouldn’t be the expectation.</p>
                     <p>There had to be a better way.</p>
                     <p>Fountain Bottles was going to be different.</p>
                     
@@ -1407,8 +1406,8 @@
                     <p>Rather than creating another bottle designed to follow a trend, Fountain was created to be the one you reach for every day.</p>
                     <p>Reliable. Practical. Timeless.</p>
                     
-                    <h3>But Whyâ€¦ Fountain?</h3>
-                    <p>Michael believed that choosing a reusable bottle shouldnâ€™t mean compromising on quality.</p>
+                    <h3>But Why… Fountain?</h3>
+                    <p>Michael believed that choosing a reusable bottle shouldn’t mean compromising on quality.</p>
                     <p>If we want people to move away from disposable products, we need to create something they genuinely want to keep using.</p>
                     <p>Something that feels right in your hand.</p>
                     <p>Something you can take anywhere.</p>
@@ -1416,8 +1415,8 @@
                     <p>That became the mission behind Fountain Bottles:</p>
                     <p><strong>Build a bottle worth keeping.</strong></p>
                     <p>A bottle designed for everyday life, made with purpose, and built to stay with you for years to come.</p>
-                    <p>Because ultimately, the best bottle is the one you donâ€™t need to replace.</p>
-                    <p>Today, Fountain Bottles continues that mission â€” creating drinkware designed to make reusable the easy choice.</p>
+                    <p>Because ultimately, the best bottle is the one you don’t need to replace.</p>
+                    <p>Today, Fountain Bottles continues that mission — creating drinkware designed to make reusable the easy choice.</p>
                     <p>One bottle. Less replacing. A better everyday choice.</p>
                 </div>
                 
@@ -1577,21 +1576,29 @@
     </div>
 
     <script>
-        // Announcement Bar Close & Scroll Behavior
+        // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
         const announcementBar = document.getElementById('announcementBar');
         const announcementCloseBtn = document.getElementById('announcementCloseBtn');
+        let isClosedManually = false;
 
         announcementCloseBtn.addEventListener('click', () => {
+            isClosedManually = true;
             announcementBar.classList.add('hidden');
             document.body.classList.add('announcement-hidden');
         });
 
         window.addEventListener('scroll', () => {
+            if (isClosedManually) return;
+
+            // When scrolled down past 30px, hide it
             if (window.scrollY > 30) {
                 announcementBar.classList.add('hidden');
                 document.body.classList.add('announcement-hidden');
-            } else if (!announcementBar.matches(':hover') && announcementBar.style.display !== 'none') {
-                // Optional: keep it visible at top if not explicitly closed and at top of page
+            } 
+            // When scrolled back to the absolute top (or pulled down via iOS rubber-band overscroll where scrollY <= 0)
+            else if (window.scrollY <= 0) {
+                announcementBar.classList.remove('hidden');
+                document.body.classList.remove('announcement-hidden');
             }
         });
 
