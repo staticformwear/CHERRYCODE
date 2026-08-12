@@ -434,10 +434,18 @@
             max-width: 1400px;
             margin: 0 auto;
             background-color: var(--bg-color);
-            position: relative;
         }
 
-        .product-slider-wrapper {
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        /* Carousel Layout matching Uploads 1-3 exactly */
+        .product-carousel-wrapper {
             position: relative;
             display: flex;
             align-items: center;
@@ -446,158 +454,179 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 20px;
             width: 100%;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE 10+ */
-            padding-bottom: 10px;
+            overflow: hidden;
         }
 
-        .product-grid::-webkit-scrollbar {
-            display: none; /* Safari and Chrome */
+        @media (max-width: 1100px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .product-card {
-            background-color: #f3f3f3;
+            background-color: transparent;
             border: none;
             border-radius: 0;
-            overflow: hidden;
+            overflow: visible;
             display: flex;
             flex-direction: column;
+        }
+
+        .product-image-container {
+            position: relative;
             width: 100%;
-            height: 520px;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
+            height: 480px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 4px;
         }
 
         .product-image {
             width: 100%;
-            height: 360px;
-            background: #e2e8f0;
+            height: 100%;
+            object-fit: cover;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-weight: 500;
-            position: relative;
+            font-size: 0.9rem;
         }
 
         .product-info {
-            padding: 1.2rem 1rem;
+            padding-top: 1rem;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-            background-color: #f3f3f3;
         }
 
         .product-header-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 4px;
+            margin-bottom: 0.25rem;
         }
 
         .product-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             color: #000000;
-            letter-spacing: 0.3px;
-            line-height: 1.25;
+            line-height: 1.3;
+            max-width: 75%;
         }
 
         .product-price {
+            font-size: 0.95rem;
+            font-weight: 800;
             color: #000000;
-            font-size: 0.9rem;
-            font-weight: 700;
-            white-space: nowrap;
+            text-align: right;
         }
 
         .product-subtitle {
-            font-size: 0.8rem;
-            color: #52525b;
+            font-size: 0.85rem;
             font-weight: 400;
-            margin-bottom: 12px;
-            letter-spacing: 0.2px;
+            color: #52525b;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .product-options {
+        .product-options-row {
             display: flex;
             gap: 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #71717a;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 1rem;
         }
 
         .size-option {
             background: none;
             border: none;
-            padding: 0;
             cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #71717a;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: color 0.2s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #000000;
+            padding-bottom: 2px;
+            position: relative;
         }
 
         .size-option.active {
-            color: #000000;
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            border-bottom: 1.5px solid #000000;
+        }
+
+        .btn-secondary {
+            background: #000000;
+            border: none;
+            color: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: background 0.2s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary:hover {
+            background: #27272a;
         }
 
         /* Carousel Navigation Buttons */
-        .slider-arrow {
+        .carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 44px;
             height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
+            background-color: #ffffff;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: 10;
-            transition: background 0.2s ease, transform 0.2s ease;
-            color: #000000;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
-        .slider-arrow:hover {
-            background: #ffffff;
+        .carousel-arrow:hover {
+            background-color: #f8fafc;
             transform: translateY(-50%) scale(1.05);
         }
 
-        .slider-arrow.left-arrow {
-            left: -22px;
-        }
-
-        .slider-arrow.right-arrow {
-            right: -22px;
-        }
-
-        .slider-arrow svg {
+        .carousel-arrow svg {
             width: 18px;
             height: 18px;
             fill: none;
-            stroke: currentColor;
+            stroke: #000000;
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        .slider-arrow.hidden {
+        .carousel-prev {
+            left: -22px;
             display: none;
+        }
+
+        .carousel-next {
+            right: -22px;
+            display: flex;
         }
 
         /* Reviews Slider Section */
@@ -1282,12 +1311,6 @@
             color: var(--text-color);
         }
 
-        @media (max-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
             header {
                 padding: 0.5rem 1rem;
@@ -1297,9 +1320,6 @@
             }
             .popup-modal {
                 max-width: 90%;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1399,160 +1419,231 @@
     </section>
 
     <section class="products" id="shop">
-        <div class="product-slider-wrapper">
-            <button class="slider-arrow left-arrow hidden" id="leftArrow" aria-label="Previous Products">
+        <h2 class="section-title">The Collection</h2>
+        <div class="product-carousel-wrapper">
+            <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous Products">
                 <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-
             <div class="product-grid" id="productGrid">
                 
                 <!-- Product 1 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="0">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">STAINLESS STEEL FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Limelite Green Flip Bottle</div>
+                            <div class="product-price" id="price-0">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(0, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(0, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-0"
+                            data-item-id="limelite-green-flip-500ml"
+                            data-item-name="Limelite Green Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="1">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">LIMELITE GREEN FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Cargo Green Flip Bottle</div>
+                            <div class="product-price" id="price-1">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(1, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(1, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-1"
+                            data-item-id="cargo-green-flip-500ml"
+                            data-item-name="Cargo Green Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="2">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">CARGO GREEN FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Astral Blue Flip Bottle</div>
+                            <div class="product-price" id="price-2">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(2, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(2, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-2"
+                            data-item-id="astral-blue-flip-500ml"
+                            data-item-name="Astral Blue Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 4 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="3">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">ASTRAL BLUE FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Pacific Blue Flip Bottle</div>
+                            <div class="product-price" id="price-3">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(3, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(3, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-3"
+                            data-item-id="pacific-blue-flip-500ml"
+                            data-item-name="Pacific Blue Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 5 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="4" style="display: none;">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">PACIFIC BLUE FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Opal Green Flip Bottle</div>
+                            <div class="product-price" id="price-4">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(4, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(4, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-4"
+                            data-item-id="opal-green-flip-500ml"
+                            data-item-name="Opal Green Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 6 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="5" style="display: none;">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">OPAL GREEN FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Lotus Pink Flip Bottle</div>
+                            <div class="product-price" id="price-5">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(5, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(5, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-5"
+                            data-item-id="lotus-pink-flip-500ml"
+                            data-item-name="Lotus Pink Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 7 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="6" style="display: none;">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">LOTUS PINK FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Onyx Black Flip Bottle</div>
+                            <div class="product-price" id="price-6">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(6, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(6, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-6"
+                            data-item-id="onyx-black-flip-500ml"
+                            data-item-name="Onyx Black Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product 8 -->
-                <div class="product-card" data-price-500ml="40.00" data-price-1l="48.00">
-                    <div class="product-image">[ Bottle Image Placeholder ]</div>
+                <div class="product-card" data-index="7" style="display: none;">
+                    <div class="product-image-container">
+                        <div class="product-image">[ Bottle Image ]</div>
+                    </div>
                     <div class="product-info">
-                        <div>
-                            <div class="product-header-row">
-                                <div class="product-title">ONYX BLACK FLIP BOTTLE</div>
-                                <div class="product-price">£40</div>
-                            </div>
-                            <div class="product-subtitle">SERIES 3 FLIP BOTTLE</div>
+                        <div class="product-header-row">
+                            <div class="product-title">Stainless Steel Flip Bottle</div>
+                            <div class="product-price" id="price-7">£40</div>
                         </div>
-                        <div class="product-options">
-                            <button class="size-option active" data-size="500ML" data-price="40">500ML</button>
-                            <button class="size-option" data-size="1L" data-price="48">1L</button>
+                        <div class="product-subtitle">Series 3 Flip Bottle</div>
+                        <div class="product-options-row">
+                            <button class="size-option active" onclick="changeSize(7, '500ML', 40)">500ML</button>
+                            <button class="size-option" onclick="changeSize(7, '1L', 48)">1L</button>
                         </div>
+                        <button class="btn-secondary snipcart-add-item"
+                            id="cart-btn-7"
+                            data-item-id="stainless-steel-flip-500ml"
+                            data-item-name="Stainless Steel Flip Bottle - 500ML"
+                            data-item-price="40.00"
+                            data-item-url="/"
+                            data-item-currency="GBP">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
             </div>
-
-            <button class="slider-arrow right-arrow" id="rightArrow" aria-label="Next Products">
+            <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next Products">
                 <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
         </div>
@@ -1799,6 +1890,71 @@
     <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
 
     <script>
+        // Size Selector & Price Switcher Logic
+        function changeSize(index, size, price) {
+            const card = document.querySelector(`.product-card[data-index="${index}"]`);
+            const buttons = card.querySelectorAll('.size-option');
+            buttons.forEach(btn => {
+                if(btn.textContent.trim() === size) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            document.getElementById(`price-${index}`).textContent = `£${price}`;
+            
+            const cartBtn = document.getElementById(`cart-btn-${index}`);
+            const title = card.querySelector('.product-title').textContent;
+            cartBtn.setAttribute('data-item-price', price.toFixed(2));
+            cartBtn.setAttribute('data-item-name', `${title} - ${size}`);
+            cartBtn.setAttribute('data-item-id', `${title.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${size.toLowerCase()}`);
+        }
+
+        // Carousel State & Arrow Controls Logic
+        let currentCarouselPage = 0; // 0 = first 4, 1 = last 4
+        const totalPages = 2;
+
+        const prevArrow = document.getElementById('carouselPrev');
+        const nextArrow = document.getElementById('carouselNext');
+        const productCards = document.querySelectorAll('.product-card');
+
+        function updateCarouselDisplay() {
+            productCards.forEach((card, idx) => {
+                if (currentCarouselPage === 0) {
+                    card.style.display = (idx >= 0 && idx < 4) ? 'flex' : 'none';
+                } else {
+                    card.style.display = (idx >= 4 && idx < 8) ? 'flex' : 'none';
+                }
+            });
+
+            if (currentCarouselPage === 0) {
+                prevArrow.style.display = 'none';
+                nextArrow.style.display = 'flex';
+                nextArrow.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+            } else if (currentCarouselPage === 1) {
+                prevArrow.style.display = 'flex';
+                prevArrow.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+                nextArrow.style.display = 'none';
+            }
+        }
+
+        nextArrow.addEventListener('click', () => {
+            if (currentCarouselPage < totalPages - 1) {
+                currentCarouselPage++;
+                updateCarouselDisplay();
+            }
+        });
+
+        prevArrow.addEventListener('click', () => {
+            if (currentCarouselPage > 0) {
+                currentCarouselPage--;
+                updateCarouselDisplay();
+            }
+        });
+
+        updateCarouselDisplay();
+
         // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
         const announcementBar = document.getElementById('announcementBar');
         const announcementCloseBtn = document.getElementById('announcementCloseBtn');
@@ -1989,67 +2145,6 @@
                 closePopup();
             }
         });
-
-        // Product Card Size Toggle & Carousel Arrow Dynamics
-        const productGrid = document.getElementById('productGrid');
-        const leftArrow = document.getElementById('leftArrow');
-        const rightArrow = document.getElementById('rightArrow');
-
-        // Handle Size Selection and Price Update
-        document.querySelectorAll('.product-card').forEach(card => {
-            const sizeButtons = card.querySelectorAll('.size-option');
-            const priceDisplay = card.querySelector('.product-price');
-
-            sizeButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    sizeButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    const newPrice = btn.getAttribute('data-price');
-                    priceDisplay.textContent = `£${newPrice}`;
-                });
-            });
-        });
-
-        // Update Arrow Visibility based on Scroll Position
-        function updateArrows() {
-            const scrollLeft = productGrid.scrollLeft;
-            const maxScrollLeft = productGrid.scrollWidth - productGrid.clientWidth;
-
-            // Tolerance threshold for precise check
-            const tolerance = 5;
-
-            if (scrollLeft <= tolerance) {
-                // At the start (showing first 4 products) -> Show only right arrow
-                leftArrow.classList.add('hidden');
-                rightArrow.classList.remove('hidden');
-            } else if (scrollLeft >= maxScrollLeft - tolerance) {
-                // At the end (showing last 4 products) -> Show only left arrow
-                leftArrow.classList.remove('hidden');
-                rightArrow.classList.add('hidden');
-            } else {
-                // In the middle -> Show both arrows
-                leftArrow.classList.remove('hidden');
-                rightArrow.classList.remove('hidden');
-            }
-        }
-
-        productGrid.addEventListener('scroll', updateArrows);
-        window.addEventListener('resize', updateArrows);
-
-        // Scroll amount equals roughly width of 4 cards + gaps
-        rightArrow.addEventListener('click', () => {
-            const scrollAmount = productGrid.clientWidth;
-            productGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-
-        leftArrow.addEventListener('click', () => {
-            const scrollAmount = productGrid.clientWidth;
-            productGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-
-        // Initial check on load
-        updateArrows();
     </script>
 
 </body>
