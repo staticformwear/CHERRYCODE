@@ -12,7 +12,6 @@
             --bg-color: #ffffff;
             --text-color: #0f172a;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
         }
 
         * {
@@ -26,16 +25,33 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 40px 20px;
+        }
+
+        /* Announcement Bar & Banner Styles */
+        .announcement-bar {
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .store-banner {
+            background-color: #f8fafc;
+            padding: 16px 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
         }
 
         .policy-container {
             max-width: 800px;
             margin: 0 auto;
             background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            padding: 40px 20px;
         }
 
         h1 {
@@ -44,6 +60,7 @@
             letter-spacing: -0.025em;
             color: var(--text-color);
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .last-updated {
@@ -51,6 +68,7 @@
             color: var(--text-muted);
             margin-bottom: 32px;
             font-weight: 500;
+            text-align: center;
         }
 
         h2 {
@@ -89,12 +107,6 @@
             font-weight: 400;
         }
 
-        hr {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 32px 0;
-        }
-
         a {
             color: var(--text-color);
             text-decoration: underline;
@@ -104,17 +116,107 @@
             opacity: 0.7;
         }
 
-        /* Back to store link header */
-        .back-link {
-            display: inline-block;
-            margin-bottom: 24px;
+        /* Footer Styles (Upload 2 & Upload 1 matching layout) */
+        .site-footer {
+            background-color: #f8fafc;
+            padding: 60px 20px 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
             font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--text-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            margin-top: 16px;
+            max-width: 400px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
             font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
             color: var(--text-muted);
             text-decoration: none;
         }
-        .back-link:hover {
+
+        .footer-bottom-links a:hover {
             color: var(--text-color);
+        }
+
+        @media (max-width: 900px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -124,14 +226,30 @@
             h1 {
                 font-size: 2rem;
             }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="policy-container">
-        <a href="index.html" class="back-link">&larr; Back to Fountain Bottles</a>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Free worldwide shipping on all orders over $50 | Shop the new collection now
+    </div>
 
+    <!-- Store Banner -->
+    <div class="store-banner">
+        FOUNTAIN BOTTLES
+    </div>
+
+    <div class="policy-container">
         <h1>Privacy Policy</h1>
         <div class="last-updated">Last updated: 12 August 2026</div>
 
@@ -142,8 +260,6 @@
         <p>Please read this Privacy Policy carefully. By accessing or using the Services, you acknowledge that you have read and understood this Privacy Policy and the collection, use and disclosure of personal information described in it.</p>
 
         <p>If there is a conflict between the Terms and Conditions and this Privacy Policy regarding the collection, processing or disclosure of personal information, this Privacy Policy will apply to those matters.</p>
-
-        <hr>
 
         <h2>Personal Information We Collect or Process</h2>
 
@@ -214,8 +330,6 @@
         <h3>Usage Information</h3>
         <p>Information about how you interact with the Services may also be collected, including how and when you navigate the website, which pages you visit, products you view and other interactions with the Services.</p>
 
-        <hr>
-
         <h2>Personal Information Sources</h2>
 
         <p>Fountain Bottles may collect personal information from the following sources:</p>
@@ -241,8 +355,6 @@
 
         <h3>From Other Third Parties</h3>
         <p>Fountain Bottles may receive personal information from other third parties where permitted by applicable law.</p>
-
-        <hr>
 
         <h2>How We Use Your Personal Information</h2>
 
@@ -307,8 +419,6 @@
             <li>Protect customers or other individuals</li>
         </ul>
 
-        <hr>
-
         <h2>Legal Bases for Processing</h2>
 
         <p>Where UK data protection law applies, personal information will be processed only where there is a lawful basis for doing so.</p>
@@ -327,8 +437,6 @@
         <h3>Consent</h3>
         <p>Where consent is relied upon as the lawful basis for processing personal information, consent may be withdrawn at any time.</p>
         <p>Withdrawing consent does not affect the lawfulness of processing carried out before consent was withdrawn.</p>
-
-        <hr>
 
         <h2>How We Disclose Personal Information</h2>
 
@@ -377,8 +485,6 @@
         </ul>
         <p>Fountain Bottles does not sell personal information for money.</p>
 
-        <hr>
-
         <h2>Third-Party Websites and Links</h2>
 
         <p>The Services may contain links to websites, applications, social media platforms or other online services operated by third parties.</p>
@@ -387,16 +493,12 @@
         <p>Fountain Bottles recommends reviewing the privacy policies and terms of any third-party websites or services that you use.</p>
         <p>The inclusion of a third-party link does not necessarily mean that Fountain Bottles endorses or is affiliated with that third party.</p>
 
-        <hr>
-
         <h2>Children’s Data</h2>
 
         <p>The Services are not intended for children below the applicable age of digital consent in their jurisdiction.</p>
         <p>Fountain Bottles does not knowingly collect personal information from children where such collection is prohibited by applicable law.</p>
         <p>If you are a parent or guardian and believe that a child has provided personal information to Fountain Bottles, please contact Fountain Bottles using the contact details provided below.</p>
         <p>If Fountain Bottles becomes aware that personal information has been collected from a child in circumstances where it should not have been collected, reasonable steps will be taken to delete that information.</p>
-
-        <hr>
 
         <h2>Security and Retention of Your Information</h2>
 
@@ -417,8 +519,6 @@
             <li>Establishment or defence of legal claims</li>
         </ul>
         <p>When information is no longer required, reasonable steps will be taken to securely delete or anonymise it where appropriate.</p>
-
-        <hr>
 
         <h2>Your Rights and Choices</h2>
 
@@ -451,16 +551,12 @@
         <p>Promotional communications can be opted out of at any time by using the unsubscribe link included in marketing emails or by contacting Fountain Bottles.</p>
         <p>Important non-promotional communications relating to purchases, orders, deliveries, returns or other Services may still be sent where necessary.</p>
 
-        <hr>
-
         <h2>Exercising Your Rights</h2>
 
         <p>Privacy rights can be exercised by contacting Fountain Bottles using the contact details provided below.</p>
         <p>Identity may need to be verified before certain requests can be completed where reasonably necessary to protect personal information and prevent unauthorised access.</p>
         <p>Valid requests will be responded to within the time period required by applicable law.</p>
         <p>Fountain Bottles will not normally charge for exercising privacy rights. However, where permitted by law, a reasonable fee may be charged or a request may be refused where it is manifestly unfounded or excessive.</p>
-
-        <hr>
 
         <h2>Complaints</h2>
 
@@ -469,15 +565,11 @@
         <p>For customers in the United Kingdom, the relevant supervisory authority is the Information Commissioner’s Office (ICO).</p>
         <p>For customers in the European Economic Area, you may contact the relevant data protection supervisory authority here.</p>
 
-        <hr>
-
         <h2>International Transfers</h2>
 
         <p>Some service providers or business partners may process personal information outside the United Kingdom or European Economic Area.</p>
         <p>Where personal information is transferred internationally, Fountain Bottles will take appropriate measures to ensure that the transfer is carried out in accordance with applicable data protection law.</p>
         <p>Where required, recognised safeguards may be used, including adequacy decisions, approved contractual safeguards or other legally recognised transfer mechanisms.</p>
-
-        <hr>
 
         <h2>Cookie Policy</h2>
 
@@ -495,16 +587,12 @@
         <p>Cookies may also be controlled through your browser settings.</p>
         <p>For more information, please see our Cookie Policy here.</p>
 
-        <hr>
-
         <h2>Changes to This Privacy Policy</h2>
 
         <p>Fountain Bottles may update this Privacy Policy from time to time to reflect changes to the business, Services, technology, legal requirements or the way personal information is processed.</p>
         <p>When changes are made, the “Last updated” date at the top of this Privacy Policy will be updated.</p>
         <p>Where required by law, additional notice will be provided for significant changes.</p>
         <p>Fountain Bottles recommends reviewing this Privacy Policy periodically to remain informed about how personal information is handled and protected.</p>
-
-        <hr>
 
         <h2>Contact</h2>
 
@@ -517,6 +605,68 @@
         <p><em>For the purposes of applicable data protection legislation, Fountain Bottles is responsible for the personal information covered by this Privacy Policy.</em></p>
 
     </div>
+
+    <!-- Footer matching Upload 1 and Upload 2 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Sign up for Fountain News, Launches and Special Offers</h4>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                    <button type="submit" class="newsletter-btn">SIGN UP</button>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Join the Hydration Club</a></li>
+                    <li><a href="#">The Archive</a></li>
+                    <li><a href="#">Student Discounts</a></li>
+                    <li><a href="#">Key Workers Discount</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Support</h4>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Support Hub</a></li>
+                    <li><a href="#">Return Item</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">X</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Fountain Bottles</div>
+            <div class="footer-bottom-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Modern Slavery</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
