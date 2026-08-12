@@ -154,7 +154,7 @@
             height: 60px;
             width: auto;
             display: block;
-            transform: scale(3.3); /* Increased by 1.5x from 2.2 */
+            transform: scale(3.3);
             transform-origin: center;
         }
 
@@ -1590,12 +1590,10 @@
         window.addEventListener('scroll', () => {
             if (isClosedManually) return;
 
-            // When scrolled down past 30px, hide it
             if (window.scrollY > 30) {
                 announcementBar.classList.add('hidden');
                 document.body.classList.add('announcement-hidden');
             } 
-            // When scrolled back to the absolute top (or pulled down via iOS rubber-band overscroll where scrollY <= 0)
             else if (window.scrollY <= 0) {
                 announcementBar.classList.remove('hidden');
                 document.body.classList.remove('announcement-hidden');
