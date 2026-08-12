@@ -1,0 +1,76 @@
+<!-- Announcement Bar -->
+<div class="announcement-bar" id="announcementBar">
+    15% OFF FIRST ORDER DISCOUNT
+    <button class="announcement-close" id="announcementCloseBtn" aria-label="Close Announcement">&times;</button>
+</div>
+
+<!-- Header & Navigation -->
+<header>
+    <div class="header-left">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+        <button class="search-icon-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+    </div>
+
+    <a href="index.html" class="logo-container">
+        <img src="IMG_0326.png" alt="Fountain Bottles Logo" class="logo-img">
+    </a>
+
+    <div class="header-right">
+        <a href="login.html" class="login-icon-btn" aria-label="Login">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="cart-icon-btn snipcart-checkout" aria-label="Cart">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="cart-count snipcart-items-count">0</span>
+        </button>
+    </div>
+</header>
+
+<!-- Slide-out Mobile Nav Drawer & Overlay -->
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-header">
+        <span>Menu</span>
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close Menu">&times;</button>
+    </div>
+    <div class="nav-drawer-body">
+        <div class="nav-item-group">
+            <button class="nav-dropdown-toggle" id="shopDropdownToggle">
+                <span>Shop FOUNTAIN</span>
+                <span class="toggle-icon" id="shopToggleIcon">+</span>
+            </button>
+            <div class="nav-submenu" id="shopSubmenu">
+                <a href="originalbottles.html">Original Bottles</a>
+                <a href="kidbottles.html">Kid Bottles</a>
+            </div>
+        </div>
+
+        <div class="nav-item-group">
+            <button class="nav-dropdown-toggle" id="foodwareDropdownToggle">
+                <span>Foodware</span>
+                <span class="toggle-icon" id="foodwareToggleIcon">+</span>
+            </button>
+            <div class="nav-submenu" id="foodwareSubmenu">
+                <a href="foodflask.html">Food Flask</a>
+                <a href="lunchsack.html">Lunch Sack</a>
+            </div>
+        </div>
+
+        <div class="nav-item-group">
+            <button class="nav-dropdown-toggle" id="accessoriesDropdownToggle">
+                <span>Accessories</span>
+                <span class="toggle-icon" id="accessoriesToggleIcon">+</span>
+            </button>
+            <div class="nav-submenu" id="accessoriesSubmenu">
+                <a href="bottlebags.html">Bottle Bags</a>
+                <a href="extraparts.html">Extra Parts</a>
+                <a href="giftcards.html">Gift Cards</a>
+            </div>
+        </div>
+    </div>
+</div>
