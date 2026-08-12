@@ -1213,7 +1213,7 @@
             fill: none;
         }
 
-        /* Popup Overlay & Modal Styles (Split Equally in Half like Upload 2) */
+        /* Popup Overlay & Modal Styles (Taller height matching Cole Buxton, exact 50/50 split width matching Upload 3) */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1239,8 +1239,8 @@
         .popup-modal {
             background: #ffffff;
             width: 100%;
-            max-width: 850px;
-            height: 520px;
+            max-width: 920px;
+            height: 640px;
             border-radius: 0px;
             overflow: hidden;
             position: relative;
@@ -1285,6 +1285,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
+            overflow: hidden;
         }
 
         .popup-left-half img {
@@ -1296,16 +1297,16 @@
         .popup-right-half {
             flex: 1;
             height: 100%;
-            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            padding: 3rem 3rem 2.5rem 3rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             overflow-y: auto;
         }
 
         .popup-logo-container {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: flex-start;
         }
@@ -1314,37 +1315,39 @@
             height: 24px;
             width: auto;
             display: block;
-            transform: scale(5);
+            transform: scale(10);
             transform-origin: left center;
-            margin-left: 35px;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-left: 65px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .popup-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             color: #000000;
-            margin-bottom: 0.3rem;
-            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
             text-transform: uppercase;
         }
 
         .popup-subtitle-code {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #000000;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.2px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #52525b;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
         }
 
         .popup-desc {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: #52525b;
             margin-bottom: 1.25rem;
             line-height: 1.4;
             font-weight: 400;
+            letter-spacing: 0.2px;
         }
 
         .popup-form {
@@ -1356,12 +1359,12 @@
 
         .popup-input {
             width: 100%;
-            padding: 0.75rem 0.9rem;
+            padding: 0.85rem 1rem;
             border: 1px solid #e2e8f0;
             border-radius: 0px;
             background-color: #ffffff;
             color: #000000;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
             transition: border-color 0.2s ease;
         }
@@ -1376,7 +1379,7 @@
 
         .popup-btn {
             width: 100%;
-            padding: 0.85rem;
+            padding: 0.95rem;
             background-color: #000000;
             color: #ffffff;
             border: none;
@@ -1396,7 +1399,7 @@
         .popup-terms {
             font-size: 0.68rem;
             color: #71717a;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             line-height: 1.35;
         }
 
@@ -1440,7 +1443,7 @@
                 max-height: 90vh;
             }
             .popup-left-half {
-                height: 180px;
+                height: 220px;
                 flex: none;
             }
             .popup-right-half {
@@ -2030,7 +2033,7 @@
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
 
-    <!-- Popup Modal matching Upload 2 layout precisely (Equally split half and half, left side image placeholder, right side content) -->
+    <!-- Popup Modal updated to match Cole Buxton exact height, true 50/50 split width, larger bold title, unbolded code/desc moved up, and buttons underneath -->
     <div class="popup-overlay" id="promoPopup">
         <div class="popup-modal">
             <button class="popup-close" id="closePopup" aria-label="Close">&times;</button>
@@ -2043,16 +2046,16 @@
                 </div>
                 <h2 class="popup-title">GET 15% OFF FIRST ORDER</h2>
                 <div class="popup-subtitle-code">BY USING CODE FOUNTAIN10</div>
-                <p class="popup-desc">GAIN ACCESS TO JOIN OUR COMMUNITY OF HYDRATION ENTHUSIASTS UNLOCKING ELITE SAVINGS ON YOUR FIRST PREMIUM BOTTLE.</p>
+                <p class="popup-desc">GAIN ACCESS TO JOIN OUR COMMUNITY OF HYDRATION ENTHUSIASTS UNLOCKING ELITE SAVINGS ON YOUR FIRST PREMIUM BOTTLE</p>
                 
+                <div class="popup-terms">
+                    By submitting your email address, you agree to receive marketing emails including AI content from Fountain and to the Terms. We may use information collected about you on our site to suggest other products and offers based on your profile and in accordance with our Privacy Policy. You can unsubscribe at any time. View our <a href="#">Terms</a> and <a href="#">Privacy Policy</a> for more information on the processing of your data and your privacy rights.
+                </div>
+
                 <form class="popup-form" onsubmit="event.preventDefault(); alert('Code FOUNTAIN10 applied!');">
                     <input type="email" class="popup-input" placeholder="Email Address" required>
                     <button type="submit" class="popup-btn">GET 15% OFF</button>
                 </form>
-
-                <div class="popup-terms">
-                    By submitting your email address, you agree to receive marketing emails including AI content from Fountain and to the Terms. We may use information collected about you on our site to suggest other products and offers based on your profile and in accordance with our Privacy Policy. You can unsubscribe at any time. View our <a href="#">Terms</a> and <a href="#">Privacy Policy</a> for more information on the processing of your data and your privacy rights.
-                </div>
 
                 <div class="popup-dismiss-container">
                     <button class="popup-dismiss" id="noThanks">NO, THANKS</button>
@@ -2312,7 +2315,7 @@
             }
         });
 
-        // Popup Handlers (Removed 7-second auto-popup timer, now opens via bottom-left DISCOUNT CODE button)
+        // Popup Handlers
         const promoPopup = document.getElementById('promoPopup');
         const discountTriggerBtn = document.getElementById('discountTriggerBtn');
 
