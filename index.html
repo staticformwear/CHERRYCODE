@@ -32,6 +32,11 @@
             line-height: 1.6;
             overflow-x: hidden;
             padding-top: 85px;
+            transition: padding-top 0.3s ease;
+        }
+
+        body.announcement-hidden {
+            padding-top: 55px;
         }
 
         /* Announcement Bar */
@@ -43,12 +48,32 @@
             background-color: #000000;
             color: #ffffff;
             text-align: center;
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 2.5rem 0.4rem 1rem;
             font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 1.2px;
             z-index: 1100;
             text-transform: uppercase;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .announcement-bar.hidden {
+            transform: translateY(-100%);
+            visibility: hidden;
+        }
+
+        .announcement-close {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px;
         }
 
         /* Header & Navigation */
@@ -65,6 +90,11 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            transition: top 0.3s ease;
+        }
+
+        body.announcement-hidden header {
+            top: 0;
         }
 
         .header-left {
@@ -125,7 +155,7 @@
             height: 60px;
             width: auto;
             display: block;
-            transform: scale(2.2);
+            transform: scale(3.3); /* Increased by 1.5x from 2.2 */
             transform-origin: center;
         }
 
@@ -351,7 +381,7 @@
             background-color: #f1f5f9;
         }
 
-        /* Infinite Scrolling Feature Ticker Bar - Crystal Clear glass look */
+        /* Infinite Scrolling Feature Ticker Bar */
         .ticker-bar {
             position: absolute;
             bottom: 0;
@@ -613,7 +643,6 @@
             color: var(--accent-color);
         }
 
-        /* Expanded Story Content Panel */
         .founder-full-story {
             display: none;
             max-width: 800px;
@@ -726,7 +755,7 @@
             font-size: 0.95rem;
         }
 
-        /* Footer (Chilly's Style Redesign for Fountain) */
+        /* Footer */
         .chilly-footer {
             background-color: #ffffff;
             color: #000000;
@@ -841,7 +870,6 @@
             gap: 1.5rem;
         }
 
-        /* Location Selector Custom Dropdown */
         .location-dropdown-wrapper {
             position: relative;
             display: inline-block;
@@ -1180,8 +1208,9 @@
 </head>
 <body>
 
-    <div class="announcement-bar">
+    <div class="announcement-bar" id="announcementBar">
         15% OFF FIRST ORDER DISCOUNT
+        <button class="announcement-close" id="announcementCloseBtn" aria-label="Close Announcement">&times;</button>
     </div>
 
     <header>
@@ -1351,7 +1380,7 @@
 
     <section class="founder-section" id="founder">
         <div class="founder-intro-tag">MEET THE FOUNDER:</div>
-        <h2 class="founder-intro-heading">A GRADUATEâS MISSION TO BUILD THE BOTTLE THAT LASTS.</h2>
+        <h2 class="founder-intro-heading">A GRADUATEâ€™S MISSION TO BUILD THE BOTTLE THAT LASTS.</h2>
         <p class="founder-intro-desc">Fountain Bottles was started by Michael, a graduate inspired to change the way we think about everyday bottles and create one built to last.</p>
         
         <button class="founder-story-link" id="readStoryBtn">READ OUR FOUNDER STORY</button>
@@ -1362,13 +1391,13 @@
             <div class="founder-content-flex">
                 <div class="founder-story-text">
                     <p>As a recent graduate, Michael noticed something frustrating about the bottles we use every day.</p>
-                    <p>Too many simply werenât built to last.</p>
+                    <p>Too many simply werenâ€™t built to last.</p>
                     <p>Fountain Bottles was created to change that.</p>
                     
                     <h3>The Problem:</h3>
-                    <p>We use our bottles every single day â at university, at work, at the gym, travelling and everywhere in between.</p>
+                    <p>We use our bottles every single day â€” at university, at work, at the gym, travelling and everywhere in between.</p>
                     <p>Yet so many eventually leak, break, lose their finish, or simply get replaced.</p>
-                    <p>And when something is part of your everyday life, replacing it shouldnât be the expectation.</p>
+                    <p>And when something is part of your everyday life, replacing it shouldnâ€™t be the expectation.</p>
                     <p>There had to be a better way.</p>
                     <p>Fountain Bottles was going to be different.</p>
                     
@@ -1378,8 +1407,8 @@
                     <p>Rather than creating another bottle designed to follow a trend, Fountain was created to be the one you reach for every day.</p>
                     <p>Reliable. Practical. Timeless.</p>
                     
-                    <h3>But Whyâ¦ Fountain?</h3>
-                    <p>Michael believed that choosing a reusable bottle shouldnât mean compromising on quality.</p>
+                    <h3>But Whyâ€¦ Fountain?</h3>
+                    <p>Michael believed that choosing a reusable bottle shouldnâ€™t mean compromising on quality.</p>
                     <p>If we want people to move away from disposable products, we need to create something they genuinely want to keep using.</p>
                     <p>Something that feels right in your hand.</p>
                     <p>Something you can take anywhere.</p>
@@ -1387,8 +1416,8 @@
                     <p>That became the mission behind Fountain Bottles:</p>
                     <p><strong>Build a bottle worth keeping.</strong></p>
                     <p>A bottle designed for everyday life, made with purpose, and built to stay with you for years to come.</p>
-                    <p>Because ultimately, the best bottle is the one you donât need to replace.</p>
-                    <p>Today, Fountain Bottles continues that mission â creating drinkware designed to make reusable the easy choice.</p>
+                    <p>Because ultimately, the best bottle is the one you donâ€™t need to replace.</p>
+                    <p>Today, Fountain Bottles continues that mission â€” creating drinkware designed to make reusable the easy choice.</p>
                     <p>One bottle. Less replacing. A better everyday choice.</p>
                 </div>
                 
@@ -1416,7 +1445,6 @@
         </div>
     </section>
 
-    <!-- Redesigned Chilly's Style Footer -->
     <footer class="chilly-footer">
         <div class="footer-top-grid">
             <div class="footer-newsletter-col">
@@ -1549,6 +1577,24 @@
     </div>
 
     <script>
+        // Announcement Bar Close & Scroll Behavior
+        const announcementBar = document.getElementById('announcementBar');
+        const announcementCloseBtn = document.getElementById('announcementCloseBtn');
+
+        announcementCloseBtn.addEventListener('click', () => {
+            announcementBar.classList.add('hidden');
+            document.body.classList.add('announcement-hidden');
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                announcementBar.classList.add('hidden');
+                document.body.classList.add('announcement-hidden');
+            } else if (!announcementBar.matches(':hover') && announcementBar.style.display !== 'none') {
+                // Optional: keep it visible at top if not explicitly closed and at top of page
+            }
+        });
+
         // Navigation Drawer Functionality
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navDrawer = document.getElementById('navDrawer');
@@ -1583,29 +1629,17 @@
 
         shopDropdownToggle.addEventListener('click', () => {
             shopSubmenu.classList.toggle('active');
-            if (shopSubmenu.classList.contains('active')) {
-                shopToggleIcon.textContent = '-';
-            } else {
-                shopToggleIcon.textContent = '+';
-            }
+            shopToggleIcon.textContent = shopSubmenu.classList.contains('active') ? '-' : '+';
         });
 
         foodwareDropdownToggle.addEventListener('click', () => {
             foodwareSubmenu.classList.toggle('active');
-            if (foodwareSubmenu.classList.contains('active')) {
-                foodwareToggleIcon.textContent = '-';
-            } else {
-                foodwareToggleIcon.textContent = '+';
-            }
+            foodwareToggleIcon.textContent = foodwareSubmenu.classList.contains('active') ? '-' : '+';
         });
 
         accessoriesDropdownToggle.addEventListener('click', () => {
             accessoriesSubmenu.classList.toggle('active');
-            if (accessoriesSubmenu.classList.contains('active')) {
-                accessoriesToggleIcon.textContent = '-';
-            } else {
-                accessoriesToggleIcon.textContent = '+';
-            }
+            accessoriesToggleIcon.textContent = accessoriesSubmenu.classList.contains('active') ? '-' : '+';
         });
 
         // Founder Story Toggle Functionality
@@ -1622,7 +1656,7 @@
             }
         });
 
-        // Reviews Auto-Slider Functionality (Changes every 5 seconds)
+        // Reviews Auto-Slider Functionality
         const slides = document.querySelectorAll('.review-slide');
         const dots = document.querySelectorAll('.review-dot');
         let currentSlide = 0;
@@ -1641,39 +1675,34 @@
             showSlide(currentSlide + 1);
         }
 
-        // Start 5-second automatic rotation
         function startSlider() {
             slideInterval = setInterval(nextSlide, 5000);
         }
 
-        // Allow manual dot selection
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
                 clearInterval(slideInterval);
-                startSlider(); // Reset timer on manual click
+                startSlider();
             });
         });
 
         startSlider();
 
-        // Footer Location Dropdown & IP-based detection fallback logic
+        // Footer Location Dropdown Logic
         const locationDropdownWrapper = document.getElementById('locationDropdownWrapper');
         const locationSelectorBtn = document.getElementById('locationSelectorBtn');
         const countryDropdownMenu = document.getElementById('countryDropdownMenu');
         const currentLocationText = document.getElementById('currentLocationText');
         const countryOptions = document.querySelectorAll('.country-option');
 
-        // Set default or try simple user timezone/locale check, fallback to United Kingdom
         function detectUserLocation() {
             try {
                 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 if (timezone && timezone.includes('Australia')) {
                     return 'Australia';
                 }
-            } catch (e) {
-                // Fallback if Intl fails
-            }
+            } catch (e) {}
             return 'United Kingdom';
         }
 
@@ -1706,7 +1735,6 @@
             });
         });
 
-        // Close dropdown when clicking outside
         window.addEventListener('click', () => {
             if (locationDropdownWrapper.classList.contains('active')) {
                 locationDropdownWrapper.classList.remove('active');
@@ -1714,14 +1742,13 @@
             }
         });
 
-        // Trigger popup 7 seconds after the page loads
+        // Trigger Popup
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('promoPopup').classList.add('active');
             }, 7000);
         });
 
-        // Close popup actions
         const closePopup = () => {
             document.getElementById('promoPopup').classList.remove('active');
         };
@@ -1729,7 +1756,6 @@
         document.getElementById('closePopup').addEventListener('click', closePopup);
         document.getElementById('noThanks').addEventListener('click', closePopup);
 
-        // Close when clicking outside the modal box
         document.getElementById('promoPopup').addEventListener('click', (e) => {
             if (e.target === document.getElementById('promoPopup')) {
                 closePopup();
