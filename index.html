@@ -6,6 +6,12 @@
     <title>Fountain Bottles | Premium Insulated Bottles</title>
     <link rel="icon" type="image/png" href="0A5B6611-9ECA-4766-A67B-35DC50F492F1.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Snipcart CSS -->
+    <link rel="preconnect" href="https://app.snipcart.com">
+    <link rel="preconnect" href="https://cdn.snipcart.com">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
+
     <style>
         :root {
             --bg-color: #ffffff;
@@ -1231,9 +1237,9 @@
             <a href="login.html" class="login-icon-btn" aria-label="Login">
                 <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </a>
-            <button class="cart-icon-btn" aria-label="Cart">
+            <button class="cart-icon-btn snipcart-checkout" aria-label="Cart">
                 <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
-                <span class="cart-count">0</span>
+                <span class="cart-count snipcart-items-count">0</span>
             </button>
         </div>
     </header>
@@ -1310,7 +1316,14 @@
                         <div class="product-title">Fountain Classic Obsidian</div>
                         <div class="product-price">£32.00</div>
                     </div>
-                    <button class="btn-secondary">Add to Cart</button>
+                    <button class="btn-secondary snipcart-add-item"
+                        data-item-id="fountain-classic-obsidian"
+                        data-item-name="Fountain Classic Obsidian"
+                        data-item-price="32.00"
+                        data-item-url="/"
+                        data-item-currency="GBP">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
@@ -1321,7 +1334,14 @@
                         <div class="product-title">Fountain Alpine White</div>
                         <div class="product-price">£32.00</div>
                     </div>
-                    <button class="btn-secondary">Add to Cart</button>
+                    <button class="btn-secondary snipcart-add-item"
+                        data-item-id="fountain-alpine-white"
+                        data-item-name="Fountain Alpine White"
+                        data-item-price="32.00"
+                        data-item-url="/"
+                        data-item-currency="GBP">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
@@ -1332,7 +1352,14 @@
                         <div class="product-title">Fountain Sage Green</div>
                         <div class="product-price">£35.00</div>
                     </div>
-                    <button class="btn-secondary">Add to Cart</button>
+                    <button class="btn-secondary snipcart-add-item"
+                        data-item-id="fountain-sage-green"
+                        data-item-name="Fountain Sage Green"
+                        data-item-price="35.00"
+                        data-item-url="/"
+                        data-item-currency="GBP">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
@@ -1574,6 +1601,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Snipcart Script & Config with API Key -->
+    <div id="snipcart" data-api-key="ZTQzMDM3MDEtZThjYi00NTAzLWJhMTQtNDMxODFjZTI5NDFlNjM5MjIwOTQ1NDA1MzEzNjYw" hidden></div>
+    <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
 
     <script>
         // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
