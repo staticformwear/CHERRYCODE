@@ -7,6 +7,8 @@
     <link rel="icon" type="image/png" href="0A5B6611-9ECA-4766-A67B-35DC50F492F1.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="style.css">
+
     <style>
         :root {
             --bg-color: #ffffff;
@@ -25,26 +27,6 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-        }
-
-        /* Announcement Bar & Banner Styles */
-        .announcement-bar {
-            background-color: #0f172a;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-        }
-
-        .store-banner {
-            background-color: #f8fafc;
-            padding: 16px 20px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
         }
 
         .policy-container {
@@ -116,109 +98,6 @@
             opacity: 0.7;
         }
 
-        /* Footer Styles (Upload 2 & Upload 1 matching layout) */
-        .site-footer {
-            background-color: #f8fafc;
-            padding: 60px 20px 30px 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--text-color);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0;
-            margin-top: 16px;
-            max-width: 400px;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            background: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .newsletter-btn {
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 12px 24px;
-            border: none;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--text-color);
-        }
-
-        @media (max-width: 900px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
         @media (max-width: 768px) {
             .policy-container {
                 padding: 20px;
@@ -226,28 +105,12 @@
             h1 {
                 font-size: 2rem;
             }
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        Free worldwide shipping on all orders over $50 | Shop the new collection now
-    </div>
-
-    <!-- Store Banner -->
-    <div class="store-banner">
-        FOUNTAIN BOTTLES
-    </div>
+    <div id="header-placeholder"></div>
 
     <div class="policy-container">
         <h1>Privacy Policy</h1>
@@ -606,67 +469,10 @@
 
     </div>
 
-    <!-- Footer matching Upload 1 and Upload 2 -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>Sign up for Fountain News, Launches and Special Offers</h4>
-                <div class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
-                    <button type="submit" class="newsletter-btn">SIGN UP</button>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">Wholesale</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Join the Hydration Club</a></li>
-                    <li><a href="#">The Archive</a></li>
-                    <li><a href="#">Student Discounts</a></li>
-                    <li><a href="#">Key Workers Discount</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Customer Support</h4>
-                <ul>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Support Hub</a></li>
-                    <li><a href="#">Return Item</a></li>
-                    <li><a href="#">Track Order</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Social</h4>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">TikTok</a></li>
-                    <li><a href="#">X</a></li>
-                    <li><a href="#">Pinterest</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>© 2026 Fountain Bottles</div>
-            <div class="footer-bottom-links">
-                <a href="#">Terms & Conditions</a>
-                <a href="privacypolicy.html">Privacy Policy</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Cookie Preferences</a>
-                <a href="#">Modern Slavery</a>
-            </div>
-        </div>
-    </footer>
+    <div id="discount-btn-placeholder"></div>
+
+    <script src="load-components.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
