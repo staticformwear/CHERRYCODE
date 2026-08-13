@@ -1070,9 +1070,13 @@
 
         /* ================= MOBILE FOOTER ACCORDION / STYLING OVERRIDES (CHILLY'S STYLE) ================= */
         @media (max-width: 768px) {
+            .chilly-footer {
+                padding: 3rem 5% 2rem 5%; /* Reduced top padding by about 50% relative to 6rem */
+            }
             .footer-top-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-bottom: 2rem;
             }
             .footer-newsletter-col h2 {
                 font-size: 1.25rem;
@@ -1087,11 +1091,11 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0;
-                border-top: 1px solid var(--border-color);
+                border-top: none; /* Removed thin lines completely */
             }
 
             .footer-col {
-                border-bottom: 1px solid var(--border-color);
+                border-bottom: none; /* Removed thin lines completely */
                 padding: 1rem 0;
             }
 
@@ -1105,17 +1109,21 @@
                 letter-spacing: 0.5px;
             }
 
-            /* Add arrow indicator using a pseudo-element or span */
+            /* Arrow indicator using exact SVG styling matching upload 2 */
             .footer-col h3::after {
-                content: 'v';
-                font-size: 0.9rem;
-                font-weight: 400;
+                content: '';
+                width: 12px;
+                height: 12px;
+                border-right: 2px solid #000000;
+                border-bottom: 2px solid #000000;
+                transform: rotate(45deg);
                 transition: transform 0.3s ease;
                 display: inline-block;
+                margin-right: 4px;
             }
 
             .footer-col.active h3::after {
-                transform: rotate(180deg);
+                transform: rotate(225deg);
             }
 
             .footer-col ul {
@@ -1891,7 +1899,7 @@
     <footer class="chilly-footer">
         <div class="footer-top-grid">
             <div class="footer-newsletter-col">
-                <h2>SIGN UP FOR FOUNTAIN NEWS, LAUNCHES<br>AND SPECIAL OFFERS</h2>
+                <h2>SIGN UP FOR FOUNTAIN NEWS,<br>LAUNCHES<br>AND SPECIAL OFFERS</h2>
                 
                 <!-- Email Signup Form -->
                 <form class="footer-signup-box" id="footerSignupForm">
@@ -1996,7 +2004,7 @@
             </div>
 
             <div class="footer-legal-links">
-                <a href="shipping&returnspolicy.html">Shipping & Returns Policy</a>
+                <a href="shipping&returnspolicy.html"><span class="desktop-shipping-text">Shipping & Returns Policy</span><span class="mobile-shipping-text" style="display:none;">Shipping & Returns</span></a>
                 <a href="terms&conditions.html">Terms & Conditions</a>
                 <a href="privacypolicy.html">Privacy Policy</a>
                 <a href="cookiepolicy.html">Cookie Policy</a>
@@ -2329,6 +2337,22 @@
             }
         });
     </script>
-
+    <script>
+        // Conditional handling for Shipping & Returns vs Policy on Mobile only
+        function adjustPolicyText() {
+            const desktopSpan = document.querySelector('.desktop-shipping-text');
+            const mobileSpan = document.querySelector('.mobile-shipping-text');
+            if (window.innerWidth <= 768) {
+                if (desktopSpan) desktopSpan.style.display = 'none';
+                if (mobileSpan) mobileSpan.style.display = 'inline';
+            } else {
+                if (desktopSpan) desktopSpan.style.display = 'inline';
+                if (mobileSpan) mobileSpan.style.display = 'none';
+            }
+        }
+        window.addEventListener('resize', adjustPolicyText);
+        window.addEventListener('load', adjustPolicyText);
+        adjustPolicyText();
+    </script>
 </body>
 </html>
