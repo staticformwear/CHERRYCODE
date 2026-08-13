@@ -294,7 +294,7 @@
             align-items: center;
             width: 100%;
             font-size: 1.15rem;
-            font-weight: 600; /* Made slightly bolder */
+            font-weight: 600;
             color: var(--text-color);
             cursor: pointer;
             padding: 0.5rem 0;
@@ -415,7 +415,7 @@
         .ticker-item {
             color: #ffffff;
             font-size: 0.85rem;
-            font-weight: 700; /* Made just a bit bolder as requested for upload 4 */
+            font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             white-space: nowrap;
@@ -425,12 +425,8 @@
         }
 
         @keyframes tickerScroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* Products Showcase Section */
@@ -626,18 +622,9 @@
             stroke-linejoin: round;
         }
 
-        .carousel-arrow.prev {
-            left: -10px;
-        }
-
-        .carousel-arrow.next {
-            right: -10px;
-        }
-
-        .carousel-arrow.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .carousel-arrow.prev { left: -10px; }
+        .carousel-arrow.next { right: -10px; }
+        .carousel-arrow.hidden { opacity: 0; pointer-events: none; }
 
         /* Reviews Slider Section */
         .reviews-section {
@@ -716,9 +703,7 @@
             padding: 0;
         }
 
-        .review-dot.active {
-            background: #000000;
-        }
+        .review-dot.active { background: #000000; }
 
         /* Meet the Founder Section Styles */
         .founder-section {
@@ -767,9 +752,7 @@
             padding: 0;
         }
 
-        .founder-story-link:hover {
-            color: var(--accent-color);
-        }
+        .founder-story-link:hover { color: var(--accent-color); }
 
         .founder-full-story {
             display: none;
@@ -779,9 +762,7 @@
             animation: fadeIn 0.4s ease-in-out;
         }
 
-        .founder-full-story.active {
-            display: block;
-        }
+        .founder-full-story.active { display: block; }
 
         .founder-main-title {
             text-align: center;
@@ -806,9 +787,7 @@
             line-height: 1.7;
         }
 
-        .founder-story-text p {
-            margin-bottom: 1.5rem;
-        }
+        .founder-story-text p { margin-bottom: 1.5rem; }
 
         .founder-story-text h3 {
             font-size: 1.2rem;
@@ -847,12 +826,8 @@
                 max-width: 320px;
                 margin-bottom: 1.5rem;
             }
-            .founder-full-story {
-                text-align: center;
-            }
-            .founder-story-text {
-                text-align: left;
-            }
+            .founder-full-story { text-align: center; }
+            .founder-story-text { text-align: left; }
         }
 
         /* Footer */
@@ -874,7 +849,7 @@
 
         .footer-newsletter-col h2 {
             font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-            font-weight: 700; /* Made slightly bolder */
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -0.3px;
             line-height: 1.35;
@@ -906,9 +881,7 @@
             border-radius: 0px;
         }
 
-        .footer-signup-input::placeholder {
-            color: #71717a;
-        }
+        .footer-signup-input::placeholder { color: #71717a; }
 
         .footer-signup-btn {
             background-color: #000000;
@@ -925,11 +898,8 @@
             border-radius: 0px;
         }
 
-        .footer-signup-btn:hover {
-            background-color: #27272a;
-        }
+        .footer-signup-btn:hover { background-color: #27272a; }
 
-        /* Success Message Box matching email box dimensions and borders */
         .footer-success-msg {
             display: none;
             align-items: center;
@@ -946,9 +916,7 @@
             color: #000000;
             text-transform: uppercase;
         }
-        .footer-success-msg.active {
-            display: flex;
-        }
+        .footer-success-msg.active { display: flex; }
 
         .footer-links-grid {
             display: grid;
@@ -958,7 +926,7 @@
 
         .footer-col h3 {
             font-size: 0.95rem;
-            font-weight: 700; /* Made slightly bolder */
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 1.25rem;
@@ -980,9 +948,7 @@
             transition: color 0.2s ease;
         }
 
-        .footer-col ul li a:hover {
-            color: #000000;
-        }
+        .footer-col ul li a:hover { color: #000000; }
 
         .footer-divider {
             border: none;
@@ -1016,9 +982,7 @@
             transition: border-color 0.2s ease;
         }
 
-        .location-selector-btn:hover {
-            border-color: #000000;
-        }
+        .location-selector-btn:hover { border-color: #000000; }
 
         .location-label {
             font-size: 0.7rem;
@@ -1068,9 +1032,7 @@
             padding: 0.5rem 0;
         }
 
-        .country-dropdown-menu.active {
-            display: block;
-        }
+        .country-dropdown-menu.active { display: block; }
 
         .country-option {
             padding: 0.6rem 1rem;
@@ -1086,14 +1048,8 @@
             display: block;
         }
 
-        .country-option:hover {
-            background-color: #f4f4f5;
-        }
-
-        .country-option.selected {
-            font-weight: 600;
-            background-color: #f4f4f5;
-        }
+        .country-option:hover { background-color: #f4f4f5; }
+        .country-option.selected { font-weight: 600; background-color: #f4f4f5; }
 
         .footer-legal-links {
             display: flex;
@@ -1110,11 +1066,117 @@
             transition: color 0.2s ease;
         }
 
-        .footer-legal-links a:hover {
-            color: #000000;
+        .footer-legal-links a:hover { color: #000000; }
+
+        /* ================= MOBILE FOOTER ACCORDION / STYLING OVERRIDES (CHILLY'S STYLE) ================= */
+        @media (max-width: 768px) {
+            .footer-top-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-newsletter-col h2 {
+                font-size: 1.25rem;
+                max-width: 100%;
+            }
+            .footer-signup-box, .footer-success-msg {
+                max-width: 100%;
+            }
+
+            /* Convert footer links into collapsible / accordion columns exactly like Upload 1 & 2 */
+            .footer-links-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .footer-col {
+                border-bottom: 1px solid var(--border-color);
+                padding: 1rem 0;
+            }
+
+            .footer-col h3 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0;
+                cursor: pointer;
+                font-size: 1rem;
+                letter-spacing: 0.5px;
+            }
+
+            /* Add arrow indicator using a pseudo-element or span */
+            .footer-col h3::after {
+                content: 'v';
+                font-size: 0.9rem;
+                font-weight: 400;
+                transition: transform 0.3s ease;
+                display: inline-block;
+            }
+
+            .footer-col.active h3::after {
+                transform: rotate(180deg);
+            }
+
+            .footer-col ul {
+                display: none; /* Hidden by default on mobile, toggled via JS */
+                margin-top: 1rem;
+                gap: 0.75rem;
+                padding-left: 0;
+            }
+
+            .footer-col.active ul {
+                display: flex;
+            }
+
+            .footer-bottom-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            /* Make location dropdown full width, centered, matching Upload 3 */
+            .location-dropdown-wrapper {
+                width: 100%;
+                display: block;
+            }
+
+            .location-selector-btn {
+                width: 100%;
+                min-width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .location-label {
+                justify-content: center;
+                gap: 6px;
+            }
+
+            .country-dropdown-menu {
+                width: 100%;
+                left: 0;
+            }
+
+            /* Arrange legal links in 2 rows as specified: 3 items in 1st row, 3 items in 2nd row */
+            .footer-legal-links {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem 0.5rem;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .footer-legal-links a {
+                font-size: 0.75rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 900px) and (min-width: 769px) {
             .footer-top-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1122,28 +1184,6 @@
             .footer-links-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .footer-links-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .footer-bottom-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .location-selector-btn {
-                width: 100%;
-            }
-            .country-dropdown-menu {
-                width: 100%;
-            }
-            .footer-legal-links {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
             }
         }
 
@@ -1171,9 +1211,7 @@
             text-transform: uppercase;
         }
 
-        .discount-trigger-btn:hover {
-            background-color: #27272a;
-        }
+        .discount-trigger-btn:hover { background-color: #27272a; }
 
         .discount-trigger-btn svg {
             width: 16px;
@@ -1185,7 +1223,7 @@
             fill: none;
         }
 
-        /* Popup Overlay & Modal Styles (Taller height matching Cole Buxton, exact 50/50 split width) */
+        /* Popup Overlay & Modal Styles */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1222,9 +1260,7 @@
             transition: transform 0.3s ease;
         }
 
-        .popup-overlay.active .popup-modal {
-            transform: scale(1);
-        }
+        .popup-overlay.active .popup-modal { transform: scale(1); }
 
         .popup-close {
             position: absolute;
@@ -1292,7 +1328,7 @@
             height: 24px;
             width: auto;
             display: block;
-            transform: scale(5); /* Fountain logo 0.5 times bigger than previous scale 10 -> 5 */
+            transform: scale(5);
             transform-origin: center center;
         }
 
@@ -1317,7 +1353,7 @@
             margin-bottom: 1rem;
             letter-spacing: 0.3px;
             text-transform: uppercase;
-            transform: scale(1.05); /* Tiny tiny tiny weansy little tiny bit bigger */
+            transform: scale(1.05);
             transform-origin: center center;
             margin-top: 0.5rem;
         }
@@ -1329,7 +1365,7 @@
             line-height: 1.4;
             font-weight: 400;
             letter-spacing: 0.2px;
-            transform: scale(1.05); /* Tiny tiny tiny weansy little tiny bit bigger */
+            transform: scale(1.05);
             transform-origin: center center;
         }
 
@@ -1353,13 +1389,8 @@
             transition: border-color 0.2s ease;
         }
 
-        .popup-input::placeholder {
-            color: #71717a;
-        }
-
-        .popup-input:focus {
-            border-color: #000000;
-        }
+        .popup-input::placeholder { color: #71717a; }
+        .popup-input:focus { border-color: #000000; }
 
         .popup-btn {
             width: 100%;
@@ -1376,9 +1407,7 @@
             transition: background-color 0.2s ease;
         }
 
-        .popup-btn:hover {
-            background-color: #27272a;
-        }
+        .popup-btn:hover { background-color: #27272a; }
 
         .popup-terms {
             font-size: 0.68rem;
@@ -1387,15 +1416,9 @@
             line-height: 1.35;
         }
 
-        .popup-terms a {
-            color: #71717a;
-            text-decoration: underline;
-        }
+        .popup-terms a { color: #71717a; text-decoration: underline; }
 
-        .popup-dismiss-container {
-            text-align: center;
-            width: 100%;
-        }
+        .popup-dismiss-container { text-align: center; width: 100%; }
 
         .popup-dismiss {
             background: none;
@@ -1410,33 +1433,19 @@
             text-transform: uppercase;
         }
 
-        .popup-dismiss:hover {
-            opacity: 0.7;
-        }
+        .popup-dismiss:hover { opacity: 0.7; }
 
         @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 1rem;
-            }
-            .logo-img {
-                height: 48px;
-            }
+            header { padding: 0.5rem 1rem; }
+            .logo-img { height: 48px; }
             .popup-modal {
                 flex-direction: column;
                 max-width: 90%;
                 height: auto;
                 max-height: 90vh;
             }
-            .popup-left-half {
-                height: 220px;
-                flex: none;
-                width: 100%;
-            }
-            .popup-right-half {
-                padding: 1.5rem;
-                flex: none;
-                width: 100%;
-            }
+            .popup-left-half { height: 220px; flex: none; width: 100%; }
+            .popup-right-half { padding: 1.5rem; flex: none; width: 100%; }
         }
     </style>
 </head>
@@ -1896,8 +1905,8 @@
                 </div>
             </div>
 
-            <div class="footer-links-grid">
-                <div class="footer-col">
+            <div class="footer-links-grid" id="footerLinksGrid">
+                <div class="footer-col" id="colCompany">
                     <h3>Company</h3>
                     <ul>
                         <li><a href="about.html">About</a></li>
@@ -1908,7 +1917,7 @@
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col" id="colResources">
                     <h3>Resources</h3>
                     <ul>
                         <li><a href="hydrationclub.html">Join the Hydration Club</a></li>
@@ -1918,7 +1927,7 @@
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col" id="colSupport">
                     <h3>Customer Support</h3>
                     <ul>
                         <li><a href="help.html">Help</a></li>
@@ -1928,7 +1937,7 @@
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col" id="colSocial">
                     <h3>Social</h3>
                     <ul>
                         <li><a href="instagram.html">Instagram</a></li>
@@ -1997,13 +2006,13 @@
         </div>
     </footer>
 
-    <!-- Bottom-Left Floating Rectangular Black Button (Upload 1 style: DISCOUNT CODE + white cross) -->
+    <!-- Bottom-Left Floating Rectangular Black Button -->
     <button class="discount-trigger-btn" id="discountTriggerBtn" aria-label="Discount Code">
         <span>DISCOUNT CODE</span>
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
 
-    <!-- Popup Modal updated with exact 50/50 split, centered elements, and requested scale modifications -->
+    <!-- Popup Modal -->
     <div class="popup-overlay" id="promoPopup">
         <div class="popup-modal">
             <button class="popup-close" id="closePopup" aria-label="Close">&times;</button>
@@ -2047,6 +2056,16 @@
             e.preventDefault();
             footerSignupForm.style.display = 'none';
             footerSuccessMsg.classList.add('active');
+        });
+
+        // Mobile Footer Accordion Toggle Logic (Chilly's style with arrows)
+        document.querySelectorAll('.footer-col h3').forEach(heading => {
+            heading.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    const parentCol = heading.parentElement;
+                    parentCol.classList.toggle('active');
+                }
+            });
         });
 
         // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
@@ -2211,6 +2230,8 @@
 
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
+            dots[currentScale = currentSlide].classList.add('active');
+            // Keep active dot updated safely
             dots[currentSlide].classList.add('active');
         }
 
@@ -2264,6 +2285,7 @@
             countryDropdownMenu.classList.toggle('active');
         });
 
+        countryOptions.exports = countryOptions; // standard reference
         countryOptions.forEach(option => {
             option.addEventListener('click', (e) => {
                 e.stopPropagation();
