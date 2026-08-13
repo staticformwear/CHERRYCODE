@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fountain Bottles | Premium Insulated Bottles</title>
     <link rel="icon" type="image/png" href="0A5B6611-9ECA-4766-A67B-35DC50F492F1.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Snipcart CSS -->
     <link rel="preconnect" href="https://app.snipcart.com">
@@ -38,7 +38,7 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: #ffffff !important;
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
@@ -61,7 +61,7 @@
             text-align: center;
             padding: 0.4rem 2.5rem 0.4rem 1rem;
             font-size: 0.75rem;
-            font-weight: 600; /* Made slightly bolder */
+            font-weight: 700 !important; /* Made slightly more bolded */
             letter-spacing: 1.2px;
             z-index: 1100;
             text-transform: uppercase;
@@ -367,7 +367,7 @@
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 5rem);
-            font-weight: 700;
+            font-weight: 900 !important; /* A tiny weansy little tiny tiny bit more bolder */
             margin-bottom: 1.25rem;
             letter-spacing: -1px;
             color: #ffffff;
@@ -379,7 +379,7 @@
             padding: 0.85rem 2rem;
             border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700 !important; /* Slightly more bolded like a bit more bolded */
             letter-spacing: 0.5px;
             font-size: 0.95rem;
             transition: transform 0.2s ease, background-color 0.2s ease;
@@ -1210,7 +1210,7 @@
             justify-content: space-between;
             gap: 1rem;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 800 !important; /* Made more bolded like a bit more bolded not too much a bit a bit more */
             letter-spacing: 1px;
             cursor: pointer;
             z-index: 1999;
@@ -1292,7 +1292,7 @@
             flex: 0 0 50%;
             width: 50%;
             height: 100%;
-            background: #e2e8f0;
+            background: #ffffff !important; /* Replaced background color so it's white (upload 2) */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2017,7 +2017,7 @@
     <!-- Bottom-Left Floating Rectangular Black Button -->
     <button class="discount-trigger-btn" id="discountTriggerBtn" aria-label="Discount Code">
         <span>DISCOUNT CODE</span>
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg id="discountCloseIcon" viewBox="0 0 24 24" style="cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
 
     <!-- Popup Modal -->
@@ -2238,8 +2238,6 @@
 
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
-            dots[currentScale = currentSlide].classList.add('active');
-            // Keep active dot updated safely
             dots[currentSlide].classList.add('active');
         }
 
@@ -2293,7 +2291,6 @@
             countryDropdownMenu.classList.toggle('active');
         });
 
-        countryOptions.exports = countryOptions; // standard reference
         countryOptions.forEach(option => {
             option.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -2318,6 +2315,7 @@
         // Popup Handlers
         const promoPopup = document.getElementById('promoPopup');
         const discountTriggerBtn = document.getElementById('discountTriggerBtn');
+        const discountCloseIcon = document.getElementById('discountCloseIcon');
 
         const openPopup = () => {
             promoPopup.classList.add('active');
@@ -2328,6 +2326,13 @@
         };
 
         discountTriggerBtn.addEventListener('click', openPopup);
+        
+        // Clicking on X on the small discount code rectangular popup closes it
+        discountCloseIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            discountTriggerBtn.style.display = 'none';
+        });
+
         document.getElementById('closePopup').addEventListener('click', closePopup);
         document.getElementById('noThanks').addEventListener('click', closePopup);
 
