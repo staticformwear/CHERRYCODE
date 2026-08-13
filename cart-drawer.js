@@ -1,4 +1,13 @@
 (function() {
+    // Configure Snipcart to prevent its default full-screen modal from showing, keeping only your custom drawer
+    window.SnipcartSettings = {
+        publicApiKey: "ZTQzMDM3MDEtZThjYi00NTAzLWJhMTQtNDMxODFjZTI5NDFlNjM5MjIwOTQ1NDA1MzEzNjYw",
+        localization: {
+            // Overrides default text if necessary
+        },
+        modalStyle: "none"
+    };
+
     // 1. Inject CSS Styles
     const style = document.createElement('style');
     style.innerHTML = `
@@ -12,7 +21,7 @@
             background-color: #ffffff;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
             transition: right 0.3s ease-in-out;
-            z-index: 1000;
+            z-index: 3000; /* Sits above announcement bar and header */
             display: flex;
             flex-direction: column;
         }
@@ -26,23 +35,31 @@
             padding: 24px 20px;
             position: relative;
         }
+        /* Close button moved outside to the left, colored white */
         .cart-close-btn {
+            position: absolute;
+            left: -45px;
+            top: 24px;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
-            color: #111;
+            color: #ffffff;
             padding: 0;
             line-height: 1;
+            z-index: 3001;
+            transition: opacity 0.2s ease;
+        }
+        .cart-close-btn:hover {
+            opacity: 0.8;
         }
         .cart-title {
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 750 !important; /* Slightly bolder */
             letter-spacing: 1px;
             color: #111;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            position: static; /* Moved from absolute center to left */
+            transform: none;
         }
         .cart-link {
             font-size: 12px;
@@ -62,8 +79,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
+            /* Pushes the empty state container near the top (approx 3/4 to the top) */
+            justify-content: flex-start;
+            padding-top: 80px; 
+            padding-left: 20px;
+            padding-right: 20px;
         }
         .cart-empty-state {
             display: flex;
@@ -84,7 +104,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 999;
+            z-index: 2999; /* Sits right beneath the drawer */
         }
         .cart-overlay.open {
             opacity: 1;
@@ -98,8 +118,8 @@
     container.innerHTML = `
         <div class="cart-overlay" id="cartOverlay"></div>
         <div class="cart-drawer" id="cartDrawer">
+            <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close basket">&times;</button>
             <div class="cart-header">
-                <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close basket">&times;</button>
                 <span class="cart-title">YOUR BASKET</span>
                 <a href="cart.html" class="cart-link">GO TO BASKET</a>
             </div>
@@ -136,7 +156,6 @@
     }
 
     cartTriggerBtns.forEach(btn => {
-        // Prevent default Snipcart behavior if it auto-opens its own modal, replacing it with your custom drawer
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             openCart();
