@@ -2,13 +2,11 @@
     // Configure Snipcart to prevent its default full-screen modal from showing, keeping only your custom drawer
     window.SnipcartSettings = {
         publicApiKey: "ZTQzMDM3MDEtZThjYi00NTAzLWJhMTQtNDMxODFjZTI5NDFlNjM5MjIwOTQ1NDA1MzEzNjYw",
-        localization: {
-            // Overrides default text if necessary
-        },
-        modalStyle: "none"
+        modalStyle: "none",
+        version: "3.3.1"
     };
 
-    // 1. Inject CSS Styles
+    // 1. Inject CSS Styles for Custom Drawer
     const style = document.createElement('style');
     style.innerHTML = `
         .cart-drawer {
@@ -21,7 +19,7 @@
             background-color: #ffffff;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
             transition: right 0.3s ease-in-out;
-            z-index: 3000; /* Sits above announcement bar and header */
+            z-index: 3000;
             display: flex;
             flex-direction: column;
         }
@@ -35,7 +33,6 @@
             padding: 24px 20px;
             position: relative;
         }
-        /* Close button moved outside to the left, colored white */
         .cart-close-btn {
             position: absolute;
             left: -45px;
@@ -55,11 +52,9 @@
         }
         .cart-title {
             font-size: 13px;
-            font-weight: 750 !important; /* Slightly bolder */
+            font-weight: 750 !important;
             letter-spacing: 1px;
             color: #111;
-            position: static; /* Moved from absolute center to left */
-            transform: none;
         }
         .cart-link {
             font-size: 12px;
@@ -68,6 +63,9 @@
             color: #111;
             text-decoration: underline;
             text-underline-offset: 4px;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
         .cart-divider {
             border: none;
@@ -79,7 +77,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Pushes the empty state container near the top (approx 3/4 to the top) */
             justify-content: flex-start;
             padding-top: 80px; 
             padding-left: 20px;
@@ -104,7 +101,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 2999; /* Sits right beneath the drawer */
+            z-index: 2999;
         }
         .cart-overlay.open {
             opacity: 1;
@@ -121,7 +118,7 @@
             <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close basket">&times;</button>
             <div class="cart-header">
                 <span class="cart-title">YOUR BASKET</span>
-                <a href="cart.html" class="cart-link">GO TO BASKET</a>
+                <button class="cart-link snipcart-checkout">GO TO CHECKOUT</button>
             </div>
             <hr class="cart-divider">
             <div class="cart-body">
@@ -142,7 +139,7 @@
     const cartOverlay = document.getElementById('cartOverlay');
     const cartCloseBtn = document.getElementById('cartCloseBtn');
     
-    // Find any cart icon buttons on the page to trigger the drawer
+    // Target any element with class 'cart-icon-btn' or 'snipcart-checkout' to open the drawer instead of the full page
     const cartTriggerBtns = document.querySelectorAll('.cart-icon-btn');
 
     function openCart() {
@@ -164,4 +161,16 @@
 
     cartCloseBtn.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
+
+    // Automatically open drawer when items are added to cart via Snipcart events
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.Snipcart) {
+            window.Snipcart.store.subscribe(() => {
+                const state = window.Snipcart.store.getState();
+                if (state && state.cart && state.cart.items && state.cart.items.count > 0) {
+                    // Update item count badges dynamically if desired
+                }
+            });
+        }
+    });
 })();
