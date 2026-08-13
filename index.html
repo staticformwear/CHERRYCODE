@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Official Cherry™ | Drink Better. Live Better</title>
-    <link rel="icon" type="image/png" href="0A5B6611-9ECA-4766-A67B-35DC50F492F1.png">
+    <link rel="icon" type="image/png" href="2F01ACA5-285D-46AE-899F-E63FBA0B5FDC.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="preconnect" href="https://app.snipcart.com">
@@ -60,7 +60,7 @@
             text-align: center;
             padding: 0.4rem 2.5rem 0.4rem 1rem;
             font-size: 0.75rem;
-            font-weight: 700 !important; /* Made slightly more bolded */
+            font-weight: 700 !important; /* Made slightly more bold */
             letter-spacing: 1.2px;
             z-index: 1100;
             text-transform: uppercase;
@@ -257,7 +257,7 @@
         }
 
         .nav-drawer-header span {
-            font-weight: 700; /* Made a bit more bolder */
+            font-weight: 700;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
         }
@@ -293,7 +293,7 @@
             align-items: center;
             width: 100%;
             font-size: 1.15rem;
-            font-weight: 750; /* Made a bit more bolder */
+            font-weight: 750;
             color: var(--text-color);
             cursor: pointer;
             padding: 0.5rem 0;
@@ -323,7 +323,7 @@
             text-decoration: none;
             color: var(--text-muted);
             font-size: 1rem;
-            font-weight: 500; /* Made slightly bolder */
+            font-weight: 500;
             transition: color 0.2s ease;
             padding: 0.25rem 0;
         }
@@ -366,7 +366,7 @@
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 5rem);
-            font-weight: 900 !important; /* A tiny weansy little tiny tiny bit more bolder */
+            font-weight: 900 !important;
             margin-bottom: 1.25rem;
             letter-spacing: -1px;
             color: #ffffff;
@@ -378,7 +378,7 @@
             padding: 0.85rem 2rem;
             border-radius: 6px;
             text-decoration: none;
-            font-weight: 700 !important; /* Slightly more bolded like a bit more bolded */
+            font-weight: 700 !important;
             letter-spacing: 0.5px;
             font-size: 0.95rem;
             transition: transform 0.2s ease, background-color 0.2s ease;
@@ -1070,7 +1070,7 @@
         /* ================= MOBILE FOOTER ACCORDION / STYLING OVERRIDES (CHILLY'S STYLE) ================= */
         @media (max-width: 768px) {
             .chilly-footer {
-                padding: 3rem 5% 2rem 5%; /* Reduced top padding by about 50% relative to 6rem */
+                padding: 3rem 5% 2rem 5%;
             }
             .footer-top-grid {
                 grid-template-columns: 1fr;
@@ -1085,16 +1085,15 @@
                 max-width: 100%;
             }
 
-            /* Convert footer links into collapsible / accordion columns exactly like Upload 1 & 2 */
             .footer-links-grid {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
-                border-top: none; /* Removed thin lines completely */
+                border-top: none;
             }
 
             .footer-col {
-                border-bottom: none; /* Removed thin lines completely */
+                border-bottom: none;
                 padding: 1rem 0;
             }
 
@@ -1108,7 +1107,6 @@
                 letter-spacing: 0.5px;
             }
 
-            /* Arrow indicator using exact SVG styling matching upload 2 */
             .footer-col h3::after {
                 content: '';
                 width: 12px;
@@ -1126,7 +1124,7 @@
             }
 
             .footer-col ul {
-                display: none; /* Hidden by default on mobile, toggled via JS */
+                display: none;
                 margin-top: 1rem;
                 gap: 0.75rem;
                 padding-left: 0;
@@ -1142,7 +1140,6 @@
                 text-align: center;
             }
 
-            /* Make location dropdown full width, centered, matching Upload 3 */
             .location-dropdown-wrapper {
                 width: 100%;
                 display: block;
@@ -1165,7 +1162,6 @@
                 left: 0;
             }
 
-            /* Arrange legal links in 2 rows as specified: 3 items in 1st row, 3 items in 2nd row */
             .footer-legal-links {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -1194,7 +1190,7 @@
             }
         }
 
-        /* Popup Trigger Button (Bottom-Left / Floating Rectangular Black Style matching Upload 1) */
+        /* Popup Trigger Button */
         .discount-trigger-btn {
             position: fixed;
             bottom: 20px;
@@ -1209,7 +1205,7 @@
             justify-content: space-between;
             gap: 1rem;
             font-size: 0.85rem;
-            font-weight: 800 !important; /* Made more bolded like a bit more bolded not too much a bit a bit more */
+            font-weight: 800 !important;
             letter-spacing: 1px;
             cursor: pointer;
             z-index: 1999;
@@ -1291,7 +1287,7 @@
             flex: 0 0 50%;
             width: 50%;
             height: 100%;
-            background: #ffffff !important; /* Replaced background color so it's white (upload 2) */
+            background: #ffffff !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2309,7 +2305,6 @@
 
         discountTriggerBtn.addEventListener('click', openPopup);
         
-        // Clicking on X on the small discount code rectangular popup closes it
         discountCloseIcon.addEventListener('click', (e) => {
             e.stopPropagation();
             discountTriggerBtn.style.display = 'none';
