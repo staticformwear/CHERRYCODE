@@ -12,8 +12,8 @@
         .cart-drawer {
             position: fixed;
             top: 0;
-            right: -420px;
-            width: 390px; /* Narrower width matching upload reference */
+            right: -400px;
+            width: 360px; /* Made slightly less wide to match reference */
             max-width: 100%;
             height: 100vh;
             background-color: #ffffff;
@@ -34,7 +34,7 @@
             position: relative;
             border-bottom: 1px solid #e5e5e5;
         }
-        /* White close button moved outside the drawer panel on the left */
+        /* White close button hidden by default, shown only when drawer is open */
         .cart-close-btn {
             position: absolute;
             left: -45px;
@@ -48,6 +48,13 @@
             line-height: 1;
             z-index: 3001;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .cart-drawer.open .cart-close-btn {
+            opacity: 1;
+            visibility: visible;
         }
         .cart-title {
             font-size: 13px;
@@ -74,30 +81,30 @@
             flex-direction: column;
             position: relative;
         }
-        /* Empty basket view aligned nicely around 3/4 down the top header area */
+        /* Empty basket view aligned nicely near the top */
         .cart-empty-state {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding-top: 140px; /* Positions it nicely around the upper portion */
-            color: #52525b;
+            padding-top: 130px;
+            color: #3f3f46;
             gap: 12px;
         }
         .cart-empty-state svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2;
+            stroke-width: 2.2; /* Slightly more bold */
             stroke-linecap: round;
             stroke-linejoin: round;
             margin-bottom: 4px;
         }
         .cart-empty-text {
             font-size: 14px;
-            color: #52525b;
-            font-weight: 400;
+            color: #27272a;
+            font-weight: 500; /* Slightly more bolded text */
         }
         .cart-overlay {
             position: fixed;
@@ -121,7 +128,7 @@
     `;
     document.head.appendChild(style);
 
-    // 3. Inject HTML Structure with exact layout elements matching your layout specifications
+    // 3. Inject HTML Structure
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="cart-overlay" id="cartOverlay"></div>
