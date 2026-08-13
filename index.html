@@ -99,7 +99,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #ffffff; /* Changed from border-color to white to remove faint grey line */
             transition: top 0.3s ease;
         }
 
@@ -415,7 +415,7 @@
         .ticker-item {
             color: #ffffff;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 700; /* Made just a bit bolder as requested for upload 4 */
             letter-spacing: 1.5px;
             text-transform: uppercase;
             white-space: nowrap;
@@ -853,34 +853,6 @@
             .founder-story-text {
                 text-align: left;
             }
-        }
-
-        /* Features Section */
-        .features {
-            background: #f8fafc;
-            padding: 5rem 5%;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .feature-item h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .feature-item p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -1545,7 +1517,7 @@
     </div>
 
     <section class="hero">
-        <h1>HYDRATE LIVE FULL</h1>
+        <h1>LIVE LIFE REFILLED</h1>
         <a href="#shop" class="btn-primary">SHOP SERIES 01 FLOW</a>
 
         <div class="ticker-bar">
@@ -1903,23 +1875,6 @@
                 <div class="founder-img-wrapper">
                     <img src="5BD93BCB-F18D-441C-AA0E-020CAF045FA4.png" alt="Michael - Founder of Fountain Bottles">
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <div class="features-grid">
-            <div class="feature-item">
-                <h3>Vacuum Insulated</h3>
-                <p>Double-wall stainless steel design locks in temperature and prevents exterior condensation.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Leak-Proof Lid</h3>
-                <p>Precision-engineered threading ensures absolute spill protection on the move.</p>
-            </div>
-            <div class="feature-item">
-                <h3>BPA Free</h3>
-                <p>Built using food-grade 18/8 stainless steel that doesn't retain flavors or chemicals.</p>
             </div>
         </div>
     </section>
