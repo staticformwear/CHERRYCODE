@@ -5,6 +5,10 @@ exports.handler = async function(event, context) {
         console.error('Missing PRINTFUL_API_KEY environment variable.');
         return {
             statusCode: 500,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ error: 'Missing PRINTFUL_API_KEY environment variable in Netlify.' })
         };
     }
@@ -26,6 +30,10 @@ exports.handler = async function(event, context) {
             console.error('Printful API Error Response:', data);
             return {
                 statusCode: response.status,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({ error: data.error?.message || 'Printful API returned an error' })
             };
         }
@@ -42,6 +50,10 @@ exports.handler = async function(event, context) {
         console.error('Server error fetching from Printful:', error);
         return {
             statusCode: 500,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ error: error.message })
         };
     }
