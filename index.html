@@ -1,3 +1,6 @@
+To make the two side-by-side promo images wider while keeping the exact same 30px gap between them, you only need to modify the .dual-promos-grid and .dual-promo-card CSS rules.
+By changing the container layout from flex to CSS Grid using grid-template-columns: 1fr 1fr, both image cards will expand smoothly to fill the available space evenly while maintaining your precise 30\text{px} white gap constraint.
+Here is your complete, updated index.html code:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -437,22 +440,23 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Dual Promos Section (Matching Upload 1 Layout & Dimensions) */
+        /* Dual Promos Section (Expanded Widths with Exact 30px Gap) */
         .dual-promos-section {
-            padding: 4rem 5% 2rem 5%;
-            max-width: 1600px;
+            padding: 4rem 2% 2rem 2%; /* Widened outer container margins */
+            max-width: 1800px;        /* Increased max-width for broader layout */
             margin: 0 auto;
             background-color: var(--bg-color);
         }
 
         .dual-promos-grid {
-            display: flex;
-            gap: 30px; /* Exact gap matching Upload 1 category slider */
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Takes full expanded width equally */
+            gap: 30px;                      /* EXACT SAME 30px gap maintained */
             width: 100%;
         }
 
         .dual-promo-card {
-            flex: 0 0 calc((100% - 30px) / 2); /* Exactly 2 cards side by side with a 30px gap */
+            width: 100%;
             background-color: transparent;
             display: flex;
             flex-direction: column;
@@ -462,7 +466,7 @@
 
         .dual-promo-image-box {
             width: 100%;
-            height: 480px; /* Matching the visual height proportion of Upload 1 */
+            height: 480px; 
             background-color: var(--card-bg);
             border-radius: 4px;
             overflow: hidden;
@@ -486,11 +490,10 @@
             text-transform: uppercase;
         }
 
-        /* Typography matching requirements */
         .dual-promo-title-1 {
             margin-top: 1rem;
             font-size: 0.9rem;
-            font-weight: 760; /* Slightly bolder than standard category text */
+            font-weight: 760; 
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-color);
@@ -499,7 +502,7 @@
         .dual-promo-desc-1 {
             margin-top: 0.35rem;
             font-size: 0.85rem;
-            font-weight: 400; /* Smaller text, not bolded */
+            font-weight: 400; 
             color: var(--text-muted);
             letter-spacing: 0.2px;
         }
@@ -507,7 +510,7 @@
         .dual-promo-title-2 {
             margin-top: 1rem;
             font-size: 0.9rem;
-            font-weight: 760; /* Slightly bolder than standard category text */
+            font-weight: 760; 
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-color);
@@ -516,7 +519,7 @@
         .dual-promo-subtitle-2 {
             margin-top: 0.35rem;
             font-size: 0.9rem;
-            font-weight: 760; /* Bolded the same way as GIFT CARD text */
+            font-weight: 760; 
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-color);
@@ -524,10 +527,7 @@
 
         @media (max-width: 768px) {
             .dual-promos-grid {
-                flex-direction: column;
-            }
-            .dual-promo-card {
-                flex: 0 0 100%;
+                grid-template-columns: 1fr;
             }
             .dual-promo-image-box {
                 height: 380px;
@@ -563,14 +563,14 @@
             gap: 30px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
             padding-bottom: 10px;
             width: 100%;
         }
 
         .category-slider::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none; 
         }
 
         .category-card {
@@ -612,7 +612,7 @@
         .category-name {
             margin-top: 1rem;
             font-size: 0.85rem;
-            font-weight: 750; /* Made slightly bolder */
+            font-weight: 750; 
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-color);
@@ -640,7 +640,7 @@
         .category-arrow-btn.left-arrow {
             right: auto;
             left: -20px;
-            display: none; /* Hidden initially until scrolled */
+            display: none; 
         }
 
         .category-arrow-btn:hover {
@@ -672,11 +672,11 @@
                 min-width: 260px;
             }
             .category-arrow-btn {
-                display: none !important; /* Hide arrows on mobile touch swipe */
+                display: none !important; 
             }
         }
 
-        /* Products Showcase Section (Integrated Dynamic Grid) */
+        /* Products Showcase Section */
         .products {
             padding: 4rem 5% 3rem 5%;
             max-width: 1600px;
@@ -1554,7 +1554,7 @@
         </div>
     </section>
 
-    <!-- DUAL PROMOS SECTION (EXACT DIMENSIONS & GAP MATCHING UPLOAD 1) -->
+    <!-- DUAL PROMOS SECTION (WIDER IMAGES & 30px GAP) -->
     <section class="dual-promos-section">
         <div class="dual-promos-grid">
             <!-- First Image Card -->
@@ -2066,3 +2066,4 @@
     <script src="cart-drawer.js"></script>
 </body>
 </html>
+
