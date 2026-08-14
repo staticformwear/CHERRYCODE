@@ -3,8 +3,8 @@ async function loadPrintfulProducts() {
     grid.innerHTML = '<p style="text-align:center; width:100%; font-weight:600; padding:40px;">Loading products from Printful...</p>';
 
     try {
-        // Calls your secure Netlify backend function (updated to get-products)
-        const response = await fetch('/.netlify/functions/get-products');
+        // Calls your secure Netlify backend function using your full Netlify project URL
+        const response = await fetch('https://fascinating-fenglisu-56c731.netlify.app/.netlify/functions/get-products');
         const data = await response.json();
 
         // Printful returns product array under data.result
@@ -178,7 +178,7 @@ styleTag.innerHTML = `
     .product-price {
         font-size: 13px;
         font-weight: 800;
-        color: #111;
+        color: #111;umers
     }
 
     .chappy-buy-btn {
