@@ -80,7 +80,8 @@ async function loadPrintfulProducts() {
         }
     } catch (error) {
         console.error('Error loading Printful products:', error);
-        grid.innerHTML = '<p style="text-align:center; width:100%; color:red;">Failed to load live products from Printful.</p>';
+        // This will print the exact error right on your webpage screen:
+        grid.innerHTML = `<p style="text-align:center; width:100%; color:red; padding:20px;">Error: ${error.message || error}</p>`;
     }
 }
 
@@ -178,7 +179,7 @@ styleTag.innerHTML = `
     .product-price {
         font-size: 13px;
         font-weight: 800;
-        color: #111;umers
+        color: #111;
     }
 
     .chappy-buy-btn {
