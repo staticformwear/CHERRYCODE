@@ -92,10 +92,10 @@ const styleTag = document.createElement('style');
 styleTag.innerHTML = `
     #product-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
         width: 100%;
-        max-width: 1600px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 20px;
     }
@@ -111,7 +111,7 @@ styleTag.innerHTML = `
         background: #f4f4f4;
         border: none;
         border-radius: 0px;
-        height: 280px; 
+        height: 380px; 
         width: 100%;
         display: flex;
         align-items: center;
@@ -120,7 +120,7 @@ styleTag.innerHTML = `
     }
 
     .product-image-container img {
-        max-height: 82%;
+        max-height: 85%;
         object-fit: contain;
     }
 
@@ -139,7 +139,7 @@ styleTag.innerHTML = `
     }
 
     .product-title {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 900;
         letter-spacing: 0.5px;
         margin: 0 0 4px 0;
@@ -148,7 +148,7 @@ styleTag.innerHTML = `
     }
 
     .product-subtitle {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         color: #777;
         margin: 0 0 10px 0;
@@ -177,7 +177,7 @@ styleTag.innerHTML = `
     }
 
     .product-price {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 800;
         color: #111;
     }
@@ -185,12 +185,12 @@ styleTag.innerHTML = `
     .chappy-buy-btn {
         margin-top: 12px;
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         background: #000;
         color: #fff;
         border: none;
         font-weight: 700;
-        font-size: 11px;
+        font-size: 12px;
         cursor: pointer;
         letter-spacing: 0.5px;
     }
