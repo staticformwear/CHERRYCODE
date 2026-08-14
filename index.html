@@ -1530,7 +1530,13 @@
         </div>
     </section>
 
-    <!-- SHOP BY CATEGORY SECTION -->
+    <section class="products" id="shop">
+        <div id="product-grid" class="product-grid">
+            Loading products...
+        </div>
+    </section>
+
+    <!-- SHOP BY CATEGORY SECTION MOVED JUST ABOVE REVIEWS -->
     <section class="category-section">
         <h2 class="category-section-title">SHOP BY CATEGORY</h2>
         <div class="category-carousel-wrapper">
@@ -1575,13 +1581,7 @@
         </div>
     </section>
 
-    <section class="products" id="shop">
-        <div id="product-grid" class="product-grid">
-            Loading products...
-        </div>
-    </section>
-
-    <!-- REVIEWS SECTION MOVED HERE (ABOVE FOUNDER SECTION) -->
+    <!-- REVIEWS SECTION -->
     <section class="reviews-section">
         <div class="reviews-container" id="reviewsContainer">
             <div class="review-slide active">
@@ -1823,16 +1823,25 @@
 
     <script src="app.js"></script>
     <script>
-        // Category Carousel Scroll Control Script
+        // Category Carousel Scroll Control Script (with End-Of-Scroll Arrow Hiding)
         const categorySlider = document.getElementById('categorySlider');
         const categoryLeftBtn = document.getElementById('categoryLeftBtn');
         const categoryRightBtn = document.getElementById('categoryRightBtn');
 
         const updateArrowVisibility = () => {
+            // Left arrow visibility
             if (categorySlider.scrollLeft > 20) {
                 categoryLeftBtn.style.display = 'flex';
             } else {
                 categoryLeftBtn.style.display = 'none';
+            }
+
+            // Right arrow visibility (hide if reached the end/last product)
+            const maxScrollLeft = categorySlider.scrollWidth - categorySlider.clientWidth - 10;
+            if (categorySlider.scrollLeft >= maxScrollLeft) {
+                categoryRightBtn.style.display = 'none';
+            } else {
+                categoryRightBtn.style.display = 'flex';
             }
         };
 
@@ -1846,6 +1855,7 @@
 
         categorySlider.addEventListener('scroll', updateArrowVisibility);
         window.addEventListener('load', updateArrowVisibility);
+        window.addEventListener('resize', updateArrowVisibility);
 
         // Footer Email Signup Submission Handler
         const footerSignupForm = document.getElementById('footerSignupForm');
@@ -2085,7 +2095,7 @@
         adjustPolicyText();
     </script>
 
-    <div id="snipcart" data-api-key="ZTQzMDM3MDEtZThjYi00NTAzLWJhMTQtNDMxODFjZTI5NDFlNjM5MjIwOTQ1NDA1MzEzNjYw" data-config-modal-style="side" hidden></div>
+    <div id="snipcart" data-api-key="ZTQzMDM3MDEtZThjYi00N00zLWJhMTQtNDMxODFjZTI5NDFlNjM5MjIwOTQ1NDA1MzEzNjYw" data-config-modal-style="side" hidden></div>
     <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
     <script src="cart-drawer.js"></script>
 </body>
