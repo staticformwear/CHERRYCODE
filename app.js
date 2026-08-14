@@ -70,7 +70,7 @@ async function loadPrintfulProducts() {
                         buyButton.setAttribute('data-item-id', newUniqueId);
                         buyButton.setAttribute('data-item-price', selectedPrice);
                         buyButton.setAttribute('data-item-description', `${product.name} (${selectedSize})`);
-                        buyButton.setAttribute('data-item-name', `${product.name} - ${selectedSize}`);
+                        buyButton.setAttribute('data-item-name`, `${product.name} - ${selectedSize}`);
                     });
                 });
             });
@@ -92,12 +92,12 @@ const styleTag = document.createElement('style');
 styleTag.innerHTML = `
     #product-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 40px;
     }
 
     .product-card {
@@ -111,7 +111,7 @@ styleTag.innerHTML = `
         background: #f4f4f4;
         border: none;
         border-radius: 0px;
-        height: 380px; 
+        height: 520px; 
         width: 100%;
         display: flex;
         align-items: center;
@@ -120,7 +120,7 @@ styleTag.innerHTML = `
     }
 
     .product-image-container img {
-        max-height: 85%;
+        max-height: 88%;
         object-fit: contain;
     }
 
@@ -128,7 +128,7 @@ styleTag.innerHTML = `
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-top: 14px;
+        margin-top: 18px;
     }
 
     .product-text-group {
@@ -139,29 +139,29 @@ styleTag.innerHTML = `
     }
 
     .product-title {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 900;
         letter-spacing: 0.5px;
-        margin: 0 0 4px 0;
+        margin: 0 0 6px 0;
         color: #111;
         line-height: 1.2;
     }
 
     .product-subtitle {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
         color: #777;
-        margin: 0 0 10px 0;
+        margin: 0 0 12px 0;
         letter-spacing: 0.3px;
     }
 
     .product-sizes-container {
         display: flex;
-        gap: 14px;
+        gap: 16px;
     }
 
     .size-option {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         color: #555;
         cursor: pointer;
@@ -177,20 +177,20 @@ styleTag.innerHTML = `
     }
 
     .product-price {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 800;
         color: #111;
     }
 
     .chappy-buy-btn {
-        margin-top: 12px;
+        margin-top: 14px;
         width: 100%;
-        padding: 12px;
+        padding: 14px;
         background: #000;
         color: #fff;
         border: none;
         font-weight: 700;
-        font-size: 12px;
+        font-size: 13px;
         cursor: pointer;
         letter-spacing: 0.5px;
     }
