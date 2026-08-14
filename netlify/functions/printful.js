@@ -9,10 +9,13 @@ exports.handler = async function(event, context) {
     }
 
     try {
+        // Fetching store sync products from Printful
         const response = await fetch('https://api.printful.com/store/products', {
             headers: {
                 'Authorization': `Bearer ${PRINTFUL_API_KEY}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // If you have a specific Printful store ID, you can uncomment and add it below:
+                // 'X-PF-Store-Id': 'YOUR_STORE_ID_HERE'
             }
         });
 
@@ -21,7 +24,7 @@ exports.handler = async function(event, context) {
         if (!response.ok) {
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ error: data.error || 'Printful API returned an error' })
+                body: JSON.stringify({ error: data.error?.message || 'Printful API returned an error' })
             };
         }
 
