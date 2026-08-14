@@ -5,7 +5,7 @@ const products = [
         name: "Series 01 Flow - Obsidian Black",
         price: 25.00,
         url: "index.html",
-        image: "IMG_0410.png", // Replace with your actual product image path
+        image: "IMG_0410.png",
         description: "Keeps drinks cold up to three days."
     },
     {
@@ -13,7 +13,7 @@ const products = [
         name: "Series 01 Flow - Sage Green",
         price: 25.00,
         url: "index.html",
-        image: "IMG_0410.png", // Replace with your actual product image path
+        image: "IMG_0410.png",
         description: "Keeps drinks cold up to three days."
     }
 ];
@@ -46,5 +46,4 @@ function loadProducts() {
     }
 }
 
-// Run the function when the page loads
 loadProducts();
