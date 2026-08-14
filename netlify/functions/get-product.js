@@ -2,6 +2,7 @@ exports.handler = async function(event, context) {
     const PRINTFUL_API_KEY = process.env.PRINTFUL_API_KEY;
 
     if (!PRINTFUL_API_KEY) {
+        console.error('Missing PRINTFUL_API_KEY environment variable.');
         return {
             statusCode: 500,
             body: JSON.stringify({ error: 'Missing PRINTFUL_API_KEY environment variable in Netlify.' })
@@ -9,19 +10,20 @@ exports.handler = async function(event, context) {
     }
 
     try {
-        // Fetching store sync products from Printful
+        // Fetching store sync products from Printful API
         const response = await fetch('https://api.printful.com/store/products', {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${PRINTFUL_API_KEY}`,
                 'Content-Type': 'application/json',
-                // If you have a specific Printful store ID, you can uncomment and add it below:
-                // 'X-PF-Store-Id': 'YOUR_STORE_ID_HERE'
+                'User-Agent': 'Mozilla/5.0'
             }
         });
 
         const data = await response.json();
 
         if (!response.ok) {
+            console.error('Printful API Error Response:', data);
             return {
                 statusCode: response.status,
                 body: JSON.stringify({ error: data.error?.message || 'Printful API returned an error' })
@@ -37,6 +39,7 @@ exports.handler = async function(event, context) {
             body: JSON.stringify(data)
         };
     } catch (error) {
+        console.error('Server error fetching from Printful:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: error.message })
