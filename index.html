@@ -41,7 +41,7 @@
         }
 
         b, strong, [style*="font-weight: 600"], [style*="font-weight:600"], [style*="font-weight: 700"], [style*="font-weight:700"], [style*="font-weight: 800"], [style*="font-weight:800"],
-        .product-title, .product-price, .hero h1, .review-title, .review-author, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn, .category-section-title {
+        .product-title, .product-price, .hero h1, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn, .category-section-title {
             font-weight: calc(larger + 35) !important;
         }
 
@@ -609,85 +609,6 @@
             height: auto; 
             border-radius: 4px; 
         }
-
-        /* Reviews Slider Section */
-        .reviews-section {
-            background-color: #f1f5f9;
-            padding: 5rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .reviews-container {
-            position: relative;
-            max-width: 700px;
-            width: 100%;
-            min-height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .review-slide {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-            text-align: center;
-            padding: 0 1.5rem;
-        }
-
-        .review-slide.active {
-            opacity: 1;
-            visibility: visible;
-            position: relative;
-        }
-
-        .review-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #000000;
-            margin-bottom: 1rem;
-        }
-
-        .review-text {
-            font-size: 1.1rem;
-            color: #000000;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-
-        .review-author {
-            font-size: 1rem;
-            font-weight: 500;
-            font-style: italic;
-            color: #000000;
-        }
-
-        .review-dots {
-            display: flex;
-            gap: 10px;
-            margin-top: 2.5rem;
-            justify-content: center;
-        }
-
-        .review-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid #000000;
-            background: transparent;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            padding: 0;
-        }
-
-        .review-dot.active { background: #000000; }
 
         /* Meet the Founder Section Styles */
         .founder-section {
@@ -1536,7 +1457,7 @@
         </div>
     </section>
 
-    <!-- SHOP BY CATEGORY SECTION MOVED JUST ABOVE REVIEWS -->
+    <!-- SHOP BY CATEGORY SECTION -->
     <section class="category-section">
         <h2 class="category-section-title">SHOP BY CATEGORY</h2>
         <div class="category-carousel-wrapper">
@@ -1578,45 +1499,6 @@
             <button class="category-arrow-btn right-arrow" id="categoryRightBtn" aria-label="Scroll Right">
                 <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
-        </div>
-    </section>
-
-    <!-- REVIEWS SECTION -->
-    <section class="reviews-section">
-        <div class="reviews-container" id="reviewsContainer">
-            <div class="review-slide active">
-                <div class="review-title">Brilliant Product!!</div>
-                <div class="review-text">Super fast delivery and absolutely love the sage green colour. Keeps my water cold all day long!</div>
-                <div class="review-author">Jacob R.</div>
-            </div>
-            <div class="review-slide">
-                <div class="review-title">Excellent product and service!!</div>
-                <div class="review-text">Speedy delivery and delighted with the two bottles I purchased.</div>
-                <div class="review-author">Vanessa W.</div>
-            </div>
-            <div class="review-slide">
-                <div class="review-title">Love it!!!</div>
-                <div class="review-text">Fab colour, love it. Can't wait to get another one!</div>
-                <div class="review-author">Megan M.</div>
-            </div>
-            <div class="review-slide">
-                <div class="review-title">Great Product</div>
-                <div class="review-text">Works exactly as expected, keeps drinks cold all day! Would recommend.</div>
-                <div class="review-author">Mitchell F.</div>
-            </div>
-            <div class="review-slide">
-                <div class="review-title">Amazing Quality!</div>
-                <div class="review-text">Quick shipping and the obsidian black finish looks sleek. Worth every penny.</div>
-                <div class="review-author">David F.</div>
-            </div>
-        </div>
-
-        <div class="review-dots" id="reviewDots">
-            <button class="review-dot active" data-index="0" aria-label="Review 1"></button>
-            <button class="review-dot" data-index="1" aria-label="Review 2"></button>
-            <button class="review-dot" data-index="2" aria-label="Review 3"></button>
-            <button class="review-dot" data-index="3" aria-label="Review 4"></button>
-            <button class="review-dot" data-index="4" aria-label="Review 5"></button>
         </div>
     </section>
 
@@ -1798,9 +1680,6 @@
                 [ ADD IMAGE HERE ]
             </div>
             <div class="popup-right-half">
-                <div class="popup-logo-container">
-                    <img src="IMG_0410.png" alt="Fountain Logo" class="popup-logo-img">
-                </div>
                 <h2 class="popup-title">GET 15% OFF<br>FIRST ORDER</h2>
                 <div class="popup-subtitle-code">BY USING CODE FOUNTAIN10</div>
                 <p class="popup-desc">GAIN ACCESS TO JOIN OUR COMMUNITY OF HYDRATION ENTHUSIASTS UNLOCKING ELITE SAVINGS ON YOUR FIRST PREMIUM BOTTLE</p>
@@ -1961,39 +1840,6 @@
                 readStoryBtn.textContent = 'READ OUR FOUNDER STORY';
             }
         });
-
-        // Reviews Auto-Slider Functionality
-        const slides = document.querySelectorAll('.review-slide');
-        const dots = document.querySelectorAll('.review-dot');
-        let currentSlide = 0;
-        let slideInterval;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                clearInterval(slideInterval);
-                startSlider();
-            });
-        });
-
-        startSlider();
 
         // Footer Location Dropdown Logic
         const locationDropdownWrapper = document.getElementById('locationDropdownWrapper');
