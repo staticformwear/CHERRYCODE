@@ -2,7 +2,8 @@
 const products = [
     {
         id: "cherry-bottle-01",
-        name: "Series 01 Flow - Obsidian Black",
+        name: "SERIES 01 FLOW - OBSIDIAN BLACK",
+        subtitle: "SERIES 01 FLOW BOTTLE",
         price: 25.00,
         url: "index.html",
         image: "IMG_0410.png",
@@ -10,7 +11,8 @@ const products = [
     },
     {
         id: "cherry-bottle-02",
-        name: "Series 01 Flow - Sage Green",
+        name: "SERIES 01 FLOW - SAGE GREEN",
+        subtitle: "SERIES 01 FLOW BOTTLE",
         price: 25.00,
         url: "index.html",
         image: "IMG_0410.png",
@@ -27,10 +29,17 @@ function loadProducts() {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-price">£${product.price.toFixed(2)}</p>
-                <button class="snipcart-add-item"
+                <div class="product-image-container">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <div class="product-text-group">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-subtitle">${product.subtitle}</p>
+                    </div>
+                    <span class="product-price">£${product.price.toFixed(2)}</span>
+                </div>
+                <button class="snipcart-add-item chappy-buy-btn"
                     data-item-id="${product.id}"
                     data-item-price="${product.price}"
                     data-item-url="${product.url}"
