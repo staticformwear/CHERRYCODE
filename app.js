@@ -89,19 +89,15 @@ function loadProducts() {
 
             sizeOptions.forEach(option => {
                 option.addEventListener('click', (e) => {
-                    // Remove active underline from sibling options
                     sizeOptions.forEach(opt => opt.classList.remove('active'));
-                    // Add active underline to clicked option
                     e.target.classList.add('active');
 
                     const selectedSize = e.target.getAttribute('data-size');
                     const selectedPrice = parseFloat(e.target.getAttribute('data-price'));
                     const newUniqueId = `${product.id}-${selectedSize.toLowerCase()}`;
 
-                    // Update price display
                     priceSpan.textContent = `£${selectedPrice.toFixed(2)}`;
 
-                    // Update Snipcart attributes dynamically
                     buyButton.setAttribute('data-item-id', newUniqueId);
                     buyButton.setAttribute('data-item-price', selectedPrice);
                     buyButton.setAttribute('data-item-description', `${product.description} (${selectedSize})`);
@@ -123,10 +119,11 @@ styleTag.innerHTML = `
     #product-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
+        gap: 12px;
         width: 100%;
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
+        padding: 0 20px;
     }
 
     .product-card {
@@ -136,12 +133,12 @@ styleTag.innerHTML = `
         flex-direction: column;
     }
 
-    /* Wider aspect ratio, shorter height matching Chilly's style */
+    /* Wider cards, shorter height matching Chilly's exact layout */
     .product-image-container {
         background: #f4f4f4;
         border: none;
         border-radius: 0px;
-        height: 340px; 
+        height: 280px; 
         width: 100%;
         display: flex;
         align-items: center;
@@ -150,7 +147,7 @@ styleTag.innerHTML = `
     }
 
     .product-image-container img {
-        max-height: 85%;
+        max-height: 82%;
         object-fit: contain;
     }
 
@@ -158,28 +155,36 @@ styleTag.innerHTML = `
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-top: 12px;
+        margin-top: 14px;
+    }
+
+    .product-text-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .product-title {
         font-size: 13px;
-        font-weight: 800;
+        font-weight: 900;
         letter-spacing: 0.5px;
-        margin: 0 0 3px 0;
+        margin: 0 0 4px 0;
         color: #111;
+        line-height: 1.2;
     }
 
     .product-subtitle {
         font-size: 11px;
         font-weight: 600;
         color: #777;
-        margin: 0 0 8px 0;
+        margin: 0 0 10px 0;
         letter-spacing: 0.3px;
     }
 
     .product-sizes-container {
         display: flex;
-        gap: 12px;
+        gap: 14px;
     }
 
     .size-option {
@@ -196,12 +201,12 @@ styleTag.innerHTML = `
         color: #000;
         text-decoration: underline;
         text-underline-offset: 3px;
-        font-weight: 700;
+        font-weight: 800;
     }
 
     .product-price {
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 800;
         color: #111;
     }
 
@@ -212,8 +217,8 @@ styleTag.innerHTML = `
         background: #000;
         color: #fff;
         border: none;
-        font-weight: 600;
-        font-size: 12px;
+        font-weight: 700;
+        font-size: 11px;
         cursor: pointer;
         letter-spacing: 0.5px;
     }
