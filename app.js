@@ -3,8 +3,8 @@ async function loadPrintfulProducts() {
     grid.innerHTML = '<p style="text-align:center; width:100%; font-weight:600; padding:40px;">Loading products from Printful...</p>';
 
     try {
-        // Calls your secure Netlify backend function
-        const response = await fetch('/.netlify/functions/printful');
+        // Calls your secure Netlify backend function (updated to get-products)
+        const response = await fetch('/.netlify/functions/get-products');
         const data = await response.json();
 
         // Printful returns product array under data.result
