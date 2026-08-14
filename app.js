@@ -1,35 +1,50 @@
-async function loadProducts() {
-    try {
-        // Calls your serverless function endpoint
-        const response = await fetch('/.netlify/functions/printful');
-        const data = await response.json();
-        
-        const grid = document.getElementById('product-grid');
-        grid.innerHTML = '';
+// Sample product data for your water bottles
+const products = [
+    {
+        id: "cherry-bottle-01",
+        name: "Series 01 Flow - Obsidian Black",
+        price: 25.00,
+        url: "index.html",
+        image: "IMG_0410.png", // Replace with your actual product image path
+        description: "Keeps drinks cold up to three days."
+    },
+    {
+        id: "cherry-bottle-02",
+        name: "Series 01 Flow - Sage Green",
+        price: 25.00,
+        url: "index.html",
+        image: "IMG_0410.png", // Replace with your actual product image path
+        description: "Keeps drinks cold up to three days."
+    }
+];
 
-        if (data.result && data.result.length > 0) {
-            data.result.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <img src="${product.thumbnail_url}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <button onclick="buyProduct(${product.id})">Buy Now</button>
-                `;
-                grid.appendChild(card);
-            });
-        } else {
-            grid.innerHTML = '<p>No products found in your Printful store yet. Add some water bottles to your "Cherry" store dashboard first!</p>';
-        }
-    } catch (error) {
-        console.error('Error loading products:', error);
-        document.getElementById('product-grid').innerHTML = '<p>Failed to load products.</p>';
+function loadProducts() {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '';
+
+    if (products.length > 0) {
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-price">£${product.price.toFixed(2)}</p>
+                <button class="snipcart-add-item"
+                    data-item-id="${product.id}"
+                    data-item-price="${product.price}"
+                    data-item-url="${product.url}"
+                    data-item-description="${product.description}"
+                    data-item-name="${product.name}">
+                    Add to Cart
+                </button>
+            `;
+            grid.appendChild(card);
+        });
+    } else {
+        grid.innerHTML = '<p>No products found.</p>';
     }
 }
 
-function buyProduct(productId) {
-    alert(`Checkout flow triggered for product ID: ${productId}`);
-    // Here you would collect shipping details and send a POST request to your backend to create the order.
-}
-
+// Run the function when the page loads
 loadProducts();
