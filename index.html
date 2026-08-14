@@ -41,7 +41,7 @@
         }
 
         b, strong, [style*="font-weight: 600"], [style*="font-weight:600"], [style*="font-weight: 700"], [style*="font-weight:700"], [style*="font-weight: 800"], [style*="font-weight:800"],
-        .product-title, .product-price, .hero h1, .review-title, .review-author, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn {
+        .product-title, .product-price, .hero h1, .review-title, .review-author, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn, .category-section-title {
             font-weight: calc(larger + 35) !important;
         }
 
@@ -437,9 +437,151 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* Shop By Category Section Styles */
+        .category-section {
+            padding: 4rem 5% 2rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .category-section-title {
+            font-size: 1.15rem;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .category-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .category-slider::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .category-card {
+            flex: 0 0 calc((100% - 90px) / 3.2);
+            min-width: 320px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .category-image-box {
+            width: 100%;
+            height: 440px;
+            background-color: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .category-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-placeholder-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .category-name {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-color);
+        }
+
+        .category-arrow-btn {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-70%);
+            width: 48px;
+            height: 48px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .category-arrow-btn.left-arrow {
+            right: auto;
+            left: -20px;
+            display: none; /* Hidden initially until scrolled */
+        }
+
+        .category-arrow-btn:hover {
+            background-color: #f8fafc;
+            transform: translateY(-70%) scale(1.05);
+        }
+
+        .category-arrow-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 1024px) {
+            .category-card {
+                flex: 0 0 calc((100% - 30px) / 2);
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .category-card {
+                flex: 0 0 85%;
+                min-width: 260px;
+            }
+            .category-arrow-btn {
+                display: none !important; /* Hide arrows on mobile touch swipe */
+            }
+        }
+
         /* Products Showcase Section (Integrated Dynamic Grid) */
         .products {
-            padding: 6rem 5% 3rem 5%;
+            padding: 4rem 5% 3rem 5%;
             max-width: 1600px;
             margin: 0 auto;
             background-color: var(--bg-color);
@@ -1388,6 +1530,51 @@
         </div>
     </section>
 
+    <!-- SHOP BY CATEGORY SECTION -->
+    <section class="category-section">
+        <h2 class="category-section-title">SHOP BY CATEGORY</h2>
+        <div class="category-carousel-wrapper">
+            <button class="category-arrow-btn left-arrow" id="categoryLeftBtn" aria-label="Scroll Left">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            
+            <div class="category-slider" id="categorySlider">
+                <!-- Card 1 -->
+                <a href="#" class="category-card">
+                    <div class="category-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <span class="category-name">WATERBOTTLES</span>
+                </a>
+                <!-- Card 2 -->
+                <a href="#" class="category-card">
+                    <div class="category-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <span class="category-name">CUPS</span>
+                </a>
+                <!-- Card 3 -->
+                <a href="#" class="category-card">
+                    <div class="category-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <span class="category-name">FOOD</span>
+                </a>
+                <!-- Card 4 -->
+                <a href="#" class="category-card">
+                    <div class="category-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <span class="category-name">ACCESSORIES</span>
+                </a>
+            </div>
+
+            <button class="category-arrow-btn right-arrow" id="categoryRightBtn" aria-label="Scroll Right">
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </section>
+
     <section class="products" id="shop">
         <div id="product-grid" class="product-grid">
             Loading products...
@@ -1635,6 +1822,30 @@
 
     <script src="app.js"></script>
     <script>
+        // Category Carousel Scroll Control Script
+        const categorySlider = document.getElementById('categorySlider');
+        const categoryLeftBtn = document.getElementById('categoryLeftBtn');
+        const categoryRightBtn = document.getElementById('categoryRightBtn');
+
+        const updateArrowVisibility = () => {
+            if (categorySlider.scrollLeft > 20) {
+                categoryLeftBtn.style.display = 'flex';
+            } else {
+                categoryLeftBtn.style.display = 'none';
+            }
+        };
+
+        categoryRightBtn.addEventListener('click', () => {
+            categorySlider.scrollBy({ left: 350, behavior: 'smooth' });
+        });
+
+        categoryLeftBtn.addEventListener('click', () => {
+            categorySlider.scrollBy({ left: -350, behavior: 'smooth' });
+        });
+
+        categorySlider.addEventListener('scroll', updateArrowVisibility);
+        window.addEventListener('load', updateArrowVisibility);
+
         // Footer Email Signup Submission Handler
         const footerSignupForm = document.getElementById('footerSignupForm');
         const footerSuccessMsg = document.getElementById('footerSuccessMsg');
