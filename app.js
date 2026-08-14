@@ -1,117 +1,90 @@
-// Sample product data for your water bottles with size variations
-const products = [
-    {
-        id: "cherry-bottle-01",
-        name: "STAINLESS STEEL FLIP BOTTLE",
-        subtitle: "SERIES 3 FLIP BOTTLE",
-        prices: { "500ML": 40.00, "1L": 45.00 },
-        url: "index.html",
-        image: "IMG_0410.png",
-        description: "Keeps drinks cold up to three days."
-    },
-    {
-        id: "cherry-bottle-02",
-        name: "LIMELITE GREEN FLIP BOTTLE",
-        subtitle: "SERIES 3 FLIP BOTTLE",
-        prices: { "500ML": 40.00, "1L": 45.00 },
-        url: "index.html",
-        image: "IMG_0410.png",
-        description: "Keeps drinks cold up to three days."
-    },
-    {
-        id: "cherry-bottle-03",
-        name: "CARGO GREEN FLIP BOTTLE",
-        subtitle: "SERIES 3 FLIP BOTTLE",
-        prices: { "500ML": 40.00, "1L": 45.00 },
-        url: "index.html",
-        image: "IMG_0410.png",
-        description: "Keeps drinks cold up to three days."
-    },
-    {
-        id: "cherry-bottle-04",
-        name: "ASTRAL BLUE FLIP BOTTLE",
-        subtitle: "SERIES 3 FLIP BOTTLE",
-        prices: { "500ML": 40.00, "1L": 45.00 },
-        url: "index.html",
-        image: "IMG_0410.png",
-        description: "Keeps drinks cold up to three days."
-    }
-];
-
-function loadProducts() {
+async function loadPrintfulProducts() {
     const grid = document.getElementById('product-grid');
-    grid.innerHTML = '';
+    grid.innerHTML = '<p style="text-align:center; width:100%; font-weight:600; padding:40px;">Loading products from Printful...</p>';
 
-    if (products.length > 0) {
-        products.forEach((product, index) => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            
-            // Default to 500ML view
-            const defaultSize = "500ML";
-            const defaultPrice = product.prices[defaultSize];
-            const uniqueId = `${product.id}-${defaultSize.toLowerCase()}`;
+    try {
+        // Calls your secure Netlify backend function
+        const response = await fetch('/.netlify/functions/printful');
+        const data = await response.json();
 
-            card.innerHTML = `
-                <div class="product-image-container">
-                    <img src="${product.image}" alt="${product.name}">
-                </div>
-                <div class="product-info">
-                    <div class="product-text-group">
-                        <h3 class="product-title">${product.name}</h3>
-                        <p class="product-subtitle">${product.subtitle}</p>
-                        <div class="product-sizes-container">
-                            <span class="size-option active" data-size="500ML" data-price="${product.prices["500ML"]}" data-base-id="${product.id}">500ML</span>
-                            <span class="size-option" data-size="1L" data-price="${product.prices["1L"]}" data-base-id="${product.id}">1L</span>
-                        </div>
+        // Printful returns product array under data.result
+        const products = data.result || [];
+        grid.innerHTML = '';
+
+        if (products.length > 0) {
+            products.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                // Set default pricing and attributes based on Printful data
+                const defaultPrice = product.retail_price ? parseFloat(product.retail_price) : 40.00;
+                const defaultSize = "500ML"; 
+                const uniqueId = `printful-${product.id}-${defaultSize.toLowerCase()}`;
+
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.thumbnail_url || product.image}" alt="${product.name}">
                     </div>
-                    <span class="product-price" id="price-${index}">£${defaultPrice.toFixed(2)}</span>
-                </div>
-                <button class="snipcart-add-item chappy-buy-btn"
-                    id="btn-${index}"
-                    data-item-id="${uniqueId}"
-                    data-item-price="${defaultPrice}"
-                    data-item-url="${product.url}"
-                    data-item-description="${product.description} (${defaultSize})"
-                    data-item-name="${product.name} - ${defaultSize}">
-                    Add to Cart
-                </button>
-            `;
-            grid.appendChild(card);
-        });
+                    <div class="product-info">
+                        <div class="product-text-group">
+                            <h3 class="product-title">${product.name.toUpperCase()}</h3>
+                            <p class="product-subtitle">SERIES 3 FLIP BOTTLE</p>
+                            <div class="product-sizes-container">
+                                <span class="size-option active" data-size="500ML" data-price="${defaultPrice}">500ML</span>
+                                <span class="size-option" data-size="1L" data-price="${defaultPrice + 5}">1L</span>
+                            </div>
+                        </div>
+                        <span class="product-price" id="price-${index}">£${defaultPrice.toFixed(2)}</span>
+                    </div>
+                    <button class="snipcart-add-item chappy-buy-btn"
+                        id="btn-${index}"
+                        data-item-id="${uniqueId}"
+                        data-item-price="${defaultPrice}"
+                        data-item-url="index.html"
+                        data-item-description="${product.name} (${defaultSize})"
+                        data-item-name="${product.name} - ${defaultSize}">
+                        Add to Cart
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
 
-        // Add click behavior for size options with underline styling
-        document.querySelectorAll('.product-sizes-container').forEach((container, index) => {
-            const sizeOptions = container.querySelectorAll('.size-option');
-            const priceSpan = document.getElementById(`price-${index}`);
-            const buyButton = document.getElementById(`btn-${index}`);
-            const product = products[index];
+            // Handle interactive size switches
+            document.querySelectorAll('.product-sizes-container').forEach((container, index) => {
+                const sizeOptions = container.querySelectorAll('.size-option');
+                const priceSpan = document.getElementById(`price-${index}`);
+                const buyButton = document.getElementById(`btn-${index}`);
+                const product = products[index];
 
-            sizeOptions.forEach(option => {
-                option.addEventListener('click', (e) => {
-                    sizeOptions.forEach(opt => opt.classList.remove('active'));
-                    e.target.classList.add('active');
+                sizeOptions.forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        sizeOptions.forEach(opt => opt.classList.remove('active'));
+                        e.target.classList.add('active');
 
-                    const selectedSize = e.target.getAttribute('data-size');
-                    const selectedPrice = parseFloat(e.target.getAttribute('data-price'));
-                    const newUniqueId = `${product.id}-${selectedSize.toLowerCase()}`;
+                        const selectedSize = e.target.getAttribute('data-size');
+                        const selectedPrice = parseFloat(e.target.getAttribute('data-price'));
+                        const newUniqueId = `printful-${product.id}-${selectedSize.toLowerCase()}`;
 
-                    priceSpan.textContent = `£${selectedPrice.toFixed(2)}`;
+                        priceSpan.textContent = `£${selectedPrice.toFixed(2)}`;
 
-                    buyButton.setAttribute('data-item-id', newUniqueId);
-                    buyButton.setAttribute('data-item-price', selectedPrice);
-                    buyButton.setAttribute('data-item-description', `${product.description} (${selectedSize})`);
-                    buyButton.setAttribute('data-item-name', `${product.name} - ${selectedSize}`);
+                        buyButton.setAttribute('data-item-id', newUniqueId);
+                        buyButton.setAttribute('data-item-price', selectedPrice);
+                        buyButton.setAttribute('data-item-description', `${product.name} (${selectedSize})`);
+                        buyButton.setAttribute('data-item-name', `${product.name} - ${selectedSize}`);
+                    });
                 });
             });
-        });
 
-    } else {
-        grid.innerHTML = '<p>No products found.</p>';
+        } else {
+            grid.innerHTML = '<p style="text-align:center; width:100%;">No products found in your Printful store.</p>';
+        }
+    } catch (error) {
+        console.error('Error loading Printful products:', error);
+        grid.innerHTML = '<p style="text-align:center; width:100%; color:red;">Failed to load live products from Printful.</p>';
     }
 }
 
-loadProducts();
+loadPrintfulProducts();
 
 // --- CSS STYLING INJECTION ---
 const styleTag = document.createElement('style');
@@ -133,7 +106,6 @@ styleTag.innerHTML = `
         flex-direction: column;
     }
 
-    /* Wider cards, shorter height matching Chilly's exact layout */
     .product-image-container {
         background: #f4f4f4;
         border: none;
@@ -196,7 +168,6 @@ styleTag.innerHTML = `
         display: inline-block;
     }
 
-    /* Underline effect when selected */
     .size-option.active {
         color: #000;
         text-decoration: underline;
