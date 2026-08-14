@@ -1,44 +1,29 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
-  const token = process.env.PRINTFUL_API_TOKEN;
-  const headers = {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  };
+    const PRINTFUL_API_KEY = process.env.PRINTFUL_API_KEY;
 
-  // 1. Fetch products from Printful
-  if (event.httpMethod === 'GET') {
     try {
-      const response = await fetch('https://api.printful.com/store/products', { headers });
-      const data = await response.json();
-      return {
-        statusCode: 200,
-        body: JSON.stringify(data)
-      };
-    } catch (error) {
-      return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
-    }
-  }
+        const response = await fetch('https://api.printful.com/store/products', {
+            headers: {
+                'Authorization': `Bearer ${PRINTFUL_API_KEY}`
+            }
+        });
 
-  // 2. Submit an order to Printful
-  if (event.httpMethod === 'POST') {
-    try {
-      const orderData = JSON.parse(event.body);
-      const response = await fetch('https://api.printful.com/orders', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(orderData)
-      });
-      const data = await response.json();
-      return {
-        statusCode: 200,
-        body: JSON.stringify(data)
-      };
-    } catch (error) {
-      return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
-    }
-  }
+        const data = await response.json();
 
-  return { statusCode: 405, body: 'Method Not Allowed' };
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Failed to fetch products from Printful' })
+        };
+    }
 };
