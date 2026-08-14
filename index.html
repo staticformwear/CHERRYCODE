@@ -1635,6 +1635,40 @@
 
     <script src="app.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const productGrid = document.getElementById('product-grid');
+            if (!productGrid) return;
+
+            try {
+                const response = await fetch('/.netlify/functions/get-products');
+                const data = await response.json();
+
+                if (data && data.items && data.items.length > 0) {
+                    productGrid.innerHTML = '';
+                    data.items.forEach(product => {
+                        const card = document.createElement('div');
+                        card.className = 'product-card';
+                        card.innerHTML = `
+                            <img src="${product.thumbnail_url || product.image}" alt="${product.name}">
+                            <div class="product-title">${product.name}</div>
+                            <div class="product-price">£${product.price || '25.00'}</div>
+                            <button class="btn-primary snipcart-add-item" 
+                                data-item-id="${product.id}"
+                                data-item-price="${product.price || 25.00}"
+                                data-item-name="${product.name}"
+                                data-item-url="/">
+                                Add to Cart
+                            </button>
+                        `;
+                        productGrid.appendChild(card);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading live products:', error);
+            }
+        });
+    </script>
+    <script>
         // Footer Email Signup Submission Handler
         const footerSignupForm = document.getElementById('footerSignupForm');
         const footerSuccessMsg = document.getElementById('footerSuccessMsg');
