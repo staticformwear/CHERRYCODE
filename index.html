@@ -50,12 +50,12 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 85px;
+            padding-top: 75px;
             transition: padding-top 0.3s ease;
         }
 
         body.announcement-hidden {
-            padding-top: 55px;
+            padding-top: 45px;
         }
 
         /* Announcement Bar */
@@ -103,7 +103,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 5%;
+            padding: 0.25rem 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -128,7 +128,7 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             padding: 4px;
         }
 
@@ -138,6 +138,17 @@
             height: 2px;
             background-color: var(--text-color);
             transition: transform 0.3s ease;
+        }
+
+        /* 3-line hamburger for iPad and Desktop only */
+        .hamburger span:nth-child(3) {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .hamburger span:nth-child(3) {
+                display: block;
+            }
         }
 
         .search-icon-btn {
@@ -155,7 +166,7 @@
             height: 18px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2.2;
+            stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -170,10 +181,10 @@
         }
 
         .logo-img {
-            height: 60px;
+            height: 48px;
             width: auto;
             display: block;
-            transform: scale(1.785);
+            transform: scale(1.4);
             transform-origin: center;
         }
 
@@ -202,7 +213,7 @@
             height: 18px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2.2;
+            stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -343,7 +354,7 @@
 
         /* Hero Section */
         .hero {
-            height: calc(100vh - 85px);
+            height: calc(100vh - 75px);
             min-height: 600px;
             display: flex;
             flex-direction: column;
@@ -1441,8 +1452,8 @@
         .popup-dismiss:hover { opacity: 0.7; }
 
         @media (max-width: 768px) {
-            header { padding: 0.5rem 1rem; }
-            .logo-img { height: 48px; }
+            header { padding: 0.25rem 1rem; }
+            .logo-img { height: 38px; }
             .popup-modal {
                 flex-direction: column;
                 max-width: 90%;
@@ -1466,6 +1477,7 @@
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
                 <span></span>
                 <span></span>
+                <span></span>
             </button>
             <button class="search-icon-btn" aria-label="Search">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -1481,7 +1493,7 @@
                 <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </a>
             <button class="cart-icon-btn snipcart-checkout" aria-label="Cart">
-                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M6 6h12v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6z"></path><path d="M9 6V4a3 3 0 0 1 6 0v2"></path></svg>
                 <span class="cart-count snipcart-items-count">0</span>
             </button>
         </div>
@@ -2003,7 +2015,6 @@
                 option.classList.add('selected');
 
                 locationDropdownWrapper.classList.remove('active');
-                countryDropdownMenu.classList.remove('active');
             });
         });
 
