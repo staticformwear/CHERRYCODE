@@ -1461,7 +1461,7 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 380px;
+            width: 540px;
             max-width: calc(100vw - 40px);
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
@@ -1516,13 +1516,14 @@
             text-decoration: underline;
             text-underline-offset: 3px;
             cursor: pointer;
-            margin-top: -4px;
+            white-space: nowrap;
         }
 
         .cb-cookie-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 4px;
+            align-items: center;
+            width: 100%;
         }
 
         .cb-btn-accept {
@@ -1563,6 +1564,15 @@
             background-color: #f4f4f5;
         }
 
+        @media (min-width: 769px) {
+            .cb-cookie-buttons {
+                display: grid;
+                grid-template-columns: auto 1fr 1fr;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+
         @media (max-width: 768px) {
             header { padding: 0.25rem 1rem; }
             .logo-img { height: 42px; }
@@ -1581,6 +1591,16 @@
                 width: auto;
                 max-width: none;
             }
+            .cb-cookie-buttons {
+                flex-direction: column;
+            }
+            .cb-btn-accept, .cb-btn-decline {
+                width: 100%;
+            }
+            .cb-cookie-preferences-link {
+                margin-top: 4px;
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -1591,8 +1611,8 @@
         <p class="cb-cookie-text">
             We use cookies to improve your experience, analyze traffic, and personalize content. Learn more in our <a href="privacypolicy.html">Privacy Policy</a>.
         </p>
-        <button type="button" class="cb-cookie-preferences-link" id="cbManagePreferencesBtn">Manage Preferences</button>
         <div class="cb-cookie-buttons">
+            <button type="button" class="cb-cookie-preferences-link" id="cbManagePreferencesBtn">Manage Preferences</button>
             <button type="button" class="cb-btn-accept" id="cbAcceptBtn">Accept</button>
             <button type="button" class="cb-btn-decline" id="cbDeclineBtn">Decline</button>
         </div>
