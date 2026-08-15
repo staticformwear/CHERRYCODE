@@ -218,14 +218,11 @@
             stroke-linejoin: round;
         }
 
-        .cart-icon-btn svg {
-            width: 21px;
+        .cart-icon-img {
             height: 21px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .cart-count {
@@ -1503,7 +1500,7 @@
                 <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </a>
             <button class="cart-icon-btn snipcart-checkout" aria-label="Cart">
-                <svg viewBox="0 0 24 24"><path d="M6 6h12v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6z"></path><path d="M9 6V4a3 3 0 0 1 6 0v2"></path></svg>
+                <img src="upload2.png" alt="Cart" class="cart-icon-img">
                 <span class="cart-count snipcart-items-count">0</span>
             </button>
         </div>
