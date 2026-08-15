@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://cdn.snipcart.com">
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
 
-    <!-- Google Site Name Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1457,6 +1456,113 @@
 
         .popup-dismiss:hover { opacity: 0.7; }
 
+        /* Cole Buxton Style Cookie Consent Banner */
+        .cb-cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            z-index: 3000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-radius: 0px !important;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .cb-cookie-banner.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .cb-cookie-title {
+            font-size: 0.9rem;
+            font-weight: 900 !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #000000;
+            margin: 0;
+        }
+
+        .cb-cookie-text {
+            font-size: 0.8rem;
+            font-weight: 400 !important;
+            color: #52525b;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .cb-cookie-text a {
+            color: #000000;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 400 !important;
+        }
+
+        .cb-cookie-preferences-link {
+            background: none;
+            border: none;
+            padding: 0;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #000000;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            margin-top: -4px;
+        }
+
+        .cb-cookie-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .cb-btn-accept {
+            flex: 1;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 12px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 0px !important;
+            transition: background 0.2s ease;
+        }
+
+        .cb-btn-accept:hover {
+            background-color: #27272a;
+        }
+
+        .cb-btn-decline {
+            flex: 1;
+            background-color: transparent;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 12px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 0px !important;
+            transition: background 0.2s ease;
+        }
+
+        .cb-btn-decline:hover {
+            background-color: #f4f4f5;
+        }
+
         @media (max-width: 768px) {
             header { padding: 0.25rem 1rem; }
             .logo-img { height: 42px; }
@@ -1468,10 +1574,29 @@
             }
             .popup-left-half { height: 220px; flex: none; width: 100%; }
             .popup-right-half { padding: 1.5rem; flex: none; width: 100%; }
+            .cb-cookie-banner {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                max-width: none;
+            }
         }
     </style>
 </head>
 <body>
+
+    <div class="cb-cookie-banner" id="cbCookieBanner">
+        <h3 class="cb-cookie-title">COOKIE CONSENT</h3>
+        <p class="cb-cookie-text">
+            We use cookies to improve your experience, analyze traffic, and personalize content. Learn more in our <a href="privacypolicy.html">Privacy Policy</a>.
+        </p>
+        <button type="button" class="cb-cookie-preferences-link" id="cbManagePreferencesBtn">Manage Preferences</button>
+        <div class="cb-cookie-buttons">
+            <button type="button" class="cb-btn-accept" id="cbAcceptBtn">Accept</button>
+            <button type="button" class="cb-btn-decline" id="cbDeclineBtn">Decline</button>
+        </div>
+    </div>
 
     <div class="announcement-bar" id="announcementBar">
         15% OFF FIRST ORDER DISCOUNT
@@ -1572,7 +1697,6 @@
         </div>
     </section>
 
-    <!-- DUAL PROMOS SECTION -->
     <section class="dual-promos-section">
         <div class="dual-promos-grid">
             <a href="#" class="dual-promo-card">
@@ -1593,7 +1717,6 @@
         </div>
     </section>
 
-    <!-- SHOP BY CATEGORY SECTION -->
     <section class="category-section">
         <h2 class="category-section-title">SHOP BY CATEGORY</h2>
         <div class="category-carousel-wrapper">
@@ -1834,6 +1957,25 @@
 
     <script src="app.js"></script>
     <script>
+        // Cookie Consent Handler Script
+        const cbCookieBanner = document.getElementById('cbCookieBanner');
+        const cbAcceptBtn = document.getElementById('cbAcceptBtn');
+        const cbDeclineBtn = document.getElementById('cbDeclineBtn');
+        const cbManagePreferencesBtn = document.getElementById('cbManagePreferencesBtn');
+
+        cbAcceptBtn.addEventListener('click', () => {
+            cbCookieBanner.classList.add('hidden');
+        });
+
+        cbDeclineBtn.addEventListener('click', () => {
+            cbCookieBanner.classList.add('hidden');
+        });
+
+        cbManagePreferencesBtn.addEventListener('click', () => {
+            // Placeholder for manage preferences interaction later
+            alert('Manage preferences options coming soon.');
+        });
+
         const categorySlider = document.getElementById('categorySlider');
         const categoryLeftBtn = document.getElementById('categoryLeftBtn');
         const categoryRightBtn = document.getElementById('categoryRightBtn');
