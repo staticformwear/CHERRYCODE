@@ -140,7 +140,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* 3-line hamburger for iPad and Desktop only */
         .hamburger span:nth-child(3) {
             display: none;
         }
@@ -455,7 +454,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Dual Promos Section (Expanded Widths with Exact 30px Gap) */
+        /* Dual Promos Section */
         .dual-promos-section {
             padding: 4rem 2% 2rem 2%;
             max-width: 1800px;
@@ -483,7 +482,7 @@
             width: 100%;
             height: 510px;
             background-color: var(--card-bg);
-            border-radius: 0px; /* 0% rounded sharp corners */
+            border-radius: 0px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -549,10 +548,10 @@
             }
         }
 
-        /* Shop By Category Section Styles (Widened to match dual promos) */
+        /* Shop By Category Section Styles */
         .category-section {
-            padding: 4rem 2% 2rem 2%; /* Widened outer padding */
-            max-width: 1800px;        /* Increased max-width to match dual promos */
+            padding: 4rem 2% 2rem 2%;
+            max-width: 1800px;
             margin: 0 auto;
             background-color: var(--bg-color);
             position: relative;
@@ -602,7 +601,7 @@
             width: 100%;
             height: 470px;
             background-color: var(--card-bg);
-            border-radius: 0px; /* 0% rounded sharp corners */
+            border-radius: 0px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -1573,10 +1572,9 @@
         </div>
     </section>
 
-    <!-- DUAL PROMOS SECTION (WIDER IMAGES & 30px GAP) -->
+    <!-- DUAL PROMOS SECTION -->
     <section class="dual-promos-section">
         <div class="dual-promos-grid">
-            <!-- First Image Card -->
             <a href="#" class="dual-promo-card">
                 <div class="dual-promo-image-box">
                     <span class="dual-promo-placeholder-text">PLACE IMAGE HERE</span>
@@ -1585,7 +1583,6 @@
                 <span class="dual-promo-desc-1">Big enough to share, cold enough to impress.</span>
             </a>
 
-            <!-- Second Image Card -->
             <a href="#" class="dual-promo-card">
                 <div class="dual-promo-image-box">
                     <span class="dual-promo-placeholder-text">PLACE IMAGE HERE</span>
@@ -1605,28 +1602,24 @@
             </button>
             
             <div class="category-slider" id="categorySlider">
-                <!-- Card 1 -->
                 <a href="#" class="category-card">
                     <div class="category-image-box">
                         <span class="category-placeholder-text">PLACE IMAGE HERE</span>
                     </div>
                     <span class="category-name">WATERBOTTLES</span>
                 </a>
-                <!-- Card 2 -->
                 <a href="#" class="category-card">
                     <div class="category-image-box">
                         <span class="category-placeholder-text">PLACE IMAGE HERE</span>
                     </div>
                     <span class="category-name">CUPS</span>
                 </a>
-                <!-- Card 3 -->
                 <a href="#" class="category-card">
                     <div class="category-image-box">
                         <span class="category-placeholder-text">PLACE IMAGE HERE</span>
                     </div>
                     <span class="category-name">FOOD</span>
                 </a>
-                <!-- Card 4 -->
                 <a href="#" class="category-card">
                     <div class="category-image-box">
                         <span class="category-placeholder-text">PLACE IMAGE HERE</span>
@@ -1841,20 +1834,17 @@
 
     <script src="app.js"></script>
     <script>
-        // Category Carousel Scroll Control Script (with End-Of-Scroll Arrow Hiding)
         const categorySlider = document.getElementById('categorySlider');
         const categoryLeftBtn = document.getElementById('categoryLeftBtn');
         const categoryRightBtn = document.getElementById('categoryRightBtn');
 
         const updateArrowVisibility = () => {
-            // Left arrow visibility
             if (categorySlider.scrollLeft > 20) {
                 categoryLeftBtn.style.display = 'flex';
             } else {
                 categoryLeftBtn.style.display = 'none';
             }
 
-            // Right arrow visibility (hide if reached the end/last product)
             const maxScrollLeft = categorySlider.scrollWidth - categorySlider.clientWidth - 10;
             if (categorySlider.scrollLeft >= maxScrollLeft) {
                 categoryRightBtn.style.display = 'none';
@@ -1875,7 +1865,6 @@
         window.addEventListener('load', updateArrowVisibility);
         window.addEventListener('resize', updateArrowVisibility);
 
-        // Footer Email Signup Submission Handler
         const footerSignupForm = document.getElementById('footerSignupForm');
         const footerSuccessMsg = document.getElementById('footerSuccessMsg');
 
@@ -1885,7 +1874,6 @@
             footerSuccessMsg.classList.add('active');
         });
 
-        // Mobile Footer Accordion Toggle Logic (Chilly's style with arrows)
         document.querySelectorAll('.footer-col h3').forEach(heading => {
             heading.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -1895,7 +1883,6 @@
             });
         });
 
-        // Announcement Bar Scroll Behavior with Rubber-Band/Overscroll Support
         const announcementBar = document.getElementById('announcementBar');
         const announcementCloseBtn = document.getElementById('announcementCloseBtn');
         let isClosedManually = false;
@@ -1919,7 +1906,6 @@
             }
         });
 
-        // Navigation Drawer Functionality
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navDrawer = document.getElementById('navDrawer');
         const navOverlay = document.getElementById('navOverlay');
@@ -1966,7 +1952,6 @@
             accessoriesToggleIcon.textContent = accessoriesSubmenu.classList.contains('active') ? '-' : '+';
         });
 
-        // Founder Story Toggle Functionality
         const readStoryBtn = document.getElementById('readStoryBtn');
         const founderFullStory = document.getElementById('founderFullStory');
 
@@ -1980,7 +1965,6 @@
             }
         });
 
-        // Footer Location Dropdown Logic
         const locationDropdownWrapper = document.getElementById('locationDropdownWrapper');
         const locationSelectorBtn = document.getElementById('locationSelectorBtn');
         const countryDropdownMenu = document.getElementById('countryDropdownMenu');
@@ -2032,7 +2016,6 @@
             }
         });
 
-        // Popup Handlers
         const promoPopup = document.getElementById('promoPopup');
         const discountTriggerBtn = document.getElementById('discountTriggerBtn');
         const discountCloseIcon = document.getElementById('discountCloseIcon');
@@ -2045,7 +2028,7 @@
             promoPopup.classList.remove('active');
         };
 
-        discountTriggerBtn.appendEventListener ? discountTriggerBtn.addEventListener('click', openPopup) : discountTriggerBtn.addEventListener('click', openPopup);
+        discountTriggerBtn.addEventListener('click', openPopup);
         
         discountCloseIcon.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -2062,7 +2045,6 @@
         });
     </script>
     <script>
-        // Conditional handling for Shipping & Returns vs Policy on Mobile only
         function adjustPolicyText() {
             const desktopSpan = document.querySelector('.desktop-shipping-text');
             const mobileSpan = document.querySelector('.mobile-shipping-text');
