@@ -50,12 +50,12 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 75px;
+            padding-top: 82px;
             transition: padding-top 0.3s ease;
         }
 
         body.announcement-hidden {
-            padding-top: 45px;
+            padding-top: 50px;
         }
 
         /* Announcement Bar */
@@ -67,7 +67,7 @@
             background-color: #000000;
             color: #ffffff;
             text-align: center;
-            padding: 0.4rem 2.5rem 0.4rem 1rem;
+            padding: 0.45rem 2.5rem 0.45rem 1rem;
             font-size: 0.75rem;
             font-weight: 700 !important;
             letter-spacing: 1.2px;
@@ -97,13 +97,13 @@
         /* Header & Navigation */
         header {
             position: fixed;
-            top: 28px;
+            top: 32px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.25rem 5%;
+            padding: 0.5rem 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -181,10 +181,10 @@
         }
 
         .logo-img {
-            height: 48px;
+            height: 52px;
             width: auto;
             display: block;
-            transform: scale(1.4);
+            transform: scale(1.48);
             transform-origin: center;
         }
 
@@ -208,9 +208,19 @@
             text-decoration: none;
         }
 
-        .login-icon-btn svg, .cart-icon-btn svg {
+        .login-icon-btn svg {
             width: 18px;
             height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cart-icon-btn svg {
+            width: 21px;
+            height: 21px;
             fill: none;
             stroke: currentColor;
             stroke-width: 1.8;
@@ -354,7 +364,7 @@
 
         /* Hero Section */
         .hero {
-            height: calc(100vh - 75px);
+            height: calc(100vh - 82px);
             min-height: 600px;
             display: flex;
             flex-direction: column;
@@ -1453,7 +1463,7 @@
 
         @media (max-width: 768px) {
             header { padding: 0.25rem 1rem; }
-            .logo-img { height: 38px; }
+            .logo-img { height: 42px; }
             .popup-modal {
                 flex-direction: column;
                 max-width: 90%;
@@ -2038,7 +2048,7 @@
             promoPopup.classList.remove('active');
         };
 
-        discountTriggerBtn.addEventListener('click', openPopup);
+        discountTriggerBtn.appendEventListener ? discountTriggerBtn.addEventListener('click', openPopup) : discountTriggerBtn.addEventListener('click', openPopup);
         
         discountCloseIcon.addEventListener('click', (e) => {
             e.stopPropagation();
