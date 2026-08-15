@@ -1527,7 +1527,7 @@
         }
 
         .cb-btn-accept {
-            flex: 1;
+            flex: 0.6;
             background-color: #000000;
             color: #ffffff;
             border: none;
@@ -1546,7 +1546,7 @@
         }
 
         .cb-btn-decline {
-            flex: 1;
+            flex: 1.4;
             background-color: transparent;
             color: #000000;
             border: 1px solid #000000;
@@ -1567,7 +1567,7 @@
         @media (min-width: 769px) {
             .cb-cookie-buttons {
                 display: grid;
-                grid-template-columns: auto 1fr 1fr;
+                grid-template-columns: auto 0.8fr 1.6fr;
                 gap: 10px;
                 align-items: center;
             }
@@ -1596,6 +1596,7 @@
             }
             .cb-btn-accept, .cb-btn-decline {
                 width: 100%;
+                flex: none;
             }
             .cb-cookie-preferences-link {
                 margin-top: 4px;
@@ -1609,7 +1610,7 @@
     <div class="cb-cookie-banner" id="cbCookieBanner">
         <h3 class="cb-cookie-title">COOKIE CONSENT</h3>
         <p class="cb-cookie-text">
-            We use cookies to improve your experience, analyze traffic, and personalize content. Learn more in our <a href="privacypolicy.html">Privacy Policy</a>.
+            We use cookies to improve your experience, analyze traffic, and personalize content. By accepting, you consent to our use of cookies for tracking and analytics to ensure you get the absolute most out of your visit. Learn more in our <a href="privacypolicy.html">Privacy Policy</a>.
         </p>
         <div class="cb-cookie-buttons">
             <button type="button" class="cb-cookie-preferences-link" id="cbManagePreferencesBtn">Manage Preferences</button>
