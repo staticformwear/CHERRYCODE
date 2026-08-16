@@ -257,20 +257,21 @@
         .search-top-bar {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            max-width: 1600px;
+            justify-content: center;
+            gap: 1.2rem;
+            max-width: 800px;
             margin: 0 auto;
             width: 100%;
             margin-bottom: 2.5rem;
         }
 
         .search-input-wrapper {
-            flex: 1;
+            flex: 0 1 540px;
             display: flex;
             align-items: center;
             background-color: #f1f3f5;
             border-radius: 30px;
-            padding: 0.85rem 1.5rem;
+            padding: 1.15rem 1.5rem;
             gap: 1rem;
         }
 
@@ -309,6 +310,7 @@
             cursor: pointer;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            flex-shrink: 0;
         }
 
         .search-content-container {
@@ -318,7 +320,7 @@
         }
 
         .search-suggestions-title {
-            font-size: 0.95rem;
+            font-size: 1.02rem;
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -369,8 +371,9 @@
         .search-products-grid {
             display: flex;
             gap: 30px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: flex-start;
+            overflow-x: auto;
         }
 
         .search-product-card {
@@ -385,7 +388,7 @@
 
         .search-product-image-box {
             width: 100%;
-            height: 470px;
+            height: 380px;
             background-color: var(--card-bg);
             border-radius: 0px;
             overflow: hidden;
@@ -471,7 +474,7 @@
                 flex: 0 0 100%;
             }
             .search-product-image-box {
-                height: 400px;
+                height: 380px;
             }
         }
 
@@ -1881,7 +1884,7 @@
         </div>
 
         <div class="search-content-container">
-            <div class="search-suggestions-title">TOP SUGGESTIONS</div>
+            <div class="search-suggestions-title" style="font-size: 1.02rem;">TOP SUGGESTIONS</div>
             <div class="search-suggestions-pills">
                 <button class="search-suggestion-pill">SERIES 01</button>
                 <button class="search-suggestion-pill">COFFEE CUP</button>
