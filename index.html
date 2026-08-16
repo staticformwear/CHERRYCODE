@@ -235,6 +235,246 @@
             font-weight: 500;
         }
 
+        /* Search Overlay Page */
+        .search-overlay-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 4000;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 2.5rem 5%;
+        }
+
+        .search-overlay-page.active {
+            display: flex;
+        }
+
+        .search-top-bar {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            margin-bottom: 2.5rem;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: #f1f3f5;
+            border-radius: 30px;
+            padding: 0.85rem 1.5rem;
+            gap: 1rem;
+        }
+
+        .search-input-wrapper svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--text-muted);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .search-input-field {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 1rem;
+            width: 100%;
+            color: var(--text-color);
+        }
+
+        .search-input-field::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-cancel-btn {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            color: var(--text-color);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .search-content-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .search-suggestions-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .search-suggestions-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .search-suggestion-pill {
+            background-color: #f3f3f3;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .search-suggestion-pill:hover {
+            background-color: #e2e8f0;
+        }
+
+        .search-faint-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .search-products-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .search-products-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .search-product-card {
+            flex: 0 0 calc((100% - 90px) / 4);
+            min-width: 260px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-product-image-box {
+            width: 100%;
+            height: 470px;
+            background-color: var(--card-bg);
+            border-radius: 0px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .search-product-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .search-product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 1rem;
+        }
+
+        .search-product-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-product-name {
+            font-size: 0.85rem;
+            font-weight: 750;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-color);
+        }
+
+        .search-product-subtitle {
+            margin-top: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+        }
+
+        .search-product-price {
+            font-size: 0.85rem;
+            font-weight: 750;
+            color: var(--text-color);
+        }
+
+        .search-product-volumes {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .volume-option {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding-bottom: 2px;
+            transition: color 0.2s ease;
+        }
+
+        .volume-option.active {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 1024px) {
+            .search-product-card {
+                flex: 0 0 calc((100% - 30px) / 2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-product-card {
+                flex: 0 0 100%;
+            }
+            .search-product-image-box {
+                height: 400px;
+            }
+        }
+
         /* Slide-out Mobile Nav Drawer */
         .nav-overlay {
             position: fixed;
@@ -1571,7 +1811,6 @@
                 gap: 10px;
                 align-items: center;
             }
-            /* Match Accept button height to Decline button on Desktop & iPad without stretching or narrowing width */
             .cb-btn-accept {
                 box-sizing: border-box;
                 border: 1px solid transparent;
@@ -1631,6 +1870,105 @@
         </div>
     </div>
 
+    <!-- Search Overlay Page (Upload 1 & Upload 2 Layout) -->
+    <div class="search-overlay-page" id="searchOverlayPage">
+        <div class="search-top-bar">
+            <div class="search-input-wrapper">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="search-input-field" placeholder="What are you looking for?">
+            </div>
+            <button class="search-cancel-btn" id="searchCancelBtn">CANCEL</button>
+        </div>
+
+        <div class="search-content-container">
+            <div class="search-suggestions-title">TOP SUGGESTIONS</div>
+            <div class="search-suggestions-pills">
+                <button class="search-suggestion-pill">SERIES 01</button>
+                <button class="search-suggestion-pill">COFFEE CUP</button>
+                <button class="search-suggestion-pill">BIG BOTTLE</button>
+                <button class="search-suggestion-pill">GIFT CARD</button>
+            </div>
+
+            <hr class="search-faint-divider">
+
+            <div class="search-products-title">PRODUCTS</div>
+            
+            <div class="search-products-grid">
+                <!-- Product 1 -->
+                <div class="search-product-card" data-base-price="32">
+                    <div class="search-product-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <div class="search-product-info">
+                        <div class="search-product-details">
+                            <span class="search-product-name">ONYX BLACK WATER BOTTLE</span>
+                            <span class="search-product-subtitle">SERIES 1 WATERBOTTLE</span>
+                            <div class="search-product-volumes">
+                                <button type="button" class="volume-option active" data-volume="500ml" data-price-offset="0">500ML</button>
+                                <button type="button" class="volume-option" data-volume="1l" data-price-offset="10">1L</button>
+                            </div>
+                        </div>
+                        <span class="search-product-price">£32</span>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="search-product-card" data-base-price="32">
+                    <div class="search-product-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <div class="search-product-info">
+                        <div class="search-product-details">
+                            <span class="search-product-name">LIMELITE WATER BOTTLE</span>
+                            <span class="search-product-subtitle">SERIES 1 WATERBOTTLE</span>
+                            <div class="search-product-volumes">
+                                <button type="button" class="volume-option active" data-volume="500ml" data-price-offset="0">500ML</button>
+                                <button type="button" class="volume-option" data-volume="1l" data-price-offset="10">1L</button>
+                            </div>
+                        </div>
+                        <span class="search-product-price">£32</span>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="search-product-card" data-base-price="32">
+                    <div class="search-product-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <div class="search-product-info">
+                        <div class="search-product-details">
+                            <span class="search-product-name">LOTUS PINK WATER BOTTLE</span>
+                            <span class="search-product-subtitle">SERIES 1 WATERBOTTLE</span>
+                            <div class="search-product-volumes">
+                                <button type="button" class="volume-option active" data-volume="500ml" data-price-offset="0">500ML</button>
+                                <button type="button" class="volume-option" data-volume="1l" data-price-offset="10">1L</button>
+                            </div>
+                        </div>
+                        <span class="search-product-price">£32</span>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="search-product-card" data-base-price="32">
+                    <div class="search-product-image-box">
+                        <span class="category-placeholder-text">PLACE IMAGE HERE</span>
+                    </div>
+                    <div class="search-product-info">
+                        <div class="search-product-details">
+                            <span class="search-product-name">OPAL GREEN WATER BOTTLE</span>
+                            <span class="search-product-subtitle">SERIES 1 WATERBOTTLE</span>
+                            <div class="search-product-volumes">
+                                <button type="button" class="volume-option active" data-volume="500ml" data-price-offset="0">500ML</button>
+                                <button type="button" class="volume-option" data-volume="1l" data-price-offset="10">1L</button>
+                            </div>
+                        </div>
+                        <span class="search-product-price">£32</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="announcement-bar" id="announcementBar">
         15% OFF FIRST ORDER DISCOUNT
         <button class="announcement-close" id="announcementCloseBtn" aria-label="Close Announcement">&times;</button>
@@ -1643,7 +1981,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <button class="search-icon-btn" aria-label="Search">
+            <button class="search-icon-btn" id="searchOpenBtn" aria-label="Search">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
         </div>
@@ -1990,6 +2328,38 @@
 
     <script src="app.js"></script>
     <script>
+        // Search Overlay Functionality & Volume Price Switcher
+        const searchOpenBtn = document.getElementById('searchOpenBtn');
+        const searchOverlayPage = document.getElementById('searchOverlayPage');
+        const searchCancelBtn = document.getElementById('searchCancelBtn');
+
+        searchOpenBtn.addEventListener('click', () => {
+            searchOverlayPage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        searchCancelBtn.addEventListener('click', () => {
+            searchOverlayPage.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Volume click handler to increase price by 10 quid (£10)
+        document.querySelectorAll('.search-product-card').forEach(card => {
+            const volumeButtons = card.querySelectorAll('.volume-option');
+            const priceDisplay = card.querySelector('.search-product-price');
+            const basePrice = parseInt(card.getAttribute('data-base-price'));
+
+            volumeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    volumeButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const offset = parseInt(btn.getAttribute('data-price-offset'));
+                    const newPrice = basePrice + offset;
+                    priceDisplay.textContent = `£${newPrice}`;
+                });
+            });
+        });
+
         // Cookie Consent Handler Script
         const cbCookieBanner = document.getElementById('cbCookieBanner');
         const cbAcceptBtn = document.getElementById('cbAcceptBtn');
@@ -2005,7 +2375,6 @@
         });
 
         cbManagePreferencesBtn.addEventListener('click', () => {
-            // Placeholder for manage preferences interaction later
             alert('Manage preferences options coming soon.');
         });
 
