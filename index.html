@@ -257,18 +257,17 @@
         .search-top-bar {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 1.2rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
             margin-bottom: 2.5rem;
             position: relative;
-            padding-left: 2%;
         }
 
         .search-input-wrapper {
-            flex: 0 1 540px;
+            flex: 0 1 700px;
             display: flex;
             align-items: center;
             background-color: #f1f3f5;
@@ -316,11 +315,12 @@
         }
 
         .search-content-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            padding-left: 2%;
-            padding-right: 2%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch; 
         }
 
         .search-suggestions-title {
@@ -331,6 +331,7 @@
             color: var(--text-color);
             margin-bottom: 1rem;
             text-align: left;
+            width: 100%;
         }
 
         .search-suggestions-pills {
@@ -339,6 +340,7 @@
             flex-wrap: wrap;
             margin-bottom: 2.5rem;
             justify-content: flex-start;
+            width: 100%;
         }
 
         .search-suggestion-pill {
@@ -363,6 +365,7 @@
             border: none;
             border-top: 1px solid var(--border-color);
             margin-bottom: 2.5rem;
+            width: 100%;
         }
 
         .search-products-title {
@@ -372,21 +375,22 @@
             text-transform: uppercase;
             color: var(--text-color);
             margin-bottom: 2rem;
-            text-align: left;
+            width: 100%;
         }
 
         .search-products-grid {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: nowrap;
-            justify-content: flex-start;
+            justify-content: space-between;
             overflow-x: auto;
             padding-bottom: 20px;
+            width: 100%;
         }
 
         .search-product-card {
-            flex: 0 0 calc((100% - 72px) / 4);
-            min-width: 260px;
+            flex: 0 0 calc((100% - 60px) / 4);
+            min-width: 240px;
             background-color: transparent;
             display: flex;
             flex-direction: column;
@@ -473,14 +477,11 @@
 
         @media (max-width: 1024px) {
             .search-product-card {
-                flex: 0 0 calc((100% - 24px) / 2);
+                flex: 0 0 calc((100% - 20px) / 2);
             }
         }
 
         @media (max-width: 768px) {
-            .search-top-bar {
-                padding-left: 0;
-            }
             .search-product-card {
                 flex: 0 0 100%;
             }
@@ -624,7 +625,7 @@
             justify-content: center;
             align-items: flex-start;
             text-align: left;
-            padding: 0 5%;
+            padding: 0 3%;
             position: relative;
             background: url('B9F4C10F-97C2-41ED-A1DD-E92051FCCDE4.png') no-repeat center center;
             background-size: cover;
@@ -714,7 +715,7 @@
         /* Dual Promos Section */
         .dual-promos-section {
             padding: 4rem 2% 2rem 2%;
-            max-width: 1800px;
+            max-width: 100%;
             margin: 0 auto;
             background-color: var(--bg-color);
         }
@@ -722,8 +723,10 @@
         .dual-promos-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 20px;
             width: 100%;
+            max-width: 1850px;
+            margin: 0 auto;
         }
 
         .dual-promo-card {
@@ -808,7 +811,7 @@
         /* Shop By Category Section Styles */
         .category-section {
             padding: 4rem 2% 2rem 2%;
-            max-width: 1800px;
+            max-width: 100%;
             margin: 0 auto;
             background-color: var(--bg-color);
             position: relative;
@@ -821,17 +824,22 @@
             text-transform: uppercase;
             color: var(--text-color);
             margin-bottom: 2rem;
+            max-width: 1850px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .category-carousel-wrapper {
             position: relative;
             display: flex;
             align-items: center;
+            max-width: 1850px;
+            margin: 0 auto;
         }
 
         .category-slider {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             overflow-x: auto;
             scroll-behavior: smooth;
             scrollbar-width: none; 
@@ -845,7 +853,7 @@
         }
 
         .category-card {
-            flex: 0 0 calc((100% - 90px) / 3.2);
+            flex: 0 0 calc((100% - 60px) / 3.2);
             min-width: 320px;
             background-color: transparent;
             display: flex;
@@ -932,7 +940,7 @@
 
         @media (max-width: 1024px) {
             .category-card {
-                flex: 0 0 calc((100% - 30px) / 2);
+                flex: 0 0 calc((100% - 20px) / 2);
                 min-width: 280px;
             }
         }
@@ -952,23 +960,27 @@
 
         /* Products Showcase Section */
         .products {
-            padding: 4rem 5% 3rem 5%;
-            max-width: 1600px;
+            padding: 4rem 2% 3rem 2%;
+            max-width: 100%;
             margin: 0 auto;
             background-color: var(--bg-color);
         }
 
         .product-grid { 
             display: flex; 
-            gap: 20px; 
-            flex-wrap: wrap; 
-            justify-content: center;
+            gap: 16px; 
+            flex-wrap: nowrap; 
+            justify-content: space-between;
+            max-width: 1850px;
+            margin: 0 auto;
+            overflow-x: auto;
         }
         .product-card { 
             border: 1px solid #ddd; 
             padding: 15px; 
             border-radius: 8px; 
-            width: 200px; 
+            flex: 0 0 calc((100% - 48px) / 4);
+            min-width: 220px;
             text-align: center; 
             background-color: var(--card-bg);
             display: flex;
@@ -983,7 +995,7 @@
 
         /* Meet the Founder Section Styles */
         .founder-section {
-            padding: 6rem 5%;
+            padding: 6rem 3%;
             background-color: var(--bg-color);
             text-align: center;
             border-bottom: 1px solid var(--border-color);
@@ -1002,7 +1014,7 @@
             font-size: clamp(1.75rem, 3vw, 2.5rem);
             font-weight: 600;
             color: var(--text-color);
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 1.25rem auto;
             line-height: 1.3;
         }
@@ -1010,7 +1022,7 @@
         .founder-intro-desc {
             font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 650px;
+            max-width: 750px;
             margin: 0 auto 2rem auto;
         }
 
@@ -1032,7 +1044,7 @@
 
         .founder-full-story {
             display: none;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 3rem auto 0 auto;
             text-align: left;
             animation: fadeIn 0.4s ease-in-out;
@@ -1110,7 +1122,7 @@
         .chilly-footer {
             background-color: #ffffff;
             color: #000000;
-            padding: 6rem 5% 2rem 5%;
+            padding: 6rem 3% 2rem 3%;
             font-family: 'Inter', sans-serif;
             border-top: 1px solid var(--border-color);
         }
@@ -1121,6 +1133,9 @@
             gap: 4rem;
             align-items: start;
             margin-bottom: 3rem;
+            max-width: 1850px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-newsletter-col h2 {
@@ -1229,7 +1244,8 @@
         .footer-divider {
             border: none;
             border-top: 1px solid var(--border-color);
-            margin: 2rem 0;
+            margin: 2rem auto;
+            max-width: 1850px;
         }
 
         .footer-bottom-row {
@@ -1238,6 +1254,8 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1.5rem;
+            max-width: 1850px;
+            margin: 0 auto;
         }
 
         .location-dropdown-wrapper {
