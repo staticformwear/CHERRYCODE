@@ -7,11 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-overlay: rgba(0, 0, 0, 0.5);
+            --bg-overlay: rgba(0, 0, 0, 0.4);
             --card-bg: #ffffff;
             --text-color: #000000;
             --text-muted: #666666;
-            --border-color: #333333;
             --input-border: #333333;
         }
 
@@ -23,7 +22,7 @@
         }
 
         body {
-            /* Transparent/glass view of homepage behind the popup overlay */
+            /* Fully transparent background so homepage is clearly visible underneath */
             background: transparent;
             color: var(--text-color);
             min-height: 100vh;
@@ -33,7 +32,7 @@
             padding: 1rem;
         }
 
-        /* Popup Modal Styles */
+        /* Popup Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -48,22 +47,23 @@
             padding: 1rem;
         }
 
+        /* Exact horizontal rectangular popup container shape */
         .auth-container {
             width: 100%;
-            max-width: 440px;
+            max-width: 520px;
             background-color: var(--card-bg);
             border-radius: 4px;
-            padding: 2.5rem 2rem 2rem 2rem;
+            padding: 2.25rem 2.5rem;
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
         }
 
         .close-btn {
             position: absolute;
             top: 1rem;
-            right: 1rem;
+            right: 1.25rem;
             background: none;
             border: none;
             color: #000000;
@@ -81,13 +81,58 @@
             opacity: 0.7;
         }
 
+        /* WELCOME title: centered, slightly less bold (700) and slightly taller/tighter */
         .brand-title {
-            font-size: 1.85rem;
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Tab Switcher Slider Header */
+        .auth-tabs {
+            display: flex;
+            width: 100%;
+            margin-bottom: 1.75rem;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .auth-tab {
+            flex: 1;
+            background: none;
+            border: none;
+            padding-bottom: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .auth-tab.active {
+            color: var(--text-color);
+        }
+
+        /* Bottom sliding indicator line */
+        .auth-tabs::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: #000000;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .auth-tabs.register-active::after {
+            transform: translateX(100%);
         }
 
         .auth-view {
@@ -103,13 +148,13 @@
         .input-group {
             position: relative;
             width: 100%;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
-        /* Thin black underline inputs matching upload 1 style */
+        /* Thin underline input fields */
         .auth-input {
             width: 100%;
-            padding: 0.9rem 0;
+            padding: 0.8rem 0;
             background: transparent;
             border: none;
             border-bottom: 1px solid var(--input-border);
@@ -121,13 +166,15 @@
 
         .auth-input::placeholder {
             color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
 
         .auth-input:focus {
             border-bottom-color: #000000;
         }
 
-        /* Password input with automatic thick black circles and NO eye toggle */
+        /* Automatic thick black password circles without visibility toggle */
         .auth-input[type="password"] {
             -webkit-text-security: disc;
             font-family: 'Inter', sans-serif;
@@ -138,14 +185,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .divider-line {
             width: 100%;
             height: 1px;
             background-color: rgba(0, 0, 0, 0.15);
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .forgot-link {
@@ -162,10 +209,10 @@
             color: var(--text-color);
         }
 
-        /* Centered black button with white text matching upload 1 specs */
+        /* Solid black action button */
         .btn-black {
             width: 100%;
-            padding: 0.95rem;
+            padding: 0.9rem;
             background-color: #000000;
             color: #ffffff;
             border: none;
@@ -173,7 +220,7 @@
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
             text-align: center;
         }
 
@@ -181,10 +228,10 @@
             background-color: #222222;
         }
 
-        /* Rounded buttons with black outline for Google and Apple */
+        /* Social Auth Buttons */
         .btn-social {
             width: 100%;
-            padding: 0.95rem;
+            padding: 0.9rem;
             background: transparent;
             color: #000000;
             border: 1px solid #000000;
@@ -197,7 +244,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
         .btn-social:hover {
@@ -208,23 +255,6 @@
             width: 20px;
             height: 20px;
             object-fit: contain;
-        }
-
-        .switch-auth-mode {
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .switch-auth-mode button {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
         }
 
         .message-banner {
@@ -256,6 +286,11 @@
         <div class="auth-container">
             <a href="index.html" class="close-btn">&times;</a>
 
+            <div id="authTabsHeader" class="auth-tabs">
+                <button type="button" id="tabSignIn" class="auth-tab active" onclick="switchView('signInView')">Sign In</button>
+                <button type="button" id="tabRegister" class="auth-tab" onclick="switchView('registerView')">Sign Up</button>
+            </div>
+
             <div id="signInView" class="auth-view active">
                 <h1 class="brand-title">WELCOME</h1>
 
@@ -286,10 +321,6 @@
                         Continue with Apple
                     </button>
                 </form>
-
-                <div class="switch-auth-mode">
-                    Don't have an account? <button onclick="switchView('registerView')">Sign up</button>
-                </div>
             </div>
 
             <div id="forgotView" class="auth-view">
@@ -328,10 +359,6 @@
 
                     <button type="submit" class="btn-black">Sign Up</button>
                 </form>
-
-                <div class="switch-auth-mode">
-                    Already have an account? <button onclick="switchView('signInView')">Sign In</button>
-                </div>
             </div>
 
         </div>
@@ -342,6 +369,25 @@
             document.querySelectorAll('.auth-view').forEach(view => view.classList.remove('active'));
             document.getElementById(viewId).classList.add('active');
             document.querySelectorAll('.message-banner').forEach(b => { b.className = 'message-banner'; b.textContent = ''; });
+
+            const tabsHeader = document.getElementById('authTabsHeader');
+            const tabSignIn = document.getElementById('tabSignIn');
+            const tabRegister = document.getElementById('tabRegister');
+
+            if (viewId === 'signInView') {
+                tabsHeader.style.display = 'flex';
+                tabsHeader.classList.remove('register-active');
+                tabSignIn.classList.add('active');
+                tabRegister.classList.remove('active');
+            } else if (viewId === 'registerView') {
+                tabsHeader.style.display = 'flex';
+                tabsHeader.classList.add('register-active');
+                tabSignIn.classList.remove('active');
+                tabRegister.classList.add('active');
+            } else {
+                // Hide tabs for sub-views like Forgot Password
+                tabsHeader.style.display = 'none';
+            }
         }
 
         function getRegisteredUsers() {
