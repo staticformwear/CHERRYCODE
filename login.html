@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Account - Fountain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Login & Account - Cherry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f1015;
-            --card-bg: #1a1c23;
-            --text-color: #ffffff;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
+            --bg-overlay: rgba(0, 0, 0, 0.6);
+            --card-bg: #ffffff;
+            --text-color: #000000;
+            --text-muted: #666666;
+            --border-color: #cccccc;
+            --input-border: #e0e0e0;
         }
 
         * {
@@ -22,68 +23,71 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: #0f1015;
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            padding: 2rem 1rem;
+            justify-content: center;
+            padding: 1rem;
         }
 
-        .top-bar {
+        /* Popup Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 440px;
+            height: 100%;
+            background-color: var(--bg-overlay);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .back-home {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .back-home:hover, .close-btn:hover {
-            color: var(--text-color);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            text-decoration: none;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
         }
 
         .auth-container {
             width: 100%;
-            max-width: 440px;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem 2rem 2rem 2rem;
             display: flex;
             flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            color: #000000;
+            font-size: 1.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
             align-items: center;
-            text-align: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            background-color: #f0f0f0;
         }
 
         .brand-title {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            margin-bottom: 0.2rem;
-        }
-
-        .brand-subtitle {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.75rem;
+            text-align: left;
         }
 
         .auth-view {
@@ -106,8 +110,8 @@
             width: 100%;
             padding: 0.9rem 1rem;
             background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border-color);
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
             color: var(--text-color);
             font-size: 0.95rem;
             outline: none;
@@ -119,12 +123,12 @@
         }
 
         .auth-input:focus {
-            border-color: #ffffff;
+            border-color: #000000;
         }
 
         .password-toggle {
             position: absolute;
-            right: 10px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             background: none;
@@ -149,30 +153,40 @@
         .forgot-password-container {
             width: 100%;
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 2rem;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
         }
 
         .forgot-link {
             background: none;
             border: none;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            color: #000000;
+            font-size: 0.9rem;
+            font-weight: 500;
             cursor: pointer;
             text-decoration: none;
+            text-align: left;
         }
 
         .forgot-link:hover {
-            color: var(--text-color);
+            text-decoration: underline;
         }
 
-        .btn-white {
+        /* Buttons matching requested styles */
+        .btn-black {
             width: 100%;
             padding: 0.95rem;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #000000;
+            color: #ffffff;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
@@ -180,230 +194,172 @@
             text-align: center;
         }
 
-        .btn-white:hover {
-            background-color: #e2e8f0;
+        .btn-black:hover {
+            background-color: #222222;
         }
 
-        .btn-outline {
+        .btn-social {
             width: 100%;
             padding: 0.95rem;
             background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             text-align: center;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text-color);
-        }
-
-        .membership-card-preview {
-            width: 100%;
-            height: 140px;
-            background: linear-gradient(135deg, #2a2d39 0%, #15171e 100%);
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .membership-card-header {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 0.85rem;
         }
 
-        .membership-emblem {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.15);
-            position: absolute;
-            right: 1.5rem;
-            bottom: 0.5rem;
+        .btn-social:hover {
+            background-color: #f8f9fa;
         }
 
-        .step-indicator {
-            text-align: left;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .terms-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            text-align: left;
-            margin-bottom: 1.5rem;
-        }
-
-        .terms-row input[type="checkbox"] {
-            margin-top: 3px;
-            accent-color: #ffffff;
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
-
-        .terms-row label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-            cursor: pointer;
-        }
-
-        .terms-row label strong {
-            color: var(--text-color);
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
         }
 
         .switch-auth-mode {
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
+            text-align: center;
         }
 
         .switch-auth-mode button {
             background: none;
             border: none;
-            color: var(--text-color);
+            color: #000000;
             text-decoration: underline;
             cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .message-banner {
             width: 100%;
             padding: 0.75rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.85rem;
             margin-bottom: 1rem;
             display: none;
             text-align: center;
         }
         .message-banner.error {
-            background-color: rgba(220, 38, 38, 0.2);
+            background-color: rgba(220, 38, 38, 0.1);
             border: 1px solid #dc2626;
-            color: #fca5a5;
+            color: #dc2626;
             display: block;
         }
         .message-banner.success {
-            background-color: rgba(22, 163, 74, 0.2);
+            background-color: rgba(22, 163, 74, 0.1);
             border: 1px solid #16a34a;
-            color: #86efac;
+            color: #16a34a;
             display: block;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <a href="index.html" class="back-home">&larr; Home</a>
-        <a href="index.html" class="close-btn">&times;</a>
-    </div>
+    <div class="modal-overlay">
+        <div class="auth-container">
+            <a href="index.html" class="close-btn">&times;</a>
 
-    <div class="auth-container">
+            <!-- SIGN IN VIEW -->
+            <div id="signInView" class="auth-view active">
+                <h1 class="brand-title">WELCOME</h1>
 
-        <!-- SIGN IN VIEW -->
-        <div id="signInView" class="auth-view active">
-            <h1 class="brand-title">FOUNTAIN</h1>
-            <div class="brand-subtitle">PRESTIGE</div>
+                <div id="signInMessage" class="message-banner"></div>
 
-            <div id="signInMessage" class="message-banner"></div>
+                <form id="signInForm" onsubmit="handleSignIn(event)">
+                    <div class="input-group">
+                        <input type="email" id="signInEmail" class="auth-input" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signInPassword" class="auth-input" placeholder="Password" required>
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signInPassword', this)" aria-label="Toggle password visibility">
+                            <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
 
-            <form id="signInForm" onsubmit="handleSignIn(event)">
-                <div class="input-group">
-                    <input type="email" id="signInEmail" class="auth-input" placeholder="Your email address" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="signInPassword" class="auth-input" placeholder="Enter your password" required>
-                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signInPassword', this)" aria-label="Toggle password visibility">
-                        <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <div class="forgot-password-container">
+                        <div class="divider-line"></div>
+                        <button type="button" class="forgot-link" onclick="switchView('forgotView')">Forgot your password?</button>
+                    </div>
+
+                    <button type="submit" class="btn-black">Sign In</button>
+                    
+                    <button type="button" class="btn-social" onclick="handleGoogleSignIn()">
+                        <img src="IMG_0565.png" alt="Google logo" class="social-icon">
+                        Continue with Google
                     </button>
+
+                    <button type="button" class="btn-social" onclick="handleAppleSignIn()">
+                        <img src="IMG_0566.png" alt="Apple logo" class="social-icon">
+                        Continue with Apple
+                    </button>
+                </form>
+
+                <div class="switch-auth-mode">
+                    Don't have an account? <button onclick="switchView('registerView')">Sign up</button>
                 </div>
-
-                <div class="forgot-password-container">
-                    <button type="button" class="forgot-link" onclick="switchView('forgotView')">Forgot your password?</button>
-                </div>
-
-                <button type="submit" class="btn-outline">Sign in</button>
-                <button type="button" class="btn-outline" style="margin-top: 0.85rem;" onclick="switchView('registerView')">Create an account</button>
-            </form>
-        </div>
-
-        <!-- FORGOT PASSWORD VIEW -->
-        <div id="forgotView" class="auth-view">
-            <h1 class="brand-title" style="font-size: 1.85rem; font-weight: 400; font-family: serif;">Recover your</h1>
-            <h1 class="brand-title" style="font-size: 2.2rem; margin-bottom: 2.5rem;">Password</h1>
-
-            <div id="forgotMessage" class="message-banner"></div>
-
-            <form id="forgotForm" onsubmit="handleForgotPassword(event)">
-                <div class="input-group">
-                    <input type="email" id="forgotEmail" class="auth-input" placeholder="Your email address" required>
-                </div>
-
-                <button type="submit" class="btn-white">Send reset email</button>
-                <button type="button" class="btn-outline" onclick="switchView('signInView')">Cancel</button>
-            </form>
-        </div>
-
-        <!-- CREATE ACCOUNT VIEW -->
-        <div id="registerView" class="auth-view">
-            <div class="membership-card-preview">
-                <div class="membership-card-header">
-                    <span>Member</span>
-                    <span>FOUNTAIN</span>
-                </div>
-                <div class="membership-emblem">F</div>
             </div>
 
-            <div class="step-indicator">1 / 2 &nbsp; Details</div>
+            <!-- FORGOT PASSWORD VIEW -->
+            <div id="forgotView" class="auth-view">
+                <h1 class="brand-title">Recover Password</h1>
 
-            <div id="registerMessage" class="message-banner"></div>
+                <div id="forgotMessage" class="message-banner"></div>
 
-            <form id="registerForm" onsubmit="handleRegister(event)">
-                <div class="input-group">
-                    <input type="email" id="regEmail" class="auth-input" placeholder="Your email address" required>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="regForename" class="auth-input" placeholder="First name" required>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="regSurname" class="auth-input" placeholder="Last name" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="regPassword" class="auth-input" placeholder="Choose password" required>
-                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">
-                        <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                    </button>
-                </div>
+                <form id="forgotForm" onsubmit="handleForgotPassword(event)">
+                    <div class="input-group">
+                        <input type="email" id="forgotEmail" class="auth-input" placeholder="Email address" required>
+                    </div>
 
-                <div class="terms-row">
-                    <input type="checkbox" id="termsCheck" required>
-                    <label for="termsCheck">Please tick here if you <strong>DO NOT</strong> want us to use your personal data to email you about product launches, news, and promotional offers.</label>
-                </div>
-
-                <button type="submit" class="btn-white">Create Account</button>
-            </form>
-
-            <div class="switch-auth-mode">
-                Already got an account? <button onclick="switchView('signInView')">Login here</button>
+                    <button type="submit" class="btn-black">Send reset email</button>
+                    <button type="button" class="btn-social" style="border: none;" onclick="switchView('signInView')">Cancel</button>
+                </form>
             </div>
-        </div>
 
+            <!-- CREATE ACCOUNT VIEW (SIGN UP) -->
+            <div id="registerView" class="auth-view">
+                <h1 class="brand-title">WELCOME</h1>
+
+                <div id="registerMessage" class="message-banner"></div>
+
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="input-group">
+                        <input type="text" id="regForename" class="auth-input" placeholder="First name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="regSurname" class="auth-input" placeholder="Last name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="regEmail" class="auth-input" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="regPassword" class="auth-input" placeholder="Password" required>
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">
+                            <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn-black">Sign Up</button>
+                </form>
+
+                <div class="switch-auth-mode">
+                    Already have an account? <button onclick="switchView('signInView')">Sign In</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
@@ -448,12 +404,22 @@
 
             if (foundUser) {
                 msgBox.className = 'message-banner success';
-                msgBox.textContent = `Welcome back, ${foundUser.forename}! Signed in successfully.`;
+                msgBox.textContent = `Welcome back, ${foundUser.forename}! Signed in successfully to Cherry.`;
                 setTimeout(() => { window.location.href = 'index.html'; }, 1000);
             } else {
                 msgBox.className = 'message-banner error';
                 msgBox.textContent = 'Account does not exist.';
             }
+        }
+
+        function handleGoogleSignIn() {
+            // Integration hook for Google Authentication redirect to Cherry
+            alert('Redirecting to Google to continue to Cherry...');
+        }
+
+        function handleAppleSignIn() {
+            // Integration hook for Apple Authentication redirect to Cherry
+            alert('Redirecting to Apple to continue to Cherry...');
         }
 
         function handleForgotPassword(event) {
@@ -494,4 +460,3 @@
     </script>
 </body>
 </html>
-
