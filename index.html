@@ -1764,11 +1764,6 @@
             font-family: 'Inter', sans-serif;
             letter-spacing: normal;
         }
-        
-        /* Make password text-security dots bigger (2x) without changing font size */
-        .auth-input[type="password"]::-webkit-text-security-disc {
-            font-size: 2em;
-        }
 
         .forgot-password-container {
             width: 100%;
@@ -1779,8 +1774,8 @@
 
         .divider-line {
             width: 100%;
-            height: 0px; /* Removed faint line */
-            background-color: transparent;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.15);
             margin-bottom: 0.85rem;
         }
 
@@ -1843,12 +1838,6 @@
             width: 30px;
             height: 30px;
             object-fit: contain;
-        }
-
-        /* Make Apple logo specifically twice as big */
-        .social-icon.apple-logo {
-            width: 60px;
-            height: 60px;
         }
 
         .message-banner {
@@ -2484,7 +2473,7 @@
                     </button>
 
                     <button type="button" class="btn-social" onclick="handleAppleSignIn()">
-                        <img src="IMG_0566.png" alt="Apple logo" class="social-icon apple-logo">
+                        <img src="IMG_0566.png" alt="Apple logo" class="social-icon">
                         Continue with Apple
                     </button>
                 </form>
