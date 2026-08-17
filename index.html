@@ -28,6 +28,7 @@
             --text-muted: #64748b;
             --accent-color: #000000;
             --border-color: #e2e8f0;
+            --faint-border: #f1f5f9;
             --red-color: #dc2626;
             --red-hover: #b91c1c;
         }
@@ -40,7 +41,7 @@
         }
 
         b, strong, [style*="font-weight: 600"], [style*="font-weight:600"], [style*="font-weight: 700"], [style*="font-weight:700"], [style*="font-weight: 800"], [style*="font-weight:800"],
-        .product-title, .product-price, .hero h1, .founder-main-title, .founder-story-text h3, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn, .category-section-title {
+        .product-title, .product-price, .hero h1, .footer-newsletter-col h2, .footer-signup-btn, .footer-col h3, .location-value, .popup-title, .popup-btn, .category-section-title {
             font-weight: calc(larger + 35) !important;
         }
 
@@ -993,138 +994,13 @@
             border-radius: 4px; 
         }
 
-        /* Meet the Founder Section Styles */
-        .founder-section {
-            padding: 6rem 3%;
-            background-color: var(--bg-color);
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .founder-intro-tag {
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .founder-intro-heading {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 600;
-            color: var(--text-color);
-            max-width: 900px;
-            margin: 0 auto 1.25rem auto;
-            line-height: 1.3;
-        }
-
-        .founder-intro-desc {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .founder-story-link {
-            display: inline-block;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-color);
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-
-        .founder-story-link:hover { color: var(--accent-color); }
-
-        .founder-full-story {
-            display: none;
-            max-width: 1000px;
-            margin: 3rem auto 0 auto;
-            text-align: left;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .founder-full-story.active { display: block; }
-
-        .founder-main-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-        }
-
-        .founder-content-flex {
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-        }
-
-        .founder-story-text {
-            flex: 1;
-            font-size: 1.05rem;
-            color: var(--text-color);
-            line-height: 1.7;
-        }
-
-        .founder-story-text p { margin-bottom: 1.5rem; }
-
-        .founder-story-text h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-color);
-        }
-
-        .founder-img-wrapper {
-            flex: 0 0 280px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .founder-img-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .founder-content-flex {
-                flex-direction: column-reverse;
-                align-items: center;
-            }
-            .founder-img-wrapper {
-                width: 100%;
-                max-width: 320px;
-                margin-bottom: 1.5rem;
-            }
-            .founder-full-story { text-align: center; }
-            .founder-story-text { text-align: left; }
-        }
-
         /* Footer */
         .chilly-footer {
             background-color: #ffffff;
             color: #000000;
             padding: 6rem 3% 2rem 3%;
             font-family: 'Inter', sans-serif;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--faint-border);
         }
 
         .footer-top-grid {
@@ -1243,7 +1119,7 @@
 
         .footer-divider {
             border: none;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--faint-border);
             margin: 2rem auto;
             max-width: 1850px;
         }
@@ -2159,56 +2035,6 @@
         </div>
     </section>
 
-    <section class="founder-section" id="founder">
-        <div class="founder-intro-tag">MEET THE FOUNDER:</div>
-        <h2 class="founder-intro-heading">A GRADUATE’S MISSION TO BUILD THE BOTTLE THAT LASTS.</h2>
-        <p class="founder-intro-desc">Fountain Bottles was started by Michael, a graduate inspired to change the way we think about everyday bottles and create one built to last.</p>
-        
-        <button class="founder-story-link" id="readStoryBtn">READ OUR FOUNDER STORY</button>
-
-        <div class="founder-full-story" id="founderFullStory">
-            <h2 class="founder-main-title">MEET THE OWNER</h2>
-            
-            <div class="founder-content-flex">
-                <div class="founder-story-text">
-                    <p>As a recent graduate, Michael noticed something frustrating about the bottles we use every day.</p>
-                    <p>Too many simply weren’t built to last.</p>
-                    <p>Fountain Bottles was created to change that.</p>
-                    
-                    <h3>The Problem:</h3>
-                    <p>We use our bottles every single day — at university, at work, at the gym, travelling and everywhere in between.</p>
-                    <p>Yet so many eventually leak, break, lose their finish, or simply get replaced.</p>
-                    <p>And when something is part of your everyday life, replacing it shouldn’t be the expectation.</p>
-                    <p>There had to be a better way.</p>
-                    <p>Fountain Bottles was going to be different.</p>
-                    
-                    <h3>How?</h3>
-                    <p>By creating a bottle built around one simple idea:</p>
-                    <p><strong>Make it once. Make it properly. Make it last.</strong></p>
-                    <p>Rather than creating another bottle designed to follow a trend, Fountain was created to be the one you reach for every day.</p>
-                    <p>Reliable. Practical. Timeless.</p>
-                    
-                    <h3>But Why… Fountain?</h3>
-                    <p>Michael believed that choosing a reusable bottle shouldn’t mean compromising on quality.</p>
-                    <p>If we want people to move away from disposable products, we need to create something they genuinely want to keep using.</p>
-                    <p>Something that feels right in your hand.</p>
-                    <p>Something you can take anywhere.</p>
-                    <p>Something you can rely on day after day.</p>
-                    <p>That became the mission behind Fountain Bottles:</p>
-                    <p><strong>Build a bottle worth keeping.</strong></p>
-                    <p>A bottle designed for everyday life, made with purpose, and built to stay with you for years to come.</p>
-                    <p>Because ultimately, the best bottle is the one you don’t need to replace.</p>
-                    <p>Today, Fountain Bottles continues that mission — creating drinkware designed to make reusable the easy choice.</p>
-                    <p>One bottle. Less replacing. A better everyday choice.</p>
-                </div>
-                
-                <div class="founder-img-wrapper">
-                    <img src="5BD93BCB-F18D-441C-AA0E-020CAF045FA4.png" alt="Michael - Founder of Fountain Bottles">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="chilly-footer">
         <div class="footer-top-grid">
             <div class="footer-newsletter-col">
@@ -2525,19 +2351,6 @@
         accessoriesDropdownToggle.addEventListener('click', () => {
             accessoriesSubmenu.classList.toggle('active');
             accessoriesToggleIcon.textContent = accessoriesSubmenu.classList.contains('active') ? '-' : '+';
-        });
-
-        const readStoryBtn = document.getElementById('readStoryBtn');
-        const founderFullStory = document.getElementById('founderFullStory');
-
-        readStoryBtn.addEventListener('click', () => {
-            founderFullStory.classList.toggle('active');
-            if (founderFullStory.classList.contains('active')) {
-                readStoryBtn.textContent = 'HIDE FOUNDER STORY';
-                founderFullStory.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                readStoryBtn.textContent = 'READ OUR FOUNDER STORY';
-            }
         });
 
         const locationDropdownWrapper = document.getElementById('locationDropdownWrapper');
