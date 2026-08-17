@@ -47,13 +47,13 @@
             padding: 1rem;
         }
 
-        /* Exact horizontal rectangular popup container shape */
+        /* Made wider/more of a horizontal rectangle (max-width increased to 600px) */
         .auth-container {
             width: 100%;
-            max-width: 520px;
+            max-width: 600px;
             background-color: var(--card-bg);
             border-radius: 4px;
-            padding: 2.25rem 2.5rem;
+            padding: 2.5rem 3rem;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -81,22 +81,23 @@
             opacity: 0.7;
         }
 
-        /* WELCOME title: centered, slightly less bold (700) and slightly taller/tighter */
+        /* WELCOME title placed above the slider, slightly bigger in size (1.95rem) */
         .brand-title {
-            font-size: 1.75rem;
+            font-size: 1.95rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
             text-align: center;
             line-height: 1.3;
+            color: #000000;
         }
 
-        /* Tab Switcher Slider Header */
+        /* Tab Switcher Slider Header moved below Welcome title */
         .auth-tabs {
             display: flex;
             width: 100%;
-            margin-bottom: 1.75rem;
+            margin-bottom: 2rem;
             border-bottom: 1px solid #e0e0e0;
             position: relative;
         }
@@ -119,7 +120,7 @@
             color: var(--text-color);
         }
 
-        /* Bottom sliding indicator line */
+        /* Bottom sliding indicator line (faint grey background line removed, only active black indicator/bottom state) */
         .auth-tabs::after {
             content: '';
             position: absolute;
@@ -151,21 +152,23 @@
             margin-bottom: 1rem;
         }
 
-        /* Thin underline input fields */
+        /* Input fields with pure black text and no letter spacing on password */
         .auth-input {
             width: 100%;
             padding: 0.8rem 0;
             background: transparent;
             border: none;
             border-bottom: 1px solid var(--input-border);
-            color: var(--text-color);
+            color: #000000;
             font-size: 0.95rem;
             outline: none;
             text-align: left;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: normal;
         }
 
         .auth-input::placeholder {
-            color: var(--text-muted);
+            color: #000000;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
         }
@@ -174,11 +177,11 @@
             border-bottom-color: #000000;
         }
 
-        /* Automatic thick black password circles without visibility toggle */
+        /* Password input styled exactly like email with no letter spacing */
         .auth-input[type="password"] {
             -webkit-text-security: disc;
             font-family: 'Inter', sans-serif;
-            letter-spacing: 2px;
+            letter-spacing: normal;
         }
 
         .forgot-password-container {
@@ -195,18 +198,20 @@
             margin-bottom: 0.85rem;
         }
 
+        /* Forgot password underlined and black colored */
         .forgot-link {
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: #000000;
             font-size: 0.85rem;
             cursor: pointer;
-            text-decoration: none;
+            text-decoration: underline;
             text-align: left;
+            font-weight: 500;
         }
 
         .forgot-link:hover {
-            color: var(--text-color);
+            opacity: 0.7;
         }
 
         /* Solid black action button */
@@ -228,7 +233,7 @@
             background-color: #222222;
         }
 
-        /* Social Auth Buttons */
+        /* Social Auth Buttons with 50% larger logos (30px instead of 20px) */
         .btn-social {
             width: 100%;
             padding: 0.9rem;
@@ -252,8 +257,8 @@
         }
 
         .social-icon {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             object-fit: contain;
         }
 
@@ -286,14 +291,14 @@
         <div class="auth-container">
             <a href="index.html" class="close-btn">&times;</a>
 
+            <h1 class="brand-title" id="mainBrandTitle">WELCOME</h1>
+
             <div id="authTabsHeader" class="auth-tabs">
                 <button type="button" id="tabSignIn" class="auth-tab active" onclick="switchView('signInView')">Sign In</button>
                 <button type="button" id="tabRegister" class="auth-tab" onclick="switchView('registerView')">Sign Up</button>
             </div>
 
             <div id="signInView" class="auth-view active">
-                <h1 class="brand-title">WELCOME</h1>
-
                 <div id="signInMessage" class="message-banner"></div>
 
                 <form id="signInForm" onsubmit="handleSignIn(event)">
@@ -324,8 +329,6 @@
             </div>
 
             <div id="forgotView" class="auth-view">
-                <h1 class="brand-title">Recover Password</h1>
-
                 <div id="forgotMessage" class="message-banner"></div>
 
                 <form id="forgotForm" onsubmit="handleForgotPassword(event)">
@@ -339,8 +342,6 @@
             </div>
 
             <div id="registerView" class="auth-view">
-                <h1 class="brand-title">WELCOME</h1>
-
                 <div id="registerMessage" class="message-banner"></div>
 
                 <form id="registerForm" onsubmit="handleRegister(event)">
@@ -373,20 +374,27 @@
             const tabsHeader = document.getElementById('authTabsHeader');
             const tabSignIn = document.getElementById('tabSignIn');
             const tabRegister = document.getElementById('tabRegister');
+            const brandTitle = document.getElementById('mainBrandTitle');
 
             if (viewId === 'signInView') {
                 tabsHeader.style.display = 'flex';
                 tabsHeader.classList.remove('register-active');
                 tabSignIn.classList.add('active');
                 tabRegister.classList.remove('active');
+                brandTitle.textContent = 'WELCOME';
+                brandTitle.style.display = 'block';
             } else if (viewId === 'registerView') {
                 tabsHeader.style.display = 'flex';
                 tabsHeader.classList.add('register-active');
                 tabSignIn.classList.remove('active');
                 tabRegister.classList.add('active');
+                brandTitle.textContent = 'WELCOME';
+                brandTitle.style.display = 'block';
             } else {
                 // Hide tabs for sub-views like Forgot Password
                 tabsHeader.style.display = 'none';
+                brandTitle.textContent = 'Recover Password';
+                brandTitle.style.display = 'block';
             }
         }
 
