@@ -1763,6 +1763,7 @@
             -webkit-text-security: disc;
             font-family: 'Inter', sans-serif;
             letter-spacing: normal;
+            font-size: 1.8rem;
         }
 
         .forgot-password-container {
@@ -1770,13 +1771,6 @@
             display: flex;
             flex-direction: column;
             margin-bottom: 1.5rem;
-        }
-
-        .divider-line {
-            width: 100%;
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.15);
-            margin-bottom: 0.85rem;
         }
 
         .forgot-link {
@@ -1837,6 +1831,12 @@
         .social-icon {
             width: 30px;
             height: 30px;
+            object-fit: contain;
+        }
+
+        .apple-social-icon {
+            width: 60px;
+            height: 60px;
             object-fit: contain;
         }
 
@@ -2461,7 +2461,6 @@
                     </div>
 
                     <div class="forgot-password-container">
-                        <div class="divider-line"></div>
                         <button type="button" class="forgot-link" onclick="switchView('forgotView')">Forgot your password?</button>
                     </div>
 
@@ -2473,7 +2472,7 @@
                     </button>
 
                     <button type="button" class="btn-social" onclick="handleAppleSignIn()">
-                        <img src="IMG_0566.png" alt="Apple logo" class="social-icon">
+                        <img src="IMG_0566.png" alt="Apple logo" class="apple-social-icon">
                         Continue with Apple
                     </button>
                 </form>
